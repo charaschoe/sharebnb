@@ -1,12 +1,7 @@
-// Load the JSON data
-d3.json("istanbul.json")
-	.then((data) => {
-		// Calculate the total number of listings
-		const totalListings = data.length;
+function openNav() {
+	document.getElementById("mySidenav").classList.add("open-menu");
+}
 
-		// Display the total on the webpage
-		d3.select("#total").text(totalListings);
-	})
-	.catch((error) => {
-		console.error("Error loading the JSON data:", error);
-	});
+function closeNav() {
+	document.getElementById("mySidenav").classList.remove("open-menu");
+}
