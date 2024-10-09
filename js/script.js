@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 // Path to the JSON file
 const jsonFilePath = path.join(__dirname, "data", "capetown.json");
@@ -17,12 +17,15 @@ fs.readFile(jsonFilePath, "utf8", (err, data) => {
 
 	try {
 		// Parse the JSON data
-		const airbnbs = JSON.parse(data);
+		const listings = JSON.parse(data);
 
-		// Count the number of Airbnbs
-		const count = airbnbs.length;
+		// Log the total number of listings
+		console.log(`Total number of listings: ${listings.length}`);
 
-		console.log(`Number of Airbnbs: ${count}`);
+		// Count the number of listings
+		const count = listings.length;
+
+		console.log(`Number of listings: ${count}`);
 	} catch (parseErr) {
 		console.error("Error parsing the JSON data:", parseErr);
 	}
