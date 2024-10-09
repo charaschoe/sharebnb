@@ -1,28 +1,39 @@
-const fs = require('fs');
-const path = require('path');
+document.addEventListener("DOMContentLoaded", function () {
+	const dropdown = document.createElement("select");
+	const inhabitantsDisplay = document.createElement("div");
+	document.body.appendChild(dropdown);
+	document.body.appendChild(inhabitantsDisplay);
 
-const directoryPath = '/Users/admin/sharebnb/js/';
-let totalAirbnbs = 0;
+	fetch("population.csv")
+		.then((response) => response.text())
+		.then((data) => {
+			const cities = parseCSV(data);
+			populateDropdown(cities);
+			dropdown.addEventListener("change", function () {
+				const selectedCity = dropdown.value;
+				const population = cities[selectedCity];
+				inhabitantsDisplay.textContent = `Inhabitants: ${population}`;
+			});
+		});
 
-// Function to read JSON files and count Airbnbs
-const countAirbnbs = (filePath) => {
-    const data = fs.readFileSync(filePath, 'utf8');
-    const jsonData = JSON.parse(data);
-    return jsonData.length; // Assuming each JSON file contains an array of Airbnbs
-};
+	function parseCSV(data) {
+		const lines = data.split("\n");
+		const result = {};
+		lines.forEach((line) => {
+			const [city, population] = line.split(",");
+			if (city && population) {
+				result[city] = population;
+			}
+		});
+		return result;
+	}
 
-// Read all files in the directory
-fs.readdir(directoryPath, (err, files) => {
-    if (err) {
-        return console.log('Unable to scan directory: ' + err);
-    }
-
-    files.forEach((file) => {
-        if (path.extname(file) === '.json') {
-            const filePath = path.join(directoryPath, file);
-            totalAirbnbs += countAirbnbs(filePath);
-        }
-    });
-
-    console.log('Total number of Airbnbs:', totalAirbnbs);
+	function populateDropdown(cities) {
+		for (const city in cities) {
+			const option = document.createElement("option");
+			option.value = city;
+			option.textContent = city;
+			dropdown.appendChild(option);
+		}
+	}
 });
