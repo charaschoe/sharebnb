@@ -1,29 +1,36 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-.container {
+.tab-menu {
     display: flex;
-}
-
-.city {
+    flex-direction: column;
     width: 100px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: teal;
-    color: white;
-    font-size: 200px; /* Updated font size */
-    font-family: 'Lato', sans-serif; /* Updated font family */
-    transform: rotate(90deg); /* Rotates the city */
-    margin-right: 10px; /* Space between rectangles */
 }
 
-.city:nth-child(odd) {
-    background-color: lightcoral; /* Alternate colors */
+.tab {
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.tab:nth-child(1) {
+    background-color: #4CAF50; /* Green */
+}
+
+.tab:nth-child(2) {
+    background-color: #2196F3; /* Blue */
+}
+
+.tab:nth-child(3) {
+    background-color: #FF5722; /* Orange */
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.active {
+    display: block;
 }

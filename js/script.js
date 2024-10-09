@@ -1,7 +1,12 @@
-function openNav() {
-	document.getElementById("mySidenav").classList.add("open-menu");
-}
+function openTab(tabName) {
+	var i, tabcontent, tabs;
 
-function closeNav() {
-	document.getElementById("mySidenav").classList.remove("open-menu");
+	// Hide all tab content
+	tabcontent = document.getElementsByClassName("tab-content");
+	for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	}
+
+	// Show the selected tab content
+	document.getElementById(tabName).style.display = "block";
 }
