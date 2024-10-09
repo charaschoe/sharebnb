@@ -1,39 +1,29 @@
 body {
-	font-family: "Lato", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.sidenav {
-	height: 100%;
-	width: 250px; /* Increased width */
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: green; /* Green background */
-	overflow-x: hidden;
-	transition: 0.5s;
-	transform: translateX(-100%);
+.container {
+    display: flex;
 }
 
-.sidenav a {
-	padding: 20px;
-	text-decoration: none;
-	font-size: 40px; /* Increased font size */
-	color: #fff;
-	display: block;
-	transition: 0.3s;
-	transform: rotate(90deg); /* Rotate text 90 degrees */
-	transform-origin: left bottom; /* Set the origin for rotation */
+.city {
+    width: 100px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: teal;
+    color: white;
+    font-size: 200px; /* Updated font size */
+    font-family: 'Lato', sans-serif; /* Updated font family */
+    transform: rotate(90deg); /* Rotates the city */
+    margin-right: 10px; /* Space between rectangles */
 }
 
-.sidenav a:hover {
-	background-color: #4caf50; /* Darker green on hover */
-}
-
-#main {
-	transition: margin-left 0.5s;
-}
-
-.open-menu {
-	transform: translateX(0);
+.city:nth-child(odd) {
+    background-color: lightcoral; /* Alternate colors */
 }

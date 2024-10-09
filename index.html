@@ -1,69 +1,99 @@
-<div id="mySidenav" class="sidenav">
-	<a href="#">Section 1</a>
-	<a href="#">Section 2</a>
-	<a href="#">Section 3</a>
-	<a href="#">Section 4</a>
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sharebnb</title>
+		<style>
+			body {
+				font-family: "Lato", sans-serif;
+			}
 
-<span onclick="openNav()">Open Menu</span>
+			.sidenav {
+				height: 100%;
+				width: 0;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				background-color: #111;
+				overflow-x: hidden;
+				transition: 0.5s;
+				padding-top: 60px;
+			}
 
-<div id="main">
-	<!-- Main content here -->
-</div>
-<script>
-	function openNav() {
-		document.getElementById("mySidenav").style.width = "250px";
-		document.getElementById("main").style.marginLeft = "250px";
-	}
+			.sidenav a {
+				padding: 8px 8px 8px 32px;
+				text-decoration: none;
+				font-size: 25px;
+				color: #818181;
+				display: block;
+				transition: 0.3s;
+			}
 
-	function closeNav() {
-		document.getElementById("mySidenav").style.width = "0";
-		document.getElementById("main").style.marginLeft = "0";
-	}
-</script>
+			.sidenav a:hover {
+				color: #f1f1f1;
+			}
 
-<style>
-	body {
-		font-family: "Lato", sans-serif;
-	}
+			.sidenav .closebtn {
+				position: absolute;
+				top: 0;
+				right: 25px;
+				font-size: 36px;
+				margin-left: 50px;
+			}
 
-	.sidenav {
-		height: 100%;
-		width: 0;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		left: 0;
-		background-color: #111;
-		overflow-x: hidden;
-		transition: 0.5s;
-		padding-top: 60px;
-	}
+			#main {
+				transition: margin-left 0.5s;
+				padding: 16px;
+			}
 
-	.sidenav a {
-		padding: 8px 8px 8px 32px;
-		text-decoration: none;
-		font-size: 25px;
-		color: #818181;
-		display: block;
-		transition: 0.3s;
-	}
+			.container {
+				margin-top: 20px;
+			}
 
-	.sidenav a:hover {
-		color: #f1f1f1;
-	}
+			.city {
+				margin: 10px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mySidenav" class="sidenav">
+			<a href="#">Section 1</a>
+			<a href="#">Section 2</a>
+			<a href="#">Section 3</a>
+			<a href="#">Section 4</a>
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+				>×</a
+			>
+		</div>
 
-	.sidenav .closebtn {
-		position: absolute;
-		top: 0;
-		right: 25px;
-		font-size: 36px;
-		margin-left: 50px;
-	}
+		<span onclick="openNav()">Open Menu</span>
 
-	#main {
-		transition: margin-left 0.5s;
-		padding: 16px;
-	}
-</style>
+		<div id="main">
+			<!-- Main content here -->
+		</div>
+
+		<div class="container">
+			<div class="city">New York</div>
+			<div class="city">Rio de Janeiro</div>
+			<div class="city">Kapstadt</div>
+			<div class="city">Sydney</div>
+			<div class="city">Tokio</div>
+			<div class="city">Paris</div>
+			<div class="city">Istanbul</div>
+		</div>
+
+		<script>
+			function openNav() {
+				document.getElementById("mySidenav").style.width = "250px";
+				document.getElementById("main").style.marginLeft = "250px";
+			}
+
+			function closeNav() {
+				document.getElementById("mySidenav").style.width = "0";
+				document.getElementById("main").style.marginLeft = "0";
+			}
+		</script>
+	</body>
+</html>
