@@ -59,3 +59,17 @@
 		</script>
 	</body>
 </html>
+
+<div id="content">
+	<h1>Total Number of Airbnb Listings in Istanbul</h1>
+    <p id="total"></p>
+</div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    d3.csv("data/airbnb_listings.csv").then(function(data) {
+        const istanbulListings = data.filter(d => d.city === "Istanbul");
+        document.getElementById("total").textContent = `Total: ${istanbulListings.length} listings`;
+    }).catch(function(error) {
+        console.error("Error fetching the CSV file:", error);
+    });
+</script>
