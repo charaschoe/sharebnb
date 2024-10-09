@@ -1,36 +1,40 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Apply Inter font to the body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.tab-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
+/* Basic styling for headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin: 0;
 }
 
-.tab {
-    padding: 20px;
-    color: white;
-    cursor: pointer;
+/* Basic styling for paragraphs */
+p {
+    font-weight: 400;
+    margin: 0 0 1em 0;
 }
 
-.tab:nth-child(1) {
-    background-color: #4CAF50; /* Green */
+/* Basic styling for links */
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.tab:nth-child(2) {
-    background-color: #2196F3; /* Blue */
+a:hover {
+    text-decoration: underline;
 }
 
-.tab:nth-child(3) {
-    background-color: #FF5722; /* Orange */
-}
-
-.tab-content {
-    display: none;
-    padding: 20px;
-}
-
-.active {
-    display: block;
+/* Basic container styling */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
