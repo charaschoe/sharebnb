@@ -1,32 +1,79 @@
-import fs from "fs";
-import path from "path";
+import { populationData } from "../data/population.js";
+import { apartments } from "../data/apartments.js"; // Import der Apartment-Daten
 
-// Path to the JSON file
-const jsonFilePath = path.join(__dirname, "data", "capetown.json");
+// Funktion zur Zählung der Gesamtanzahl der Vorkommen von '"id": '
+function countIds(listings) {
+	return listings.reduce((count, listing) => {
+		return count + (listing.hasOwnProperty("id") ? 1 : 0);
+	}, 0);
+}
 
-console.log(`Reading JSON file from: ${jsonFilePath}`);
+const cities = [
+	{ name: "cape-town", file: "../data/capetown.json" },
+	{ name: "paris", file: "../data/paris.json" },
+	{ name: "tokyo", file: "../data/tokyo.json" },
+	{ name: "new-york", file: "../data/newyork.json" },
+	{ name: "rio", file: "../data/riodejaneiro.json" },
+	{ name: "sydney", file: "../data/sydney.json" },
+	{ name: "istanbul", file: "../data/istanbul.json" },
+];
 
-// Read the JSON file
-fs.readFile(jsonFilePath, "utf8", (err, data) => {
-	if (err) {
-		console.error("Error reading the JSON file:", err);
-		return;
-	}
+const numberFormatter = new Intl.NumberFormat("de-DE");
 
-	console.log("Raw JSON data:", data);
+cities.forEach((city) => {
+	fetch(city.file)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(`Data for ${city.name}:`, data); // Debugging-Ausgabe
+			const totalIds = countIds(data);
+			const cityData = populationData.find(
+				(p) => p.city.toLowerCase().replace(" ", "-") === city.name
+			);
+			const apartmentData = apartments.find(
+				(a) => a.city.toLowerCase().replace(" ", "-") === city.name
+			);
+			if (!cityData || !apartmentData) {
+				console.error(`No data found for ${city.name}`);
+				return;
+			}
+			const population = cityData.population;
+			const tourists = cityData.tourists;
+			const apartmentCount = apartmentData.apartments;
+			const airbnbIndex = totalIds / apartmentCount; // Berechnung des neuen Index
 
-	try {
-		// Parse the JSON data
-		const listings = JSON.parse(data);
-
-		// Log the total number of listings
-		console.log(`Total number of listings: ${listings.length}`);
-
-		// Count the number of listings
-		const count = listings.length;
-
-		console.log(`Number of listings: ${count}`);
-	} catch (parseErr) {
-		console.error("Error parsing the JSON data:", parseErr);
-	}
+			document.getElementById(`total-ids-${city.name}`).textContent =
+				numberFormatter.format(totalIds);
+			document.getElementById(
+				`population-${city.name}`
+			).textContent = `Population: ${numberFormatter.format(population)}`;
+			document.getElementById(
+				`tourists-${city.name}`
+			).textContent = `Tourists: ${numberFormatter.format(tourists)}`;
+			document.getElementById(
+				`apartments-${city.name}`
+			).textContent = `Apartments: ${numberFormatter.format(
+				apartmentCount
+			)}`; // Anzeige der Apartment-Anzahl
+			document.getElementById(
+				`airbnb-index-${city.name}`
+			).textContent = `Airbnb Index: ${numberFormatter.format(
+				airbnbIndex
+			)}`; // Anzeige des neuen Index
+		})
+		.catch((error) => {
+			console.error(
+				`Error fetching the Airbnb listings for ${city.name}:`,
+				error
+			);
+			document.getElementById(`total-ids-${city.name}`).textContent =
+				"Error";
+			document.getElementById(`population-${city.name}`).textContent =
+				"Error";
+			document.getElementById(`tourists-${city.name}`).textContent =
+				"Error";
+			document.getElementById(`apartments-${city.name}`).textContent =
+				"Error"; // Fehleranzeige für Apartments
+			document.getElementById(`airbnb-index-${city.name}`).textContent =
+				"Error"; // Fehleranzeige für den neuen Index
+		});
 });
