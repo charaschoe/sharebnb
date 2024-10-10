@@ -71,14 +71,14 @@ body {
 }
 
 .tab-content {
-    display: none; /* Inhalt ist nicht sichtbar */
-    color: white; /* Standard-Textfarbe */
-    text-align: center;
-    font-size: 1.5rem;
-    position: absolute; /* Position absolut für die Anzeige */
-    top: 20%; /* Positionieren */
-    left: 50%; /* Positionieren */
-    transform: translateX(-50%); /* Zentrieren */
+	display: none; /* Inhalt ist nicht sichtbar */
+	color: white; /* Standard-Textfarbe */
+	text-align: right;
+	font-size: 1.5rem;
+	position: absolute; /* Position absolut für die Anzeige */
+	top: 15%; /* Positionieren */
+	right: 25px; /* Positionieren */
+	transform: translateX(0); /* Zentrieren */
 }
 
 /* Zeige den Tab-Inhalt beim Hover an */
