@@ -14,7 +14,7 @@ body {
 
 .container {
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     align-items: stretch;
     justify-content: stretch;
@@ -26,7 +26,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: flex-basis 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
     /*box-shadow: 2px 0px 4px -2px #000;*/
     position: relative;
     color: white;
@@ -36,6 +36,7 @@ body {
 /* Unterschiedliche Farben für die einzelnen Tabs */
 .container label:nth-child(1) {
     background: #000;
+	width: calc(100vw - 50%);
 }
 
 .container label:nth-child(2) {
@@ -67,13 +68,17 @@ body {
 
 /* Wenn über einen Tab gehovert wird, wird dieser größer */
 .container label:hover {
-    flex: 3; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
+    flex: 15; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
+	transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
 }
 
 .container label .content {
     text-align: center;
     opacity: 0.5; /* Standardmäßige geringere Sichtbarkeit */
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
+	writing-mode: vertical-rl; /* Text vertikal ausrichten */
+    transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
+    text-align: center; /* Text zentrieren */
 }
 
 /* Wenn ein Tab gehovt wird, wird der Inhalt sichtbarer */
