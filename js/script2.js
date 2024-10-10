@@ -1,6 +1,7 @@
 import { populationData } from "../data/population.js";
+import { apartments } from "../data/apartments.js"; // Import der Apartment-Daten
 
-// Function to count the total number of occurrences of '"id": '
+// Funktion zur Zählung der Gesamtanzahl der Vorkommen von '"id": '
 function countIds(listings) {
     return listings.reduce((count, listing) => {
         return count + (listing.hasOwnProperty("id") ? 1 : 0);
@@ -26,18 +27,22 @@ cities.forEach((city) => {
             console.log(`Data for ${city.name}:`, data); // Debugging-Ausgabe
             const totalIds = countIds(data);
             const cityData = populationData.find(p => p.city.toLowerCase().replace(" ", "-") === city.name);
-            if (!cityData) {
-                console.error(`No population data found for ${city.name}`);
+            const apartmentData = apartments.find(a => a.city.toLowerCase().replace(" ", "-") === city.name);
+            if (!cityData || !apartmentData) {
+                console.error(`No data found for ${city.name}`);
                 return;
             }
             const population = cityData.population;
             const tourists = cityData.tourists;
+            const apartmentCount = apartmentData.apartments;
             document.getElementById(`total-ids-${city.name}`).textContent =
                 numberFormatter.format(totalIds);
             document.getElementById(`population-${city.name}`).textContent =
                 `Population: ${numberFormatter.format(population)}`;
             document.getElementById(`tourists-${city.name}`).textContent =
                 `Tourists: ${numberFormatter.format(tourists)}`;
+            document.getElementById(`apartments-${city.name}`).textContent =
+                `Apartments: ${numberFormatter.format(apartmentCount)}`; // Anzeige der Apartment-Anzahl
         })
         .catch((error) => {
             console.error(
@@ -50,5 +55,7 @@ cities.forEach((city) => {
                 "Error";
             document.getElementById(`tourists-${city.name}`).textContent =
                 "Error";
+            document.getElementById(`apartments-${city.name}`).textContent =
+                "Error"; // Fehleranzeige für Apartments
         });
 });
