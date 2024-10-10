@@ -1,12 +1,11 @@
+import { populationData } from "../data/population.js";
+
 // Function to count the total number of occurrences of '"id": '
 function countIds(listings) {
     return listings.reduce((count, listing) => {
         return count + (listing.hasOwnProperty("id") ? 1 : 0);
     }, 0);
 }
-
-// Import population data
-import { populationData } from '../data/population.js';
 
 const cities = [
     { name: "cape-town", file: "../data/capetown.json" },
