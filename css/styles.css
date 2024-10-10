@@ -1,95 +1,79 @@
 /* Import Inter font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
-/* Apply Inter font to the body */
 /* Farben und Dimensionen */
 body {
-    overflow: hidden;
+    margin: 0;
     background: #000;
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
-    position: absolute;
-    /*top: 10%;
-	margin: -150px 0 0 -250px;
-    left: 50%;*/
+    display: flex;
     width: 100%;
-    height: 100%;
-    
-    counter-reset: tab-counter 5;
-}
-
-.container input[type=radio] {
-    display: none;
-}
-
-.container input[type=radio]:checked + label ~ label {
-    width: 30px; /* Berechneter Marker-Abstand */
-}
-
-.container input[type=radio]:checked + label .content {
-    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
-    opacity: 1;
-    pointer-events: auto;
+    height: 100vh;
+    align-items: stretch;
+    justify-content: stretch;
 }
 
 .container label {
-    position: absolute;
-    height: 100%;
-    box-shadow: 2px 0px 4px -2px #000;
+    flex: 1; /* Jede Spalte nimmt den gleichen Anteil des verfügbaren Platzes ein */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: width 1.2s cubic-bezier(0.11, 0.65, 0.04, 1);
+    transition: flex-basis 0.4s ease;
+    box-shadow: 2px 0px 4px -2px #000;
+    position: relative;
+    color: white;
+    font-size: 1.5rem;
 }
 
-/* Label Styles für jeden Tab */
-.container label:nth-child(2) {
+/* Unterschiedliche Farben für die einzelnen Tabs */
+.container label:nth-child(1) {
     background: #E57373;
-    width: 476px;
+}
+
+.container label:nth-child(2) {
+    background: #81C784;
+}
+
+.container label:nth-child(3) {
+    background: #64B5F6;
 }
 
 .container label:nth-child(4) {
-    background: #81C784;
-    width: 452px;
+    background: #9575CD;
+}
+
+.container label:nth-child(5) {
+    background-color: #FFB74D;
 }
 
 .container label:nth-child(6) {
-    background: #64B5F6;
-    width: 428px;
-}
-
-.container label:nth-child(8) {
-    background: #9575CD;
-    width: 404px;
-}
-
-.container label:nth-child(10) {
-    background-color: #FFB74D;
-	width: 380px;
-}
-.container label:nth-child(12) {
     background-color: #4DB6AC;
-	width: 356px;
 }
-.container label:nth-child(14) {
+
+.container label:nth-child(7) {
     background-color: #FFD54F;
-	width: 332px;
+}
+
+/* Wenn über einen Tab gehovert wird, wird dieser größer */
+.container label:hover {
+    flex: 3; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
 }
 
 .container label .content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 250px;
-    margin-left: -125px;
-    counter-increment: tab-counter -1;
     text-align: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
+    opacity: 0.5; /* Standardmäßige geringere Sichtbarkeit */
+    transition: opacity 0.4s ease;
 }
 
-.container label .content:after {
-    content: counter(tab-counter);
+/* Wenn ein Tab gehovt wird, wird der Inhalt sichtbarer */
+.container label:hover .content {
+    opacity: 1;
 }
-
-
