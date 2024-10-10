@@ -62,16 +62,7 @@ body {
     width: 404px;
 }
 
-.container label:after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 100%;
-    width: 18px;
-    height: 75px;
-    border-radius: 0 7.5px 7.5px 0;
-    box-shadow: 3px 0px 6px -3px #000;
-}
+
 
 .container label .content {
     position: absolute;
