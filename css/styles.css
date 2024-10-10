@@ -51,7 +51,7 @@ body {
     /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
 }
 
-.container label .content {
+.container label #content {
     text-align: center;
     opacity: 0.5; /* Standardmäßige geringere Sichtbarkeit */
     transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
@@ -61,6 +61,6 @@ body {
 }
 
 /* Wenn ein Tab gehovt wird, wird der Inhalt sichtbarer */
-.container label:hover .content {
+.container label:hover #content {
     opacity: 1;
 }
