@@ -4,7 +4,7 @@
 /* Farben und Dimensionen */
 body {
     margin: 0;
-    background: #000;
+    background: #fff;
     font-family: 'Inter', sans-serif;
     height: 100vh;
     display: flex;
@@ -27,7 +27,7 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: flex-basis 0.4s ease;
-    box-shadow: 2px 0px 4px -2px #000;
+    /*box-shadow: 2px 0px 4px -2px #000;*/
     position: relative;
     color: white;
     font-size: 1.5rem;
@@ -35,7 +35,7 @@ body {
 
 /* Unterschiedliche Farben für die einzelnen Tabs */
 .container label:nth-child(1) {
-    background: #E57373;
+    background: #000;
 }
 
 .container label:nth-child(2) {
@@ -60,6 +60,9 @@ body {
 
 .container label:nth-child(7) {
     background-color: #FFD54F;
+}
+.container label:nth-child(8) {
+    background: #E57373;
 }
 
 /* Wenn über einen Tab gehovert wird, wird dieser größer */
