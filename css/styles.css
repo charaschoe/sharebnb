@@ -2,44 +2,91 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
 /* Apply Inter font to the body */
+/* Farben und Dimensionen */
 body {
-	font-family: "Inter", sans-serif;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    overflow: hidden;
+    background: #000;
 }
 
-/* Basic styling for headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 700;
-	margin: 0;
-}
-
-/* Basic styling for paragraphs */
-p {
-	font-weight: 400;
-	margin: 0 0 1em 0;
-}
-
-/* Basic styling for links */
-a {
-	color: inherit;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-/* Basic container styling */
 .container {
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 300px;
+    margin: -150px 0 0 -250px;
+    counter-reset: tab-counter 5;
 }
+
+.container input[type=radio] {
+    display: none;
+}
+
+.container input[type=radio]:checked + label ~ label {
+    width: 30px; /* Berechneter Marker-Abstand */
+}
+
+.container input[type=radio]:checked + label .content {
+    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.container label {
+    position: absolute;
+    height: 100%;
+    box-shadow: 2px 0px 4px -2px #000;
+    cursor: pointer;
+    transition: width 1.2s cubic-bezier(0.11, 0.65, 0.04, 1);
+}
+
+/* Label Styles für jeden Tab */
+.container label:nth-child(2) {
+    background: #E57373;
+    width: 476px;
+}
+
+.container label:nth-child(4) {
+    background: #81C784;
+    width: 452px;
+}
+
+.container label:nth-child(6) {
+    background: #64B5F6;
+    width: 428px;
+}
+
+.container label:nth-child(8) {
+    background: #9575CD;
+    width: 404px;
+}
+
+.container label:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 100%;
+    width: 18px;
+    height: 75px;
+    border-radius: 0 7.5px 7.5px 0;
+    box-shadow: 3px 0px 6px -3px #000;
+}
+
+.container label .content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 250px;
+    margin-left: -125px;
+    counter-increment: tab-counter -1;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
+}
+
+.container label .content:after {
+    content: counter(tab-counter);
+}
+
+
