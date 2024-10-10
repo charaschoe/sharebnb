@@ -89,3 +89,24 @@ body {
 	font-size: 4.5rem;
 	font-weight: 1000;
 }
+.tab-content {
+    display: none; /* Inhalt ist nicht sichtbar */
+    color: white; /* Standard-Textfarbe */
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Zeige den Tab-Inhalt beim Hover an */
+.container label:hover .tab-content {
+    display: block; /* Inhalt wird beim Hover angezeigt */
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.tab-content p {
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
