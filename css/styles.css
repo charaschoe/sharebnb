@@ -62,7 +62,18 @@ body {
     width: 404px;
 }
 
-
+.container label:nth-child(10) {
+    background-color: #FFB74D;
+	width: 380px;
+}
+.container label:nth-child(12) {
+    background-color: #4DB6AC;
+	width: 356px;
+}
+.container label:nth-child(14) {
+    background-color: #FFD54F;
+	width: 332px;
+}
 
 .container label .content {
     position: absolute;
