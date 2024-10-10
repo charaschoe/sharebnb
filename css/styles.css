@@ -52,7 +52,7 @@ body {
 /* Textinhalt der Tabs */
 .container label #content {
     text-align: center;
-    opacity: 0.5; /* Standardmäßige geringere Sichtbarkeit */
+    opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
     transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
     writing-mode: vertical-rl; /* Text vertikal ausrichten */
     transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
