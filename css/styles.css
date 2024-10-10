@@ -26,57 +26,36 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
-    /*box-shadow: 2px 0px 4px -2px #000;*/
+    transition: all 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
     position: relative;
     color: white;
     font-size: 1.5rem;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  */
 }
 
 /* Unterschiedliche Farben für die einzelnen Tabs */
-.container label:nth-child(1) {
-    background: #000;
-	width: calc(100vw - 50%);
-}
+.container label:nth-child(1) { background: #fff; }
+.container label:nth-child(2) { background: #92A8D1; }
+.container label:nth-child(3) { background: #88B04B; }
+.container label:nth-child(4) { background: #F4D35E; }
+.container label:nth-child(5) { background-color: #FF8C81; }
+.container label:nth-child(6) { background-color: #034F84; }
+.container label:nth-child(7) { background-color: #E63946; }
+.container label:nth-child(8) { background: #6B5B95; }
 
-.container label:nth-child(2) {
-    background: #81C784;
-}
-
-.container label:nth-child(3) {
-    background: #64B5F6;
-}
-
-.container label:nth-child(4) {
-    background: #9575CD;
-}
-
-.container label:nth-child(5) {
-    background-color: #FFB74D;
-}
-
-.container label:nth-child(6) {
-    background-color: #4DB6AC;
-}
-
-.container label:nth-child(7) {
-    background-color: #FFD54F;
-}
-.container label:nth-child(8) {
-    background: #E57373;
-}
-
-/* Wenn über einen Tab gehovert wird, wird dieser größer */
+/* Wenn über einen Tab gehovert wird */
 .container label:hover {
-    flex: 15; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
-	transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
+    flex: 35; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
+    transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1), 
+                background 0.8s ease; /* Übergang für Hintergrundfarbe */
+    /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
 }
 
 .container label .content {
     text-align: center;
     opacity: 0.5; /* Standardmäßige geringere Sichtbarkeit */
-    transition: opacity 0.4s cubic-bezier(0.11, 0.65, 0.04, 1);
-	writing-mode: vertical-rl; /* Text vertikal ausrichten */
+    transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
+    writing-mode: vertical-rl; /* Text vertikal ausrichten */
     transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
     text-align: center; /* Text zentrieren */
 }
