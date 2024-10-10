@@ -39,24 +39,31 @@ body {
 }
 .container label:nth-child(2) {
 	background: #92a8d1;
+	/*background: #92a8d1;*/
 }
 .container label:nth-child(3) {
 	background: #88b04b;
+	/*background: #88b04b;*/
 }
 .container label:nth-child(4) {
 	background: #f4d35e;
+	/*background: #f4d35e;*/
 }
 .container label:nth-child(5) {
 	background-color: #ff8c81;
+	/*background-color: #ff8c81;*/
 }
 .container label:nth-child(6) {
 	background-color: #034f84;
+	/*background-color: #034f84;*/
 }
 .container label:nth-child(7) {
 	background-color: #e63946;
+	/*background-color: #e63946;*/
 }
 .container label:nth-child(8) {
 	background: #6b5b95;
+	/*background: #6b5b95;*/
 }
 
 /* Wenn über einen Tab gehovert wird */
