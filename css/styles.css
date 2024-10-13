@@ -1,7 +1,3 @@
-/* Import Inter font from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
-
-/* Farben und Dimensionen */
 body {
     margin: 0;
     background: #fff;
@@ -11,7 +7,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 .container {
     display: flex;
     width: 100vw;
@@ -19,9 +14,8 @@ body {
     align-items: stretch;
     justify-content: stretch;
 }
-
 .container label {
-    flex: 1; /* Jede Spalte nimmt den gleichen Anteil des verfügbaren Platzes ein */
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +38,7 @@ body {
 
 /* Wenn über einen Tab gehovert wird */
 .container label:hover {
-    flex: 35; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
+    flex: 25; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
     transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1),
                 background 0.8s ease; /* Übergang für Hintergrundfarbe */
 }
@@ -85,4 +79,25 @@ body {
 .container label:hover .tab-content {
     display: block; /* Inhalt wird beim Hover angezeigt */
     z-index: 10;
+}
+
+.arrow-nav {
+    display: flex; /* Flex-Layout für die Pfeile */
+    justify-content: space-between; /* Verteilung des Abstands zwischen den Pfeilen */
+    margin-top: 250px; /* Abstand nach oben anpassen, um die Pfeile weiter nach unten zu verschieben */
+    margin-left: -350px; /* abstand pfeile */
+}
+
+.arrow {
+    background-color: transparent; /* Hintergrund entfernen */
+    color: white; /* Textfarbe für die Pfeile */
+    border: none; /* Rand entfernen */
+    padding: 20px; /* Größere Fläche für die Pfeile */
+    cursor: pointer;
+    font-size: 60px; /* Pfeilgröße erhöhen */
+    transition: color 0.3s; /* Sanfter Übergang für die Farbe beim Hover */
+}
+
+.arrow:hover {
+    color: black; /* Farbe beim Hover ändern */
 }
