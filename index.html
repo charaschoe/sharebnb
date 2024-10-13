@@ -59,6 +59,68 @@
 									>Loading...</span
 								>
 							</h3>
+							<div id="map-nyc" class="map"></div>
+							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+							<style>
+								.map {
+									width: 120%; /* Make the map fill more than the entire width */
+									height: 200px; /* Increase the height of the map */
+									margin-left: -200%; /* Move the map 120% to the left */
+								}
+							</style>
+							<script>
+								// Initialize the map and set the center to New York City
+								const mapNYC = L.map("map-nyc", {
+									center: [40.7128, -74.0060], // Coordinates for New York City
+									zoom: 10, // Initial zoom level
+									zoomControl: false, // Disables zoom control
+									dragging: false, // Disables dragging (panning)
+									scrollWheelZoom: true, // Enables zoom via scroll wheel
+									doubleClickZoom: false, // Disables zoom via double-click
+									touchZoom: false, // Disables touch zoom (e.g., pinch-to-zoom)
+									keyboard: false, // Disables keyboard control
+								});
+
+								// Add a transparent landmass tile layer
+								L.tileLayer(
+									"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+									{
+										maxZoom: 18,
+										attribution:
+											"Map data © OpenStreetMap contributors, CartoDB",
+										opacity: 0.8, // Transparent landmasses
+									}
+								).addTo(mapNYC);
+
+								// Function to load JSON data
+								fetch("nyc.json")
+									.then((response) => response.json())
+									.then((data) => {
+										// Iterate through all Airbnb listings and add markers
+										data.forEach((listing) => {
+											const lat = listing.coordinates.lat;
+											const lon = listing.coordinates.lon;
+
+											// Create a marker for each coordinate
+											L.circleMarker([lat, lon], {
+												color: "white",
+												fillColor: "#ffffff",
+												fillOpacity: 1,
+												radius: 5,
+											})
+												.addTo(mapNYC)
+												.bindPopup(
+													`<b>${listing.name}</b><br>Neighbourhood: ${listing.neighbourhood}`
+												);
+										});
+									})
+									.catch((error) =>
+										console.error(
+											"Error loading the JSON file:",
+											error
+										)
+									);
+							</script>
 							<div class="arrow-nav">
 								<button class="arrow" id="prev-2"><</button>
 								<div id="content-2" class="ny">NEW YORK 1</div>
@@ -80,6 +142,68 @@
 							<h3>
 								<span id="airbnb-index-rio">Loading...</span>
 							</h3>
+							<div id="map-rio" class="map"></div>
+							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+							<style>
+								.map {
+									width: 120%; /* Make the map fill more than the entire width */
+									height: 200px; /* Increase the height of the map */
+									margin-left: -200%; /* Move the map 120% to the left */
+								}
+							</style>
+							<script>
+								// Initialize the map and set the center to Rio de Janeiro
+								const mapRio = L.map("map-rio", {
+									center: [-22.9068, -43.1729], // Coordinates for Rio de Janeiro
+									zoom: 10, // Initial zoom level
+									zoomControl: false, // Disables zoom control
+									dragging: false, // Disables dragging (panning)
+									scrollWheelZoom: true, // Enables zoom via scroll wheel
+									doubleClickZoom: false, // Disables zoom via double-click
+									touchZoom: false, // Disables touch zoom (e.g., pinch-to-zoom)
+									keyboard: false, // Disables keyboard control
+								});
+
+								// Add a transparent landmass tile layer
+								L.tileLayer(
+									"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+									{
+										maxZoom: 18,
+										attribution:
+											"Map data © OpenStreetMap contributors, CartoDB",
+										opacity: 0.8, // Transparent landmasses
+									}
+								).addTo(mapRio);
+
+								// Function to load JSON data
+								fetch("rio.json")
+									.then((response) => response.json())
+									.then((data) => {
+										// Iterate through all Airbnb listings and add markers
+										data.forEach((listing) => {
+											const lat = listing.coordinates.lat;
+											const lon = listing.coordinates.lon;
+
+											// Create a marker for each coordinate
+											L.circleMarker([lat, lon], {
+												color: "white",
+												fillColor: "#ffffff",
+												fillOpacity: 1,
+												radius: 5,
+											})
+												.addTo(mapRio)
+												.bindPopup(
+													`<b>${listing.name}</b><br>Neighbourhood: ${listing.neighbourhood}`
+												);
+										});
+									})
+									.catch((error) =>
+										console.error(
+											"Error loading the JSON file:",
+											error
+										)
+									);
+							</script>
 							<div class="arrow-nav">
 								<button class="arrow" id="prev-3"><</button>
 								<div id="content-3" class="ny">RIO 1</div>
@@ -112,10 +236,10 @@
 								<span id="airbnb-index-cape-town"
 									>Loading...</span
 								>
-							<div id="map"></div>
+							<div id="map" class="map"></div>
 							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 							<style>
-								#map {
+								.map {
 									width: 120%; /* Make the map fill more than the entire width */
 									height: 200px; /* Increase the height of the map */
 									margin-left: -200%; /* Move the map 120% to the left */
@@ -202,6 +326,68 @@
 							<h3>
 								<span id="airbnb-index-sydney">Loading...</span>
 							</h3>
+							<div id="map-sydney" class="map"></div>
+							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+							<style>
+								.map {
+									width: 120%; /* Make the map fill more than the entire width */
+									height: 200px; /* Increase the height of the map */
+									margin-left: -200%; /* Move the map 120% to the left */
+								}
+							</style>
+							<script>
+								// Initialize the map and set the center to Sydney
+								const mapSydney = L.map("map-sydney", {
+									center: [-33.8688, 151.2093], // Coordinates for Sydney
+									zoom: 10, // Initial zoom level
+									zoomControl: false, // Disables zoom control
+									dragging: false, // Disables dragging (panning)
+									scrollWheelZoom: true, // Enables zoom via scroll wheel
+									doubleClickZoom: false, // Disables zoom via double-click
+									touchZoom: false, // Disables touch zoom (e.g., pinch-to-zoom)
+									keyboard: false, // Disables keyboard control
+								});
+
+								// Add a transparent landmass tile layer
+								L.tileLayer(
+									"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+									{
+										maxZoom: 18,
+										attribution:
+											"Map data © OpenStreetMap contributors, CartoDB",
+										opacity: 0.8, // Transparent landmasses
+									}
+								).addTo(mapSydney);
+
+								// Function to load JSON data
+								fetch("sydney.json")
+									.then((response) => response.json())
+									.then((data) => {
+										// Iterate through all Airbnb listings and add markers
+										data.forEach((listing) => {
+											const lat = listing.coordinates.lat;
+											const lon = listing.coordinates.lon;
+
+											// Create a marker for each coordinate
+											L.circleMarker([lat, lon], {
+												color: "white",
+												fillColor: "#ffffff",
+												fillOpacity: 1,
+												radius: 5,
+											})
+												.addTo(mapSydney)
+												.bindPopup(
+													`<b>${listing.name}</b><br>Neighbourhood: ${listing.neighbourhood}`
+												);
+										});
+									})
+									.catch((error) =>
+										console.error(
+											"Error loading the JSON file:",
+											error
+										)
+									);
+							</script>
 						</div>
 					</label>
 
@@ -222,6 +408,68 @@
 							<h3>
 								<span id="airbnb-index-tokyo">Loading...</span>
 							</h3>
+							<div id="map-tokyo" class="map"></div>
+							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+							<style>
+								.map {
+									width: 120%; /* Make the map fill more than the entire width */
+									height: 200px; /* Increase the height of the map */
+									margin-left: -200%; /* Move the map 120% to the left */
+								}
+							</style>
+							<script>
+								// Initialize the map and set the center to Tokyo
+								const mapTokyo = L.map("map-tokyo", {
+									center: [35.6895, 139.6917], // Coordinates for Tokyo
+									zoom: 10, // Initial zoom level
+									zoomControl: false, // Disables zoom control
+									dragging: false, // Disables dragging (panning)
+									scrollWheelZoom: true, // Enables zoom via scroll wheel
+									doubleClickZoom: false, // Disables zoom via double-click
+									touchZoom: false, // Disables touch zoom (e.g., pinch-to-zoom)
+									keyboard: false, // Disables keyboard control
+								});
+
+								// Add a transparent landmass tile layer
+								L.tileLayer(
+									"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+									{
+										maxZoom: 18,
+										attribution:
+											"Map data © OpenStreetMap contributors, CartoDB",
+										opacity: 0.8, // Transparent landmasses
+									}
+								).addTo(mapTokyo);
+
+								// Function to load JSON data
+								fetch("tokyo.json")
+									.then((response) => response.json())
+									.then((data) => {
+										// Iterate through all Airbnb listings and add markers
+										data.forEach((listing) => {
+											const lat = listing.coordinates.lat;
+											const lon = listing.coordinates.lon;
+
+											// Create a marker for each coordinate
+											L.circleMarker([lat, lon], {
+												color: "white",
+												fillColor: "#ffffff",
+												fillOpacity: 1,
+												radius: 5,
+											})
+												.addTo(mapTokyo)
+												.bindPopup(
+													`<b>${listing.name}</b><br>Neighbourhood: ${listing.neighbourhood}`
+												);
+										});
+									})
+									.catch((error) =>
+										console.error(
+											"Error loading the JSON file:",
+											error
+										)
+									);
+							</script>
 						</div>
 					</label>
 
@@ -239,15 +487,73 @@
 								<span id="tourists-istanbul">Loading...</span>
 							</h3>
 							<h3>
-								<spa1n id="apartments-istanbul"
-									>Loading...</spa1n
-								>
+								<span id="apartments-istanbul">Loading...</span>
 							</h3>
 							<h3>
-								<span id="airbnb-index-istanbul"
-									>Loading...</span
-								>
+								<span id="airbnb-index-istanbul">Loading...</span>
 							</h3>
+							<div id="map-istanbul" class="map"></div>
+							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+							<style>
+								.map {
+									width: 120%; /* Make the map fill more than the entire width */
+									height: 200px; /* Increase the height of the map */
+									margin-left: -200%; /* Move the map 120% to the left */
+								}
+							</style>
+							<script>
+								// Initialize the map and set the center to Istanbul
+								const mapIstanbul = L.map("map-istanbul", {
+									center: [41.0082, 28.9784], // Coordinates for Istanbul
+									zoom: 10, // Initial zoom level
+									zoomControl: false, // Disables zoom control
+									dragging: false, // Disables dragging (panning)
+									scrollWheelZoom: true, // Enables zoom via scroll wheel
+									doubleClickZoom: false, // Disables zoom via double-click
+									touchZoom: false, // Disables touch zoom (e.g., pinch-to-zoom)
+									keyboard: false, // Disables keyboard control
+								});
+
+								// Add a transparent landmass tile layer
+								L.tileLayer(
+									"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+									{
+										maxZoom: 18,
+										attribution:
+											"Map data © OpenStreetMap contributors, CartoDB",
+										opacity: 0.8, // Transparent landmasses
+									}
+								).addTo(mapIstanbul);
+
+								// Function to load JSON data
+								fetch("istanbul.json")
+									.then((response) => response.json())
+									.then((data) => {
+										// Iterate through all Airbnb listings and add markers
+										data.forEach((listing) => {
+											const lat = listing.coordinates.lat;
+											const lon = listing.coordinates.lon;
+
+											// Create a marker for each coordinate
+											L.circleMarker([lat, lon], {
+												color: "white",
+												fillColor: "#ffffff",
+												fillOpacity: 1,
+												radius: 5,
+											})
+												.addTo(mapIstanbul)
+												.bindPopup(
+													`<b>${listing.name}</b><br>Neighbourhood: ${listing.neighbourhood}`
+												);
+										});
+									})
+									.catch((error) =>
+										console.error(
+											"Error loading the JSON file:",
+											error
+										)
+									);
+							</script>
 						</div>
 					</label>
 
@@ -268,6 +574,68 @@
 							<h3>
 								<span id="airbnb-index-paris">Loading...</span>
 							</h3>
+							<div id="map-paris" class="map"></div>
+							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+							<style>
+								.map {
+									width: 120%; /* Make the map fill more than the entire width */
+									height: 200px; /* Increase the height of the map */
+									margin-left: -200%; /* Move the map 120% to the left */
+								}
+							</style>
+							<script>
+								// Initialize the map and set the center to Paris
+								const mapParis = L.map("map-paris", {
+									center: [48.8566, 2.3522], // Coordinates for Paris
+									zoom: 10, // Initial zoom level
+									zoomControl: false, // Disables zoom control
+									dragging: false, // Disables dragging (panning)
+									scrollWheelZoom: true, // Enables zoom via scroll wheel
+									doubleClickZoom: false, // Disables zoom via double-click
+									touchZoom: false, // Disables touch zoom (e.g., pinch-to-zoom)
+									keyboard: false, // Disables keyboard control
+								});
+
+								// Add a transparent landmass tile layer
+								L.tileLayer(
+									"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+									{
+										maxZoom: 18,
+										attribution:
+											"Map data © OpenStreetMap contributors, CartoDB",
+										opacity: 0.8, // Transparent landmasses
+									}
+								).addTo(mapParis);
+
+								// Function to load JSON data
+								fetch("paris.json")
+									.then((response) => response.json())
+									.then((data) => {
+										// Iterate through all Airbnb listings and add markers
+										data.forEach((listing) => {
+											const lat = listing.coordinates.lat;
+											const lon = listing.coordinates.lon;
+
+											// Create a marker for each coordinate
+											L.circleMarker([lat, lon], {
+												color: "white",
+												fillColor: "#ffffff",
+												fillOpacity: 1,
+												radius: 5,
+											})
+												.addTo(mapParis)
+												.bindPopup(
+													`<b>${listing.name}</b><br>Neighbourhood: ${listing.neighbourhood}`
+												);
+										});
+									})
+									.catch((error) =>
+										console.error(
+											"Error loading the JSON file:",
+											error
+										)
+									);
+							</script>
 						</div>
 					</label>
 				</div>
