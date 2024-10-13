@@ -28,72 +28,82 @@ body {
 
 /* Unterschiedliche Farben für die einzelnen Tabs */
 .container label:nth-child(1) {
-	background: #51447b; /* Base */
+	background: #131313; /* Base */
 }
 .container label:nth-child(1):hover {
-	background: #6b5c9a; /* Lighter Shade */
+	background: #0f0f0f; /* Lighter Shade */
 }
 .container label:nth-child(1):active {
-	background: #3a2e5a; /* Darker Shade */
+	background: #000; /* Darker Shade */
 }
 
 .container label:nth-child(2) {
-	background: #cc7000; /* Base */
+	background: #51447b; /* Base */
 }
 .container label:nth-child(2):hover {
-	background: #e68a00; /* Lighter Shade */
+	background: #6b5c9a; /* Lighter Shade */
 }
 .container label:nth-child(2):active {
-	background: #994d00; /* Darker Shade */
+	background: #3a2e5a; /* Darker Shade */
 }
 
 .container label:nth-child(3) {
-	background: #6b8167; /* Base */
+	background: #cc7000; /* Base */
 }
 .container label:nth-child(3):hover {
-	background: #8fa88a; /* Lighter Shade */
+	background: #e68a00; /* Lighter Shade */
 }
 .container label:nth-child(3):active {
-	background: #4a5a45; /* Darker Shade */
+	background: #994d00; /* Darker Shade */
 }
 
 .container label:nth-child(4) {
-	background: #005e4e; /* Base */
+	background: #6b8167; /* Base */
 }
 .container label:nth-child(4):hover {
-	background: #007a66; /* Lighter Shade */
+	background: #8fa88a; /* Lighter Shade */
 }
 .container label:nth-child(4):active {
-	background: #004236; /* Darker Shade */
+	background: #4a5a45; /* Darker Shade */
 }
 
 .container label:nth-child(5) {
-	background: #c71585; /* Base */
+	background: #005e4e; /* Base */
 }
 .container label:nth-child(5):hover {
-	background: #e6399b; /* Lighter Shade */
+	background: #007a66; /* Lighter Shade */
 }
 .container label:nth-child(5):active {
-	background: #8f0f5e; /* Darker Shade */
+	background: #004236; /* Darker Shade */
 }
 
 .container label:nth-child(6) {
-	background: #ff6347; /* Base */
+	background: #c71585; /* Base */
 }
 .container label:nth-child(6):hover {
-	background: #ff7f66; /* Lighter Shade */
+	background: #e6399b; /* Lighter Shade */
 }
 .container label:nth-child(6):active {
-	background: #cc4f39; /* Darker Shade */
+	background: #8f0f5e; /* Darker Shade */
 }
 
 .container label:nth-child(7) {
-	background: #554a73; /* Base */
+	background: #ff6347; /* Base */
 }
 .container label:nth-child(7):hover {
-	background: #6b5c9a; /* Lighter Shade */
+	background: #ff7f66; /* Lighter Shade */
 }
 .container label:nth-child(7):active {
+	background: #cc4f39; /* Darker Shade */
+}
+
+.container label:nth-child(8) {
+	background: #554a73; /* Base */
+}
+.container label:nth-child(8):hover {
+	background: #6b5c9a; /* Lighter Shade */
+}
+.container label:nth-child(8):active {
 	background: #3a2e5a; /* Darker Shade */
 }
 
