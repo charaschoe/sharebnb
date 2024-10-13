@@ -27,29 +27,75 @@ body {
 }
 
 /* Unterschiedliche Farben für die einzelnen Tabs */
+
 .container label:nth-child(1) {
-	background: #fff;
+	background: #8d80ad; /* Base */
 }
+.container label:nth-child(1):hover {
+	background: #aebbce; /* Lighter Shade */
+}
+.container label:nth-child(1):active {
+	background: #51447b; /* Darker Shade */
+}
+
 .container label:nth-child(2) {
-	background: #92a8d1;
+	background: #ff8c00; /* Base */
 }
+.container label:nth-child(2):hover {
+	background: #ffa500; /* Lighter Shade */
+}
+.container label:nth-child(2):active {
+	background: #cc7000; /* Darker Shade */
+}
+
 .container label:nth-child(3) {
-	background: #88b04b;
+	background: #9db289; /* Base */
 }
+.container label:nth-child(3):hover {
+	background: #cdeeb4; /* Lighter Shade */
+}
+.container label:nth-child(3):active {
+	background: #6b8167; /* Darker Shade */
+}
+
 .container label:nth-child(4) {
-	background: #f4d35e;
+	background: #008080; /* Base */
 }
+.container label:nth-child(4):hover {
+	background: #32ab9f; /* Lighter Shade */
+}
+.container label:nth-child(4):active {
+	background: #005e4e; /* Darker Shade */
+}
+
 .container label:nth-child(5) {
-	background-color: #ff8c81;
+	background: #ff69b4; /* Base */
 }
+.container label:nth-child(5):hover {
+	background: #ffb6c1; /* Lighter Shade */
+}
+.container label:nth-child(5):active {
+	background: #c71585; /* Darker Shade */
+}
+
 .container label:nth-child(6) {
-	background-color: #034f84;
+	background: #36454f; /* Base */
 }
+.container label:nth-child(6):hover {
+	background: #6c717d; /* Lighter Shade */
+}
+.container label:nth-child(6):active {
+	background: #00271f; /* Darker Shade */
+}
+
 .container label:nth-child(7) {
-	background-color: #e63946;
+	background: #8d80ad; /* Base */
 }
-.container label:nth-child(8) {
-	background: #6b5b95;
+.container label:nth-child(7):hover {
+	background: #ada8df; /* Lighter Shade */
+}
+.container label:nth-child(7):active {
+	background: #554a73; /* Darker Shade */
 }
 
 /* Wenn über einen Tab gehovert wird */
