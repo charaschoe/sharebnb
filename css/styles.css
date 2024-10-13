@@ -15,7 +15,6 @@ body {
 	justify-content: stretch;
 }
 .container label {
-	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -24,11 +23,13 @@ body {
 	position: relative;
 	color: white;
 	font-size: 1.5rem;
+	flex: 1; /* Standardmäßige Breite der anderen Tabs */
 }
 
-/* Unterschiedliche Farben für die einzelnen Tabs */
+/* Der schwarze Tab soll 10-mal größer sein */
 .container label:nth-child(1) {
 	background: #131313; /* Base */
+	flex: 20; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
 }
 .container label:nth-child(1):hover {
 	background: #0f0f0f; /* Lighter Shade */
@@ -107,11 +108,16 @@ body {
 	background: #3a2e5a; /* Darker Shade */
 }
 
-/* Wenn über einen Tab gehovert wird */
+/* Wenn über einen Tab gehovt wird */
 .container label:hover {
 	flex: 25; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
 	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1),
 		background 0.8s ease; /* Übergang für Hintergrundfarbe */
+}
+
+/* Wenn ein anderer Tab als der schwarze gehovt wird, soll der schwarze Tab schmaler werden */
+.container label:not(:hover) {
+	flex: 1; /* Alle anderen Tabs, die nicht gehovt werden, verkleinern sich */
 }
 
 /* Textinhalt der Tabs */
@@ -158,7 +164,7 @@ body {
 	display: flex; /* Flex-Layout für die Pfeile */
 	justify-content: space-between; /* Verteilung des Abstands zwischen den Pfeilen */
 	margin-top: 150px; /* Abstand nach oben anpassen, um die Pfeile weiter nach unten zu verschieben */
-	margin-left: -350px; /* abstand pfeile */
+	margin-left: -350px; /* Abstand der Pfeile anpassen */
 }
 
 .arrow {
