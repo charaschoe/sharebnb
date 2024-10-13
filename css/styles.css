@@ -1,73 +1,130 @@
-/* Import Inter font from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
-
-/* Farben und Dimensionen */
 body {
-    margin: 0;
-    background: #fff;
-    font-family: "Inter", sans-serif;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	margin: 0;
+	background: #fff;
+	font-family: "Inter", sans-serif;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-
 .container {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    align-items: stretch;
-    justify-content: stretch;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	align-items: stretch;
+	justify-content: stretch;
 }
-
 .container label {
-    flex: 1; /* Jede Spalte nimmt den gleichen Anteil des verfügbaren Platzes ein */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
-    position: relative;
-    color: white;
-    font-size: 1.5rem;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
+	position: relative;
+	color: white;
+	font-size: 1.5rem;
 }
 
 /* Unterschiedliche Farben für die einzelnen Tabs */
-.container label:nth-child(1) { background: #fff; }
-.container label:nth-child(2) { background: #92a8d1; }
-.container label:nth-child(3) { background: #88b04b; }
-.container label:nth-child(4) { background: #f4d35e; }
-.container label:nth-child(5) { background-color: #ff8c81; }
-.container label:nth-child(6) { background-color: #034f84; }
-.container label:nth-child(7) { background-color: #e63946; }
-.container label:nth-child(8) { background: #6b5b95; }
+.container label:nth-child(1) {
+	background: #51447b; /* Base */
+}
+.container label:nth-child(1):hover {
+	background: #6b5c9a; /* Lighter Shade */
+}
+.container label:nth-child(1):active {
+	background: #3a2e5a; /* Darker Shade */
+}
+
+.container label:nth-child(2) {
+	background: #cc7000; /* Base */
+}
+.container label:nth-child(2):hover {
+	background: #e68a00; /* Lighter Shade */
+}
+.container label:nth-child(2):active {
+	background: #994d00; /* Darker Shade */
+}
+
+.container label:nth-child(3) {
+	background: #6b8167; /* Base */
+}
+.container label:nth-child(3):hover {
+	background: #8fa88a; /* Lighter Shade */
+}
+.container label:nth-child(3):active {
+	background: #4a5a45; /* Darker Shade */
+}
+
+.container label:nth-child(4) {
+	background: #005e4e; /* Base */
+}
+.container label:nth-child(4):hover {
+	background: #007a66; /* Lighter Shade */
+}
+.container label:nth-child(4):active {
+	background: #004236; /* Darker Shade */
+}
+
+.container label:nth-child(5) {
+	background: #c71585; /* Base */
+}
+.container label:nth-child(5):hover {
+	background: #e6399b; /* Lighter Shade */
+}
+.container label:nth-child(5):active {
+	background: #8f0f5e; /* Darker Shade */
+}
+
+.container label:nth-child(6) {
+	background: #ff6347; /* Base */
+}
+.container label:nth-child(6):hover {
+	background: #ff7f66; /* Lighter Shade */
+}
+.container label:nth-child(6):active {
+	background: #cc4f39; /* Darker Shade */
+}
+
+.container label:nth-child(7) {
+	background: #554a73; /* Base */
+}
+.container label:nth-child(7):hover {
+	background: #6b5c9a; /* Lighter Shade */
+}
+.container label:nth-child(7):active {
+	background: #3a2e5a; /* Darker Shade */
+}
 
 /* Wenn über einen Tab gehovert wird */
 .container label:hover {
-    flex: 35; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
-    transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1),
-                background 0.8s ease; /* Übergang für Hintergrundfarbe */
+	flex: 25; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
+	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1),
+		background 0.8s ease; /* Übergang für Hintergrundfarbe */
 }
 
 /* Textinhalt der Tabs */
 .container label #content {
-    text-align: center;
-    opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
-    transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
-    writing-mode: vertical-rl; /* Text vertikal ausrichten */
-    transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
+	text-align: center;
+	opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
+	transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
+	writing-mode: vertical-rl; /* Text vertikal ausrichten */
+	transform: rotate(
+		180deg
+	); /* Text umdrehen, damit er von unten nach oben liest */
 }
 
 /* Wenn ein Tab gehovt wird, wird der Inhalt sichtbarer */
 .container label:hover #content {
-    opacity: 1;
-    writing-mode: horizontal-tb; /* Text horizontal ausrichten */
-    transform: rotate(0deg); /* Text in normale Richtung drehen */
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    font-size: 4.5rem;
-    font-weight: 1000;
+	opacity: 1;
+	writing-mode: horizontal-tb; /* Text horizontal ausrichten */
+	transform: rotate(0deg); /* Text in normale Richtung drehen */
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	font-size: 4.5rem;
+	font-weight: 1000;
 }
 
 .tab-content {
@@ -83,6 +140,27 @@ body {
 
 /* Zeige den Tab-Inhalt beim Hover an */
 .container label:hover .tab-content {
-    display: block; /* Inhalt wird beim Hover angezeigt */
-    z-index: 10;
+	display: block; /* Inhalt wird beim Hover angezeigt */
+	z-index: 10;
+}
+
+.arrow-nav {
+	display: flex; /* Flex-Layout für die Pfeile */
+	justify-content: space-between; /* Verteilung des Abstands zwischen den Pfeilen */
+	margin-top: 250px; /* Abstand nach oben anpassen, um die Pfeile weiter nach unten zu verschieben */
+	margin-left: -350px; /* abstand pfeile */
+}
+
+.arrow {
+	background-color: transparent; /* Hintergrund entfernen */
+	color: white; /* Textfarbe für die Pfeile */
+	border: none; /* Rand entfernen */
+	padding: 20px; /* Größere Fläche für die Pfeile */
+	cursor: pointer;
+	font-size: 60px; /* Pfeilgröße erhöhen */
+	transition: color 0.3s; /* Sanfter Übergang für die Farbe beim Hover */
+}
+
+.arrow:hover {
+	color: black; /* Farbe beim Hover ändern */
 }
