@@ -27,75 +27,74 @@ body {
 }
 
 /* Unterschiedliche Farben für die einzelnen Tabs */
-
 .container label:nth-child(1) {
-	background: #8d80ad; /* Base */
+	background: #51447b; /* Base */
 }
 .container label:nth-child(1):hover {
-	background: #aebbce; /* Lighter Shade */
+	background: #6b5c9a; /* Lighter Shade */
 }
 .container label:nth-child(1):active {
-	background: #51447b; /* Darker Shade */
+	background: #3a2e5a; /* Darker Shade */
 }
 
 .container label:nth-child(2) {
-	background: #ff8c00; /* Base */
+	background: #cc7000; /* Base */
 }
 .container label:nth-child(2):hover {
-	background: #ffa500; /* Lighter Shade */
+	background: #e68a00; /* Lighter Shade */
 }
 .container label:nth-child(2):active {
-	background: #cc7000; /* Darker Shade */
+	background: #994d00; /* Darker Shade */
 }
 
 .container label:nth-child(3) {
-	background: #9db289; /* Base */
+	background: #6b8167; /* Base */
 }
 .container label:nth-child(3):hover {
-	background: #cdeeb4; /* Lighter Shade */
+	background: #8fa88a; /* Lighter Shade */
 }
 .container label:nth-child(3):active {
-	background: #6b8167; /* Darker Shade */
+	background: #4a5a45; /* Darker Shade */
 }
 
 .container label:nth-child(4) {
-	background: #008080; /* Base */
+	background: #005e4e; /* Base */
 }
 .container label:nth-child(4):hover {
-	background: #32ab9f; /* Lighter Shade */
+	background: #007a66; /* Lighter Shade */
 }
 .container label:nth-child(4):active {
-	background: #005e4e; /* Darker Shade */
+	background: #004236; /* Darker Shade */
 }
 
 .container label:nth-child(5) {
-	background: #ff69b4; /* Base */
+	background: #c71585; /* Base */
 }
 .container label:nth-child(5):hover {
-	background: #ffb6c1; /* Lighter Shade */
+	background: #e6399b; /* Lighter Shade */
 }
 .container label:nth-child(5):active {
-	background: #c71585; /* Darker Shade */
+	background: #8f0f5e; /* Darker Shade */
 }
 
 .container label:nth-child(6) {
-	background: #36454f; /* Base */
+	background: #ff6347; /* Base */
 }
 .container label:nth-child(6):hover {
-	background: #6c717d; /* Lighter Shade */
+	background: #ff7f66; /* Lighter Shade */
 }
 .container label:nth-child(6):active {
-	background: #00271f; /* Darker Shade */
+	background: #cc4f39; /* Darker Shade */
 }
 
 .container label:nth-child(7) {
-	background: #8d80ad; /* Base */
+	background: #554a73; /* Base */
 }
 .container label:nth-child(7):hover {
-	background: #ada8df; /* Lighter Shade */
+	background: #6b5c9a; /* Lighter Shade */
 }
 .container label:nth-child(7):active {
-	background: #554a73; /* Darker Shade */
+	background: #3a2e5a; /* Darker Shade */
 }
 
 /* Wenn über einen Tab gehovert wird */
