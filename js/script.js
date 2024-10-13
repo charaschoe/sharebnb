@@ -83,6 +83,10 @@ const contentData = {
 	2: ["NEW YORK 1", "NEW YORK 2", "NEW YORK 3"],
 	3: ["RIO 1", "RIO 2", "RIO 3"],
 	4: ["CAPE TOWN 1", "CAPE TOWN 2", "CAPE TOWN 3"],
+	5: ["PARIS 1", "PARIS 2", "PARIS 3"],
+	6: ["TOKYO 1", "TOKYO 2", "TOKYO 3"],
+	7: ["SYDNEY 1", "SYDNEY 2", "SYDNEY 3"],
+	8: ["ISTANBUL 1", "ISTANBUL 2", "ISTANBUL 3"],
 	// Füge hier Inhalte für die weiteren Tabs hinzu
 };
 
