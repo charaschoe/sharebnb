@@ -42,23 +42,24 @@
 						<div id="content" class="ny">NEW YORK CITY</div>
 						<div class="tab-content">
 							<h1>
-								N° <span class="city-name">New York</span>
+								N° of Airbnb listings
+								<span class="city-name"></span>
 								<span id="total-ids-new-york">Loading...</span>
 							</h1>
 							<h3>
-								<span id="population-new-york">Loading...</span>
-							</h3>
-							<h3>
-								<span id="tourists-new-york">Loading...</span>
-							</h3>
-							<h3>
 								<span id="apartments-new-york">Loading...</span>
+							</h3>
+							<h3>
+								<span id="population-new-york">Loading...</span>
+								/
+								<span id="tourists-new-york">Loading...</span>
 							</h3>
 							<h3>
 								<span id="airbnb-index-new-york"
 									>Loading...</span
 								>
 							</h3>
+
 							<div id="map-nyc" class="map"></div>
 							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 							<style>
@@ -71,7 +72,7 @@
 							<script>
 								// Initialize the map and set the center to New York City
 								const mapNYC = L.map("map-nyc", {
-									center: [40.7128, -74.0060], // Coordinates for New York City
+									center: [40.7128, -74.006], // Coordinates for New York City
 									zoom: 10, // Initial zoom level
 									zoomControl: false, // Disables zoom control
 									dragging: false, // Disables dragging (panning)
@@ -136,9 +137,13 @@
 								N° <span class="city-name">Rio de Janeiro</span>
 								<span id="total-ids-rio">Loading...</span>
 							</h1>
-							<h3><span id="population-rio">Loading...</span></h3>
-							<h3><span id="tourists-rio">Loading...</span></h3>
-							<h3><span id="apartments-rio">Loading...</span></h3>
+							<h3>
+								<span id="apartments-rio">Loading...</span>
+							</h3>
+							<h3>
+								<span id="population-rio">Loading...</span> /
+								<span id="tourists-rio">Loading...</span>
+							</h3>
 							<h3>
 								<span id="airbnb-index-rio">Loading...</span>
 							</h3>
@@ -216,26 +221,27 @@
 						<div id="content" class="cape">CAPE TOWN</div>
 						<div class="tab-content">
 							<h1>
-								N° <span class="city-name">Cape Town</span>
+								N° of Airbnb listings
+								<span class="city-name">Cape Town</span>
 								<span id="total-ids-cape-town">Loading...</span>
 							</h1>
-							<h3>
-								<span id="population-cape-town"
-									>Loading...</span
-								>
-							</h3>
-							<h3>
-								<span id="tourists-cape-town">Loading...</span>
-							</h3>
 							<h3>
 								<span id="apartments-cape-town"
 									>Loading...</span
 								>
 							</h3>
 							<h3>
+								<span id="population-cape-town"
+									>Loading...</span
+								>
+								/
+								<span id="tourists-cape-town">Loading...</span>
+							</h3>
+							<h3>
 								<span id="airbnb-index-cape-town"
 									>Loading...</span
 								>
+							</h3>
 							<div id="map" class="map"></div>
 							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 							<style>
@@ -311,17 +317,16 @@
 						<div id="content" class="sydney">SYDNEY</div>
 						<div class="tab-content">
 							<h1>
-								N° <span class="city-name">Sydney</span>
+								N° of Airbnb listings
+								<span class="city-name">Sydney</span>
 								<span id="total-ids-sydney">Loading...</span>
 							</h1>
 							<h3>
-								<span id="population-sydney">Loading...</span>
-							</h3>
-							<h3>
-								<span id="tourists-sydney">Loading...</span>
-							</h3>
-							<h3>
 								<span id="apartments-sydney">Loading...</span>
+							</h3>
+							<h3>
+								<span id="population-sydney">Loading...</span> /
+								<span id="tourists-sydney">Loading...</span>
 							</h3>
 							<h3>
 								<span id="airbnb-index-sydney">Loading...</span>
@@ -395,15 +400,16 @@
 						<div id="content" class="tokio">TOKIO</div>
 						<div class="tab-content">
 							<h1>
-								N° <span class="city-name">Tokyo</span>
+								N° of Airbnb listings
+								<span class="city-name">Tokyo</span>
 								<span id="total-ids-tokyo">Loading...</span>
 							</h1>
 							<h3>
-								<span id="population-tokyo">Loading...</span>
-							</h3>
-							<h3><span id="tourists-tokyo">Loading...</span></h3>
-							<h3>
 								<span id="apartments-tokyo">Loading...</span>
+							</h3>
+							<h3>
+								<span id="population-tokyo">Loading...</span> /
+								<span id="tourists-tokyo">Loading...</span>
 							</h3>
 							<h3>
 								<span id="airbnb-index-tokyo">Loading...</span>
@@ -477,20 +483,22 @@
 						<div id="content" class="istanbul">ISTANBUL</div>
 						<div class="tab-content">
 							<h1>
-								N° <span class="city-name">Istanbul</span>
+								N° of Airbnb listings
+								<span class="city-name">Istanbul</span>
 								<span id="total-ids-istanbul">Loading...</span>
 							</h1>
-							<h3>
-								<span id="population-istanbul">Loading...</span>
-							</h3>
-							<h3>
-								<span id="tourists-istanbul">Loading...</span>
-							</h3>
 							<h3>
 								<span id="apartments-istanbul">Loading...</span>
 							</h3>
 							<h3>
-								<span id="airbnb-index-istanbul">Loading...</span>
+								<span id="population-istanbul">Loading...</span>
+								/
+								<span id="tourists-istanbul">Loading...</span>
+							</h3>
+							<h3>
+								<span id="airbnb-index-istanbul"
+									>Loading...</span
+								>
 							</h3>
 							<div id="map-istanbul" class="map"></div>
 							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -561,15 +569,16 @@
 						<div id="content" class="paris">PARIS</div>
 						<div class="tab-content">
 							<h1>
-								N° <span class="city-name">Paris</span>
+								N° of Airbnb listings
+								<span class="city-name">Paris</span>
 								<span id="total-ids-paris">Loading...</span>
 							</h1>
 							<h3>
-								<span id="population-paris">Loading...</span>
-							</h3>
-							<h3><span id="tourists-paris">Loading...</span></h3>
-							<h3>
 								<span id="apartments-paris">Loading...</span>
+							</h3>
+							<h3>
+								<span id="population-paris">Loading...</span> /
+								<span id="tourists-paris">Loading...</span>
 							</h3>
 							<h3>
 								<span id="airbnb-index-paris">Loading...</span>
