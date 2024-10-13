@@ -119,12 +119,3 @@ body {
 .arrow:hover {
 	color: black; /* Farbe beim Hover ändern */
 }
-
-.map {
-    position: absolute; /* Position absolut für die Karte */
-    top: 50%; /* Positionieren */
-    left: 50%; /* Positionieren */
-    transform: translate(-50%, -50%); /* Zentrieren */
-    width: 100%; /* Volle Breite */
-    height: 100%; /* Volle Höhe */
-}
