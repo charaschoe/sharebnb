@@ -79,28 +79,31 @@ cities.forEach((city) => {
 });
 
 const contentData = {
-    1: ['ShareBnB 1', 'ShareBnB 2', 'ShareBnB 3'],
-    2: ['NEW YORK 1', 'NEW YORK 2', 'NEW YORK 3'],
-    3: ['RIO 1', 'RIO 2', 'RIO 3'],
-    4: ['CAPE TOWN 1', 'CAPE TOWN 2', 'CAPE TOWN 3']
-    // Füge hier Inhalte für die weiteren Tabs hinzu
+	1: ["ShareBnB 1", "ShareBnB 2", "ShareBnB 3"],
+	2: ["NEW YORK 1", "NEW YORK 2", "NEW YORK 3"],
+	3: ["RIO 1", "RIO 2", "RIO 3"],
+	4: ["CAPE TOWN 1", "CAPE TOWN 2", "CAPE TOWN 3"],
+	// Füge hier Inhalte für die weiteren Tabs hinzu
 };
 
 let currentIndex = { 1: 0, 2: 0, 3: 0, 4: 0 };
 
-document.querySelectorAll('.arrow').forEach((arrow) => {
-    arrow.addEventListener('click', function () {
-        const labelId = this.id.split('-')[1]; // extrahiert die ID (z.B. "1" aus "prev-1")
-        const direction = this.id.split('-')[0]; // erkennt ob prev oder next
+document.querySelectorAll(".arrow").forEach((arrow) => {
+	arrow.addEventListener("click", function () {
+		const labelId = this.id.split("-")[1]; // extrahiert die ID (z.B. "1" aus "prev-1")
+		const direction = this.id.split("-")[0]; // erkennt ob prev oder next
 
-        // Inhalt für das jeweilige Label updaten
-        if (direction === 'prev') {
-            currentIndex[labelId] = (currentIndex[labelId] - 1 + contentData[labelId].length) % contentData[labelId].length;
-        } else {
-            currentIndex[labelId] = (currentIndex[labelId] + 1) % contentData[labelId].length;
-        }
+		// Inhalt für das jeweilige Label updaten
+		if (direction === "prev") {
+			currentIndex[labelId] =
+				(currentIndex[labelId] - 1 + contentData[labelId].length) %
+				contentData[labelId].length;
+		} else {
+			currentIndex[labelId] =
+				(currentIndex[labelId] + 1) % contentData[labelId].length;
+		}
 
-        document.getElementById(`content-${labelId}`).textContent = contentData[labelId][currentIndex[labelId]];
-    });
+		document.getElementById(`content-${labelId}`).textContent =
+			contentData[labelId][currentIndex[labelId]];
+	});
 });
-
