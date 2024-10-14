@@ -1,31 +1,31 @@
 const apartments = [
 	{
 		city: "Cape Town",
-		apartments: 1600000.0,
+		apartments: 1452845,
 	},
 	{
 		city: "Istanbul",
-		apartments: 5154150.666666667,
+		apartments: 5154150,
 	},
 	{
 		city: "New York",
-		apartments: 2806533.333333333,
+		apartments: 3705000,
 	},
 	{
 		city: "Paris",
-		apartments: 713508.6666666667,
+		apartments: 1393801,
 	},
 	{
 		city: "Rio",
-		apartments: 2249333.333333333,
+		apartments: 2249333,
 	},
 	{
 		city: "Sydney",
-		apartments: 1770721.0,
+		apartments: 1770721,
 	},
 	{
 		city: "Tokyo",
-		apartments: 4643095.333333333,
+		apartments: 7673095,
 	},
 ];
 
