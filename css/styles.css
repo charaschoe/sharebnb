@@ -8,10 +8,12 @@ body {
 	justify-content: center;
 	font-weight: 700;
 }
+
 .city-name {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+
 .container {
 	display: flex;
 	width: 100vw;
@@ -19,6 +21,7 @@ body {
 	align-items: stretch;
 	justify-content: stretch;
 }
+
 .container label {
 	display: flex;
 	align-items: center;
@@ -37,9 +40,11 @@ body {
 	background: #131313; /* Base */
 	flex: 2; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
 }
+
 .container label:nth-child(1):hover {
 	background: #0f0f0f; /* Lighter Shade */
 }
+
 .container label:nth-child(1):active {
 	background: #000; /* Darker Shade */
 }
@@ -47,9 +52,11 @@ body {
 .container label:nth-child(2) {
 	background: #51447b; /* Base */
 }
+
 .container label:nth-child(2):hover {
 	background: #6b5c9a; /* Lighter Shade */
 }
+
 .container label:nth-child(2):active {
 	background: #3a2e5a; /* Darker Shade */
 }
@@ -57,9 +64,11 @@ body {
 .container label:nth-child(3) {
 	background: #cc7000; /* Base */
 }
+
 .container label:nth-child(3):hover {
 	background: #e68a00; /* Lighter Shade */
 }
+
 .container label:nth-child(3):active {
 	background: #994d00; /* Darker Shade */
 }
@@ -67,9 +76,11 @@ body {
 .container label:nth-child(4) {
 	background: #6b8167; /* Base */
 }
+
 .container label:nth-child(4):hover {
 	background: #8fa88a; /* Lighter Shade */
 }
+
 .container label:nth-child(4):active {
 	background: #4a5a45; /* Darker Shade */
 }
@@ -77,9 +88,11 @@ body {
 .container label:nth-child(5) {
 	background: #005e4e; /* Base */
 }
+
 .container label:nth-child(5):hover {
 	background: #007a66; /* Lighter Shade */
 }
+
 .container label:nth-child(5):active {
 	background: #004236; /* Darker Shade */
 }
@@ -87,9 +100,11 @@ body {
 .container label:nth-child(6) {
 	background: #c71585; /* Base */
 }
+
 .container label:nth-child(6):hover {
 	background: #e6399b; /* Lighter Shade */
 }
+
 .container label:nth-child(6):active {
 	background: #8f0f5e; /* Darker Shade */
 }
@@ -97,9 +112,11 @@ body {
 .container label:nth-child(7) {
 	background: #ff6347; /* Base */
 }
+
 .container label:nth-child(7):hover {
 	background: #ff7f66; /* Lighter Shade */
 }
+
 .container label:nth-child(7):active {
 	background: #cc4f39; /* Darker Shade */
 }
@@ -107,9 +124,11 @@ body {
 .container label:nth-child(8) {
 	background: #554a73; /* Base */
 }
+
 .container label:nth-child(8):hover {
 	background: #6b5c9a; /* Lighter Shade */
 }
+
 .container label:nth-child(8):active {
 	background: #3a2e5a; /* Darker Shade */
 }
@@ -117,8 +136,7 @@ body {
 /* Wenn über einen Tab gehovt wird */
 .container label:hover {
 	flex: 25; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
-	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1),
-		background 0.8s ease; /* Übergang für Hintergrundfarbe */
+	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1), background 0.8s ease;
 }
 
 /* Wenn ein anderer Tab als der schwarze gehovt wird, soll der schwarze Tab schmaler werden */
@@ -132,9 +150,7 @@ body {
 	opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
 	transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
 	writing-mode: vertical-rl; /* Text vertikal ausrichten */
-	transform: rotate(
-		180deg
-	); /* Text umdrehen, damit er von unten nach oben liest */
+	transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
 }
 
 /* Wenn ein Tab gehovt wird, wird der Inhalt sichtbarer */
@@ -144,7 +160,7 @@ body {
 	transform: rotate(0deg); /* Text in normale Richtung drehen */
 	position: absolute;
 	top: 25px;
-	right: 25px;
+	right: 2%;
 	font-size: 4.5rem;
 	font-weight: 1000;
 }
@@ -156,8 +172,30 @@ body {
 	font-size: 1.5rem;
 	position: absolute; /* Position absolut für die Anzeige */
 	top: 15%; /* Positionieren */
-	right: 25px; /* Positionieren */
+	right: 2%; /* Positionieren */
 	transform: translateX(0); /* Zentrieren */
+	max-width: 1000px; /* Breitenlimit für den Text */
+	margin-left: auto;
+	line-height: 1.5;
+	font-weight: 400;
+}
+
+.tab-content h3 {
+	max-width: 1000px;
+	margin-left: auto;
+	text-align: right;
+	font-weight: 400;
+}
+
+.tab-content h6 {
+	max-width: 1000px;
+	right: 2%; 
+	text-align: right;
+	font-weight: 400;   
+	position: absolute;
+	margin-left: auto; 
+	bottom: - 300px; 
+	line-height: 1.5;
 }
 
 /* Zeige den Tab-Inhalt beim Hover an */
@@ -186,4 +224,3 @@ body {
 .arrow:hover {
 	color: black; /* Farbe beim Hover ändern */
 }
-
