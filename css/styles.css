@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background: #fff;
+	background: black;
 	font-family: "Inter", sans-serif;
 	height: 100vh;
 	display: flex;
@@ -29,7 +29,7 @@ body {
 	cursor: pointer;
 	transition: all 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
 	position: relative;
-	color: white;
+	color: black;
 	font-weight: 400;
 	font-size: 1.5rem;
 	flex: 1; /* Standardmäßige Breite der anderen Tabs */
@@ -37,100 +37,79 @@ body {
 
 /* Der schwarze Tab soll 10-mal größer sein */
 .container label:nth-child(1) {
-	background: #131313; /* Base */
+	background: #e4e4e4; /* Base */
 	flex: 2; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
 }
-
 .container label:nth-child(1):hover {
-	background: #0f0f0f; /* Lighter Shade */
+	background: #f0f0f0; /* Lighter Shade */
 }
-
 .container label:nth-child(1):active {
-	background: #000; /* Darker Shade */
+	background: #fff; /* Darker Shade */
 }
 
 .container label:nth-child(2) {
-	background: #51447b; /* Base */
+	background: #fdd3d4; /* Base color */
+	opacity: 0.8; /* Adjust opacity */
 }
-
 .container label:nth-child(2):hover {
-	background: #6b5c9a; /* Lighter Shade */
+	background: #fdd3d4; /* Base color */
+	opacity: 0.9; /* Adjust opacity */
 }
-
 .container label:nth-child(2):active {
-	background: #3a2e5a; /* Darker Shade */
+	background: #fdd3d4; /* Darker Shade */
 }
 
 .container label:nth-child(3) {
-	background: #cc7000; /* Base */
+	background: #ffc1c2; /* Base */
+	opacity: 0.8;
 }
-
 .container label:nth-child(3):hover {
-	background: #e68a00; /* Lighter Shade */
+	background: #ffc1c2; opacity: 0.9; /* Lighter Shade */
 }
-
 .container label:nth-child(3):active {
-	background: #994d00; /* Darker Shade */
+	background: #ffc1c2; /* Darker Shade */
 }
 
 .container label:nth-child(4) {
-	background: #6b8167; /* Base */
+	background: #ff9c9f; opacity: 0.8;
 }
-
 .container label:nth-child(4):hover {
-	background: #8fa88a; /* Lighter Shade */
+	background: #ff9c9f; opacity: 0.9;/* Lighter Shade */
 }
-
 .container label:nth-child(4):active {
-	background: #4a5a45; /* Darker Shade */
+	background: #ff9c9f; /* Darker Shade */
 }
 
 .container label:nth-child(5) {
-	background: #005e4e; /* Base */
-}
-
+	background: #ff8086;opacity: 0.8;}
 .container label:nth-child(5):hover {
-	background: #007a66; /* Lighter Shade */
-}
-
+	background: #ff8086;opacity: 0.9;}
 .container label:nth-child(5):active {
-	background: #004236; /* Darker Shade */
+	background: #ff8086; /* Darker Shade */
 }
 
 .container label:nth-child(6) {
-	background: #c71585; /* Base */
-}
-
+	background: #ff6d70;opacity: 0.8;}
 .container label:nth-child(6):hover {
-	background: #e6399b; /* Lighter Shade */
-}
-
+	background: #ff6d70;opacity: 0.9;}
 .container label:nth-child(6):active {
-	background: #8f0f5e; /* Darker Shade */
+	background: #ff6d70; /* Darker Shade */
 }
 
 .container label:nth-child(7) {
-	background: #ff6347; /* Base */
-}
-
+	background: #ff5c62;opacity: 0.8;}
 .container label:nth-child(7):hover {
-	background: #ff7f66; /* Lighter Shade */
-}
-
+	background: #ff5c62;opacity: 0.9;}
 .container label:nth-child(7):active {
-	background: #cc4f39; /* Darker Shade */
+	background: #ff5c62; /* Darker Shade */
 }
 
 .container label:nth-child(8) {
-	background: #554a73; /* Base */
-}
-
+	background: #ff3e44;opacity: 0.8;}
 .container label:nth-child(8):hover {
-	background: #6b5c9a; /* Lighter Shade */
-}
-
+	background: #ff3e44;opacity: 0.9;}
 .container label:nth-child(8):active {
-	background: #3a2e5a; /* Darker Shade */
+	background: #ff3e44; /* Darker Shade */
 }
 
 /* Wenn über einen Tab gehovt wird */
@@ -167,7 +146,7 @@ body {
 
 .tab-content {
 	display: none; /* Inhalt ist nicht sichtbar */
-	color: white; /* Standard-Textfarbe */
+	color: black; /* Standard-Textfarbe */
 	text-align: right;
 	font-size: 1.5rem;
 	position: absolute; /* Position absolut für die Anzeige */
@@ -213,7 +192,7 @@ body {
 
 .arrow {
 	background-color: transparent; /* Hintergrund entfernen */
-	color: white; /* Textfarbe für die Pfeile */
+	color: black; /* Textfarbe für die Pfeile */
 	border: none; /* Rand entfernen */
 	padding: 20px; /* Größere Fläche für die Pfeile */
 	cursor: pointer;
@@ -222,5 +201,5 @@ body {
 }
 
 .arrow:hover {
-	color: black; /* Farbe beim Hover ändern */
+	color: white; /* Farbe beim Hover ändern */
 }
