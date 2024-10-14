@@ -1,0 +1,36 @@
+/* tab-interaction.css */
+/* Wenn über einen Tab gehovt wird */
+.container label:hover {
+	flex: 25; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
+	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1), background 0.8s ease;
+}
+
+.container label:not(:hover) {
+	flex: 1; /* Alle anderen Tabs, die nicht gehovt werden, verkleinern sich */
+}
+
+/* Textinhalt der Tabs */
+.container label #content {
+	text-align: center;
+	opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
+	transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
+	writing-mode: vertical-rl; /* Text vertikal ausrichten */
+	transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
+}
+
+.container label:hover #content {
+	opacity: 1;
+	writing-mode: horizontal-tb; /* Text horizontal ausrichten */
+	transform: rotate(0deg); /* Text in normale Richtung drehen */
+	position: absolute;
+	top: 25px;
+	right: 2%;
+	font-size: 4.5rem;
+	font-weight: 1000;
+}
+
+/* Zeige den Tab-Inhalt beim Hover an */
+.container label:hover .tab-content {
+	display: block; /* Inhalt wird beim Hover angezeigt */
+	z-index: 10;
+}

@@ -1,0 +1,98 @@
+/* tabs.css */
+.container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
+    position: relative;
+    color: black;
+    font-weight: 400;
+    font-size: 1.5rem;
+    flex: 1; /* Standardmäßige Breite der anderen Tabs */
+}
+
+/* Der schwarze Tab soll 10-mal größer sein */
+.container label:nth-child(1) {
+    background: #e4e4e4; /* Base */
+    flex: 2; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
+}
+.container label:nth-child(1):hover {
+    background: #f0f0f0; /* Lighter Shade */
+}
+.container label:nth-child(1):active {
+    background: #fff; /* Darker Shade */
+}
+
+.container label:nth-child(2) {
+    background: #fdd3d4; /* Base color */
+    opacity: 0.8; /* Adjust opacity */
+}
+.container label:nth-child(2):hover {
+    background: #fdd3d4; /* Base color */
+    opacity: 0.9; /* Adjust opacity */
+}
+.container label:nth-child(2):active {
+    background: #fdd3d4; /* Darker Shade */
+}
+
+.container label:nth-child(3) {
+    background: #ffc1c2; /* Base */
+    opacity: 0.8;
+}
+.container label:nth-child(3):hover {
+    background: #ffc1c2; opacity: 0.9; /* Lighter Shade */
+}
+.container label:nth-child(3):active {
+    background: #ffc1c2; /* Darker Shade */
+}
+
+.container label:nth-child(4) {
+    background: #ff9c9f; opacity: 0.8;
+}
+.container label:nth-child(4):hover {
+    background: #ff9c9f; opacity: 0.9;/* Lighter Shade */
+}
+.container label:nth-child(4):active {
+    background: #ff9c9f; /* Darker Shade */
+}
+
+.container label:nth-child(5) {
+    background: #ff8086;opacity: 0.8;
+}
+.container label:nth-child(5):hover {
+    background: #ff8086;opacity: 0.9;
+}
+.container label:nth-child(5):active {
+    background: #ff8086; /* Darker Shade */
+}
+
+.container label:nth-child(6) {
+    background: #ff6d70;opacity: 0.8;
+}
+.container label:nth-child(6):hover {
+    background: #ff6d70;opacity: 0.9;
+}
+.container label:nth-child(6):active {
+    background: #ff6d70; /* Darker Shade */
+}
+
+.container label:nth-child(7) {
+    background: #ff5c62;opacity: 0.8;
+}
+.container label:nth-child(7):hover {
+    background: #ff5c62;opacity: 0.9;
+}
+.container label:nth-child(7):active {
+    background: #ff5c62; /* Darker Shade */
+}
+
+.container label:nth-child(8) {
+    background: #ff3e44;opacity: 0.8;
+}
+.container label:nth-child(8):hover {
+    background: #ff3e44;opacity: 0.9;
+}
+.container label:nth-child(8):active {
+    background: #ff3e44; /* Darker Shade */
+}

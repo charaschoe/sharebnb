@@ -1,0 +1,11 @@
+/* reset.css */
+body {
+    margin: 0;
+    background: black;
+    font-family: "Inter", sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
