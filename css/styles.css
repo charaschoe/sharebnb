@@ -29,7 +29,7 @@ body {
 /* Der schwarze Tab soll 10-mal größer sein */
 .container label:nth-child(1) {
 	background: #131313; /* Base */
-	flex: 20; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
+	flex: 2; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
 }
 .container label:nth-child(1):hover {
 	background: #0f0f0f; /* Lighter Shade */
