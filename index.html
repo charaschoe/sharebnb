@@ -4,17 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>ShareBnB</title>
-		<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"rel="stylesheet"/>
-		
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/tabs.css">
-<link rel="stylesheet" href="css/tab-interaction.css">
-<link rel="stylesheet" href="css/content.css">
-<link rel="stylesheet" href="css/navigation.css">
-
-			<!--<link rel="stylesheet" href="css/styles.css" /> -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"rel="stylesheet"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/layout.css">
+		<link rel="stylesheet" href="css/tabs.css">
+		<link rel="stylesheet" href="css/tab-interaction.css">
+		<link rel="stylesheet" href="css/content.css">
+		<link rel="stylesheet" href="css/navigation.css">
 	</head>
 	<body>
 		<main>
@@ -534,16 +530,13 @@ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"r
 									}
 								).addTo(mapIstanbul);
 
-								// Function to load JSON data
 								fetch("istanbul.json")
 									.then((response) => response.json())
 									.then((data) => {
-										// Iterate through all Airbnb listings and add markers
 										data.forEach((listing) => {
 											const lat = listing.coordinates.lat;
 											const lon = listing.coordinates.lon;
 
-											// Create a marker for each coordinate
 											L.circleMarker([lat, lon], {
 												color: "white",
 												fillColor: "#ffffff",
@@ -588,32 +581,30 @@ href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"r
 							<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 							<style>
 								.map {
-									width: 120%; /* Make the map fill more than the entire width */
-									height: 200px; /* Increase the height of the map */
-									margin-left: -200%; /* Move the map 120% to the left */
+									width: 120%; 
+									height: 200px; 
+									margin-left: -200%; 
 								}
 							</style>
 							<script>
-								// Initialize the map and set the center to Paris
 								const mapParis = L.map("map-paris", {
-									center: [48.8566, 2.3522], // Coordinates for Paris
-									zoom: 10, // Initial zoom level
-									zoomControl: false, // Disables zoom control
-									dragging: false, // Disables dragging (panning)
-									scrollWheelZoom: true, // Enables zoom via scroll wheel
-									doubleClickZoom: false, // Disables zoom via double-click
-									touchZoom: false, // Disables touch zoom (e.g., pinch-to-zoom)
-									keyboard: false, // Disables keyboard control
+									center: [48.8566, 2.3522], 
+									zoom: 10, 
+									zoomControl: false, 
+									dragging: false, 
+									scrollWheelZoom: true, 
+									doubleClickZoom: false, 
+									touchZoom: false, 
+									keyboard: false, 
 								});
 
-								// Add a transparent landmass tile layer
 								L.tileLayer(
 									"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
 									{
 										maxZoom: 18,
 										attribution:
 											"Map data © OpenStreetMap contributors, CartoDB",
-										opacity: 0.8, // Transparent landmasses
+										opacity: 0.8, 
 									}
 								).addTo(mapParis);
 
