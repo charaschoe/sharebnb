@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: right;
+            padding: 20px;
+        }
+        .header h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+        .header p {
+            font-size: 20px;
+            margin: 0;
+        }
+        .header .count {
+            font-size: 30px;
+            margin-top: 10px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 50px;
+        }
+        .widget {
+            background-color: #d3d3d3;
+            padding: 50px;
+            width: 150px;
+            text-align: center;
+            font-size: 30px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .widget:hover {
+            box-shadow: 0 0 10px purple;
+            border: 2px solid purple;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .close {
+            color: red;
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>TOKIO</h1>
+        <p>Tokio ist eines der größten Monopole der Welt</p>
+        <div class="count">35.456 AirBnB's</div>
+    </div>
+
+    <div class="container">
+        <div class="widget" id="widget1">How many?</div>
+        <div class="widget" id="widget2">How much?</div>
+        <div class="widget" id="widget3">Meow Meow!</div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close1">&times;</span>
+            <p>Dies ist ein Platzhalter für "How many?"</p>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close2">&times;</span>
+            <p>Dies ist ein Platzhalter für "How much?"</p>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close3">&times;</span>
+            <p>Dies ist ein Platzhalter für "Meow Meow!"</p>
+        </div>
+    </div>
+
+    <script>
+        // Modal 1
+        var modal1 = document.getElementById("modal1");
+        var widget1 = document.getElementById("widget1");
+        var close1 = document.getElementById("close1");
+        widget1.onclick = function() {
+            modal1.style.display = "block";
+        }
+        close1.onclick = function() {
+            modal1.style.display = "none";
+        }
+
+        // Modal 2
+        var modal2 = document.getElementById("modal2");
+        var widget2 = document.getElementById("widget2");
+        var close2 = document.getElementById("close2");
+        widget2.onclick = function() {
+            modal2.style.display = "block";
+        }
+        close2.onclick = function() {
+            modal2.style.display = "none";
+        }
+
+        // Modal 3
+        var modal3 = document.getElementById("modal3");
+        var widget3 = document.getElementById("widget3");
+        var close3 = document.getElementById("close3");
+        widget3.onclick = function() {
+            modal3.style.display = "block";
+        }
+        close3.onclick = function() {
+            modal3.style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal1) {
+                modal1.style.display = "none";
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
+            if (event.target == modal3) {
+                modal3.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
