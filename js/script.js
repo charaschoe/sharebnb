@@ -1,5 +1,6 @@
 import { populationData } from "../data/population.js";
 import { apartments } from "../data/apartments.js"; // Import der Apartment-Daten
+import roomTypeData from "../data/room_type-capetown.json"; // Import der room_type-Daten
 
 // Funktion zur Zählung der Gesamtanzahl der Vorkommen von '"id": '
 function countIds(listings) {
@@ -111,4 +112,3 @@ document.querySelectorAll(".arrow").forEach((arrow) => {
 			contentData[labelId][currentIndex[labelId]];
 	});
 });
-
