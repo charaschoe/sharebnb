@@ -1,22 +1,27 @@
 .header {
 	padding: 20px;
 }
+
 .header h1 {
 	font-size: 50px;
 	margin: 0;
 }
+
 .header p {
 	font-size: 20px;
 	margin: 0;
 }
+
 .header .count {
 	font-size: 30px;
 	margin-top: 10px;
 }
+
 .city .container {
 	display: flex;
 	justify-content: space-evenly;
 }
+
 .widget {
 	border: 5px solid rgba(0, 0, 0, 0.5);
 	padding: 50px;
@@ -28,10 +33,30 @@
 	border-radius: 10px;
 	transition: 0.3s;
 }
+
 .widget:hover {
 	box-shadow: 0 0 5px black;
 	border: 1px solid rgba(0, 0, 0, 0.5);
 	animation: wiggle 0.3s ease-in-out;
+}
+
+/* Wackel-Animation für das Widget-Hover */
+@keyframes wiggle {
+	0% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(-5deg);
+	}
+	50% {
+		transform: rotate(5deg);
+	}
+	75% {
+		transform: rotate(-5deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }
 
 /* Modal Styles */
@@ -45,6 +70,7 @@
 	height: 100vh;
 	background-color: rgba(255, 255, 255, 0.15);
 }
+
 .modal-content {
 	background-color: white;
 	margin: 0 auto;
@@ -61,6 +87,7 @@
 	transform: translate(-50%, -50%);
 	box-sizing: border-box; /* Include padding in width and height */
 }
+
 .close {
 	color: black;
 	float: right;
