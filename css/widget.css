@@ -36,6 +36,7 @@ body {
 	cursor: pointer;
 	border-radius: 10px;
 	transition: 0.3s;
+    margin: 20px;
 }
 
 .widget:hover {
