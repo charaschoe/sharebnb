@@ -1,6 +1,5 @@
 
 .header {
-    text-align: right;
     padding: 20px;
 }
 .header h1 {
@@ -18,22 +17,21 @@
 .container {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 50px;
 }
 .widget {
-    background-color: #d3d3d37b;
+    background-color: #ffffff;
     padding: 50px;
     width: 150px;
     height: 150px;
-    text-align: center;
+    text-align: left;
     font-size: 30px;
     cursor: pointer;
     border-radius: 10px;
     transition: 0.3s;
 }
 .widget:hover {
-    box-shadow: 0 0 10px white;
-    border: 2px solid white;
+    box-shadow: 0 0 5px black;
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 /* Modal Styles */
 .modal {
@@ -50,13 +48,15 @@
     background-color: white;
     margin: 15% auto;
     padding: 20px;
-    width: 300px;
-    text-align: center;
+    width: 750px;
+    height: 750px;
+    text-align: left;
     border-radius: 10px;
 }
 .close {
     color: black;
     float: right;
-    font-size: 28px;
+    font-size: 50px;
     cursor: pointer;
+    margin-top: -20px;
 }
