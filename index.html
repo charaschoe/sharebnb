@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>ShareBnB</title>
+		
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"rel="stylesheet"/>
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/layout.css">
@@ -11,6 +12,7 @@
 		<link rel="stylesheet" href="css/tab-interaction.css">
 		<link rel="stylesheet" href="css/content.css">
 		<link rel="stylesheet" href="css/navigation.css">
+		<link rel="stylesheet" href="css/widget.css">
 	</head>
 	<body>
 		<main>
@@ -59,6 +61,34 @@
 								<button class="arrow" id="prev-2"><</button>
 								<div id="content-2" class="ny">NEW YORK 1</div>
 								<button class="arrow" id="next-2">></button>
+							</div>
+							<div class="container">
+								<div class="widget" id="widget1">How many?</div>
+								<div class="widget" id="widget2">How much?</div>
+								<div class="widget" id="widget3">Meow Meow!</div>
+							</div>
+						
+							<div id="modal1" class="modal">
+								<div class="modal-content">
+									<span class="close" id="close1">&times;</span>
+									<p>Dies ist ein Platzhalter für "How many?"</p>
+								</div>
+							</div>
+						
+						
+							<div id="modal2" class="modal">
+								<div class="modal-content">
+									<span class="close" id="close2">&times;</span>
+									<p>Dies ist ein Platzhalter für "How much?"</p>
+								</div>
+							</div>
+						
+						
+							<div id="modal3" class="modal">
+								<div class="modal-content">
+									<span class="close" id="close3">&times;</span>
+									<p>Dies ist ein Platzhalter für "Meow Meow!"</p>
+								</div>
 							</div>
 						</div>
 					</label>
@@ -210,5 +240,12 @@
 		</main>
 		<script type="module" src="js/script.js"></script>
 		<script type="module" src="js/script4.js"></script>
+		<script src="js/widget.js"></script>
 	</body>
 </html>
+
+
+   
+
+    
+
