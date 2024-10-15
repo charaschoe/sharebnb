@@ -1,4 +1,5 @@
-<div id="map-nyc" class="map"></div>
+{
+	/* <div id="map-nyc" class="map"></div>
 <div id="map-paris" class="map"></div>
 <div id="map-rio" class="map"></div>
 <div id="map-cape-town" class="map"></div>
@@ -65,4 +66,5 @@
 
     // Loop through cityData to initialize maps
     cityData.forEach(city => initializeMap(city.id, city.coords, city.file));
-</script>
+</script> */
+}
