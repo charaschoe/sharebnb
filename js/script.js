@@ -111,3 +111,4 @@ document.querySelectorAll(".arrow").forEach((arrow) => {
 			contentData[labelId][currentIndex[labelId]];
 	});
 });
+
