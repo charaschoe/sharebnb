@@ -2,7 +2,8 @@
 /* Wenn über einen Tab gehovt wird */
 .container label:hover {
 	flex: 25; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
-	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1), background 0.8s ease;
+	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1),
+		background 0.8s ease;
 }
 
 .container label:not(:hover) {
@@ -15,7 +16,9 @@
 	opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
 	transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
 	writing-mode: vertical-rl; /* Text vertikal ausrichten */
-	transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
+	transform: rotate(
+		180deg
+	); /* Text umdrehen, damit er von unten nach oben liest */
 }
 
 .container label:hover #content {

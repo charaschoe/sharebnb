@@ -1,60 +1,62 @@
 /* content.css */
 /* Textinhalt der Tabs */
 .container label #content {
-    text-align: center;
-    opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
-    transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
-    writing-mode: vertical-rl; /* Text vertikal ausrichten */
-    transform: rotate(180deg); /* Text umdrehen, damit er von unten nach oben liest */
+	text-align: center;
+	opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
+	transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
+	writing-mode: vertical-rl; /* Text vertikal ausrichten */
+	transform: rotate(
+		180deg
+	); /* Text umdrehen, damit er von unten nach oben liest */
 }
 
 /* Wenn ein Tab gehovt wird, wird der Inhalt sichtbarer */
 .container label:hover #content {
-    opacity: 1;
-    writing-mode: horizontal-tb; /* Text horizontal ausrichten */
-    transform: rotate(0deg); /* Text in normale Richtung drehen */
-    position: absolute;
-    top: 25px;
-    right: 2%;
-    font-size: 4.5rem;
-    font-weight: 1000;
+	opacity: 1;
+	writing-mode: horizontal-tb; /* Text horizontal ausrichten */
+	transform: rotate(0deg); /* Text in normale Richtung drehen */
+	position: absolute;
+	top: 25px;
+	right: 2%;
+	font-size: 4.5rem;
+	font-weight: 1000;
 }
 
 .tab-content {
-    display: none; /* Inhalt ist nicht sichtbar */
-    color: black; /* Standard-Textfarbe */
-    text-align: right;
-    font-size: 1.5rem;
-    position: absolute; /* Position absolut für die Anzeige */
-    top: 15%; /* Positionieren */
-    right: 2%; /* Positionieren */
-    transform: translateX(0); /* Zentrieren */
-    max-width: 1000px; /* Breitenlimit für den Text */
-    margin-left: auto;
-    line-height: 1.5;
-    font-weight: 400;
+	display: none; /* Inhalt ist nicht sichtbar */
+	color: black; /* Standard-Textfarbe */
+	text-align: right;
+	font-size: 1.5rem;
+	position: absolute; /* Position absolut für die Anzeige */
+	top: 15%; /* Positionieren */
+	right: 2%; /* Positionieren */
+	transform: translateX(0); /* Zentrieren */
+	max-width: 1000px; /* Breitenlimit für den Text */
+	margin-left: auto;
+	line-height: 1.5;
+	font-weight: 400;
 }
 
 .tab-content h3 {
-    max-width: 1000px;
-    margin-left: auto;
-    text-align: right;
-    font-weight: 400;
+	max-width: 1000px;
+	margin-left: auto;
+	text-align: right;
+	font-weight: 400;
 }
 
 .tab-content h6 {
-    max-width: 1000px;
-    right: 2%; 
-    text-align: right;
-    font-weight: 400;   
-    position: absolute;
-    margin-left: auto; 
-    bottom: -300px; 
-    line-height: 1.5;
+	max-width: 1000px;
+	right: 2%;
+	text-align: right;
+	font-weight: 400;
+	position: absolute;
+	margin-left: auto;
+	bottom: -300px;
+	line-height: 1.5;
 }
 
 /* Zeige den Tab-Inhalt beim Hover an */
 .container label:hover .tab-content {
-    display: block; /* Inhalt wird beim Hover angezeigt */
-    z-index: 10;
+	display: block; /* Inhalt wird beim Hover angezeigt */
+	z-index: 10;
 }
