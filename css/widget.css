@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.header {
+    text-align: right;
+    padding: 20px;
+}
+.header h1 {
+    font-size: 50px;
+    margin: 0;
+}
+.header p {
+    font-size: 20px;
+    margin: 0;
+}
+.header .count {
+    font-size: 30px;
+    margin-top: 10px;
+}
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+.widget {
+    background-color: #d3d3d3;
+    padding: 50px;
+    width: 150px;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.widget:hover {
+    box-shadow: 0 0 10px purple;
+    border: 2px solid purple;
+}
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+.close {
+    color: red;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
