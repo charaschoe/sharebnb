@@ -12,7 +12,6 @@
 	flex: 1; /* Standardmäßige Breite der anderen Tabs */
 }
 
-/* Der schwarze Tab soll 10-mal größer sein */
 .container label:nth-child(1) {
 	background: #e4e4e4; /* Base */
 	flex: 2; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
@@ -25,37 +24,37 @@
 }
 
 .container label:nth-child(2) {
-	background: #fdd3d4; /* Base color */
-	opacity: 0.8; /* Adjust opacity */
+	background: #4508f5; /* Han Purple */
+	opacity: 0.7; /* Adjust opacity */
 }
 .container label:nth-child(2):hover {
-	background: #fdd3d4; /* Base color */
+	background: #5024f5; /* Han Purple */
 	opacity: 0.9; /* Adjust opacity */
 }
 .container label:nth-child(2):active {
-	background: #fdd3d4; /* Darker Shade */
+	background: #9592f3; /* Han Purple */
 }
 
 .container label:nth-child(3) {
-	background: #ffc1c2; /* Base */
+	background: #e35470; /* Base */
 	opacity: 0.8;
 }
 .container label:nth-child(3):hover {
-	background: #ffc1c2;
+	background: #e5889f;
 	opacity: 0.9; /* Lighter Shade */
 }
 .container label:nth-child(3):active {
-	background: #ffc1c2; /* Darker Shade */
+	background: #e7a8ba; /* Darker Shade */
 }
 
 .container label:nth-child(4) {
-	background: #ff9c9f;
+	background: #36754d;
 	opacity: 0.8;
 }
 .container label:nth-child(4):hover {
-	background: #ff9c9f;
+	background: #6fa48a;
 	opacity: 0.9; /* Lighter Shade */
 }
 .container label:nth-child(4):active {
-	background: #ff9c9f; /* Darker Shade */
+	background: #96bcab;
 }
