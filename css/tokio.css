@@ -1,0 +1,61 @@
+/* Allgemeines Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #e7a8ba;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Styling für das SVG-Element */
+  svg {
+    transition: transform 0.3s ease;
+  }
+  
+  svg:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Styling für die Rechtecke (Treemap-Elemente) */
+  rect {
+    transition: fill 0.2s ease;
+    cursor: pointer;
+  }
+  
+  rect:hover {
+    fill: #e35470;
+  }
+  
+  /* text:hover {
+    fill: #fff;
+  } */
+  /* Text innerhalb der Rechtecke */
+  text {
+    fill: #000;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+
+  
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  
+    text {
+      font-size: 12px;
+    }
+  }
+  
