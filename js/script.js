@@ -9,13 +9,9 @@ function countIds(listings) {
 }
 
 const cities = [
-	{ name: "cape-town", file: "../data/capetown.json" },
 	{ name: "paris", file: "../data/paris.json" },
 	{ name: "tokyo", file: "../data/tokyo.json" },
-	{ name: "new-york", file: "../data/newyork.json" },
-	{ name: "rio", file: "../data/riodejaneiro.json" },
-	{ name: "sydney", file: "../data/sydney.json" },
-	{ name: "istanbul", file: "../data/istanbul.json" },
+	{ name: "new-york", file: "../data/newyork.json" }
 ];
 
 const numberFormatter = new Intl.NumberFormat("de-DE");
