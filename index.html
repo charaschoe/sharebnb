@@ -11,7 +11,6 @@
 		<link rel="stylesheet" href="css/tab-interaction.css">
 		<link rel="stylesheet" href="css/content.css">
 		<link rel="stylesheet" href="css/navigation.css">
-		<link rel="stylesheet" href="css/widget.css">
 		<script src="https://d3js.org/d3.v6.min.js"></script>
 		<script src="js/room_type-capetown_barchart.js"></script>
 
@@ -59,132 +58,10 @@
 							<h3>
 								<span id="airbnb-index-new-york">Loading...</span>
 							</h3>
-							<!--
-							<div class="arrow-nav">
-								<button class="arrow" id="prev-2"><</button>
-								<div id="content-2" class="ny">NEW YORK 1</div>
-								<button class="arrow" id="next-2">></button>
-							</div>
-							-->
-							<div class="container">
-								<div class="widget" id="widget1">How many?</div>
-								<div class="widget" id="widget2">How much?</div>
-								<div class="widget" id="widget3">Meow Meow!</div>
-							</div>
-						
-							<div id="modal1" class="modal">
-								<div class="modal-content">
-									<span class="close" id="close1">&times;</span>
-									<div id="chart"></div>
-								</div>
-							</div>
-							<script>
-								document.addEventListener('DOMContentLoaded', () => {
-									d3.json("data/capetown2.json").then(function (data) {
-										const margin = { top: 20, right: 30, bottom: 40, left: 40 };
-										const width = 800 - margin.left - margin.right;
-										const height = 400 - margin.top - margin.bottom;
-									});
-								});
-							</script>
-						
-						
-							<div id="modal2" class="modal">
-								<div class="modal-content">
-									<span class="close" id="close2">&times;</span>
-									<p>Dies ist ein Platzhalter für "How much?"</p>
-								</div>
-							</div>
-						
-						
-							<div id="modal3" class="modal">
-								<div class="modal-content">
-									<span class="close" id="close3">&times;</span>
-									<p>Dies ist ein Platzhalter für "Meow Meow!"</p>
-								</div>
-							</div>
 						</div>
 					</label>
 
 					<label for="tab_3">
-						<div id="content" class="rio">RIO DE JANEIRO</div>
-						<div class="tab-content">
-							<h1>
-								N° <span class="city-name">Rio de Janeiro</span>
-								<span id="total-ids-rio">Loading...</span>
-							</h1>
-							<h3>
-								<span id="apartments-rio">Loading...</span>
-							</h3>
-							<h3>
-								<span id="population-rio">Loading...</span> /
-								<span id="tourists-rio">Loading...</span>
-							</h3>
-							<h3>
-								<span id="airbnb-index-rio">Loading...</span>
-							</h3>
-
-							<div class="arrow-nav">
-								<button class="arrow" id="prev-3"><</button>
-								<div id="content-3" class="ny">RIO 1</div>
-								<button class="arrow" id="next-3">></button>
-							</div>
-						</div>
-					</label>
-
-					<label for="tab_4">
-						<div id="content" class="cape">CAPE TOWN</div>
-						<div class="tab-content">
-							<h1>
-								N° of Airbnb listings
-								<span class="city-name">Cape Town</span>
-								<span id="total-ids-cape-town">Loading...</span>
-							</h1>
-							<h3>
-								<span id="apartments-cape-town"
-									>Loading...</span
-								>
-							</h3>
-							<h3>
-								<span id="population-cape-town"
-									>Loading...</span
-								>
-								/
-								<span id="tourists-cape-town">Loading...</span>
-							</h3>
-							<h3>
-								<span id="airbnb-index-cape-town">Loading...</span>
-							</h3>
-							<div class="arrow-nav">
-								<button class="arrow" id="prev-4"><</button>
-								<div id="content-4" class="ny">CAPE TOWN 1</div>
-								<button class="arrow" id="next-4">></button>
-							</div>
-						</div>
-					</label>
-
-					<label for="tab_5">
-						<div id="content" class="sydney">SYDNEY</div>
-						<div class="tab-content">
-							<h1>
-								N° of Airbnb listings
-								<span class="city-name">Sydney</span>
-								<span id="total-ids-sydney">Loading...</span>
-							</h1>
-							<h3>
-								<span id="apartments-sydney">Loading...</span>
-							</h3>
-							<h3>
-								<span id="population-sydney">Loading...</span> /
-								<span id="tourists-sydney">Loading...</span>
-							</h3>
-							<h3>
-								<span id="airbnb-index-sydney">Loading...</span>
-							</h3>
-						</div>
-					</label>
-
-					<label for="tab_6">
 						<div id="content" class="tokio">TOKIO</div>
 						<div class="tab-content">
 							<h1>
@@ -206,31 +83,7 @@
 						</div>
 					</label>
 
-					<label for="tab_7">
-						<div id="content" class="istanbul">ISTANBUL</div>
-						<div class="tab-content">
-							<h1>
-								N° of Airbnb listings
-								<span class="city-name">Istanbul</span>
-								<span id="total-ids-istanbul">Loading...</span>
-							</h1>
-							<h3>
-								<span id="apartments-istanbul">Loading...</span>
-							</h3>
-							<h3>
-								<span id="population-istanbul">Loading...</span>
-								/
-								<span id="tourists-istanbul">Loading...</span>
-							</h3>
-							<h3>
-								<span id="airbnb-index-istanbul"
-									>Loading...</span
-								>
-							</h3>
-						</div>
-					</label>
-
-					<label for="tab_8">
+					<label for="tab_4">
 						<div id="content" class="paris">PARIS</div>
 						<div class="tab-content">
 							<h1>
@@ -255,6 +108,5 @@
 		</main>
 		<script type="module" src="js/script.js"></script>
 		<script type="module" src="js/script4.js"></script>
-		<script src="js/widget.js"></script>
 	</body>
 </html>
