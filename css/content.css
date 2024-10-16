@@ -24,7 +24,7 @@
 
 .tab-content {
 	display: none; /* Inhalt ist nicht sichtbar */
-	color: black; /* Standard-Textfarbe */
+	color: white; /* Standard-Textfarbe */
 	text-align: right;
 	font-size: 1.5rem;
 	position: absolute; /* Position absolut für die Anzeige */
