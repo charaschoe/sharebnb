@@ -13,15 +13,15 @@
 }
 
 .container label:nth-child(1) {
-	background: #e4e4e4; /* Base */
+	background: #000; /* Base */
 	flex: 2; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
 }
-.container label:nth-child(1):hover {
-	background: #c5c5c5; /* Lighter Shade */
+/* .container label:nth-child(1):hover {
+	background: #c5c5c5; 
 }
 .container label:nth-child(1):active {
-	background: #9d9d9d; /* Darker Shade */
-}
+	background: #9d9d9d; 
+} */
 
 .container label:nth-child(2) {
 	background: #4508f5; /* Han Purple */
