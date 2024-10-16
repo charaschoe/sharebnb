@@ -12,11 +12,11 @@
 .non-affordable {
 	background-color: black;
 }
-.container {
+/* .container {
 	background-color: #a8f0c6;
 	padding: 20px;
 	text-align: center;
-}
+} */
 .dots-wrapper {
 	display: grid;
 	grid-template-columns: repeat(10, auto);
