@@ -1,7 +1,3 @@
-body {
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
-    overflow-y: hidden; /* Verhindert vertikales Scrollen, wenn nicht gewünscht */
-}
 .header {
 	padding: 20px;
 }
@@ -36,7 +32,6 @@ body {
 	cursor: pointer;
 	border-radius: 10px;
 	transition: 0.3s;
-    margin: 20px;
 }
 
 .widget:hover {
@@ -71,35 +66,32 @@ body {
 	z-index: 1;
 	left: 0;
 	top: 0;
-	width: 100vw;
+	width: 100vw; /* hier ist noch was falsch */
 	height: 100vh;
 	background-color: rgba(255, 255, 255, 0.15);
-
 }
 
 .modal-content {
-    background-color: white;
-    margin: 0 auto;
-    padding: 50px;
-    width: 75vw; /* Adjusted width */
-    height: 75vh; /* Adjusted height */
-    text-align: left;
-    border-radius: 10px;
-    position: absolute;
-    /*top: 50%;
-    left: 50%;*/
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	background-color: white;
+	margin: 0 auto;
+	padding: 100px;
+	width: calc(50% - 100px); /* 50% minus 100px padding (50px on each side) */
+	height: calc(
+		50vh - 100px
+	); /* 50vh minus 100px padding (50px on each side) */
+	text-align: left;
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box; /* Include padding in width and height */
 }
 
 .close {
-    color: black;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 50px;
-    cursor: pointer;
+	color: black;
+	float: right;
+	font-size: 50px;
+	cursor: pointer;
+	margin-top: -20px;
 }
