@@ -1,3 +1,8 @@
+body {
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+    overflow-y: hidden; /* Verhindert vertikales Scrollen, wenn nicht gewünscht */
+}
+
 .header {
 	padding: 20px;
 }
