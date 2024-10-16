@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Comparison Circles</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #c5ecc9;
+        }
+
+        canvas {
+            background-color: #c5ecc9;
+        }
+
+        .label-container {
+            display: flex;
+            justify-content: space-between;
+            width: 500px;
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        #slider-container {
+            width: 80%;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #slider {
+            width: 100%;
+        }
+
+        #slider-value {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .ticks {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .tick {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            width: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container for labels above circles -->
+    <div class="label-container">
+        <div class="label">not available</div>
+        <div class="label">available</div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <div id="slider-container">
+        <input type="range" id="slider" min="1" max="32" value="7" step="1">
+        <div id="slider-value">Minimum Nights: 7</div>
+        <div class="ticks">
+            <div class="tick">1</div>
+            <div class="tick">8</div>
+            <div class="tick">16</div>
+            <div class="tick">24</div>
+            <div class="tick">32</div>
+        </div>
+    </div>
+
+    <script src="circle.js"></script>
+</body>
+</html>
