@@ -17,10 +17,10 @@
 	flex: 2; /* Macht diesen Tab 10-mal breiter im normalen Zustand */
 }
 .container label:nth-child(1):hover {
-	background: #f0f0f0; /* Lighter Shade */
+	background: #c5c5c5; /* Lighter Shade */
 }
 .container label:nth-child(1):active {
-	background: #fff; /* Darker Shade */
+	background: #9d9d9d; /* Darker Shade */
 }
 
 .container label:nth-child(2) {
