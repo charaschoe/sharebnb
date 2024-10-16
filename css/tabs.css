@@ -6,7 +6,7 @@
 	cursor: pointer;
 	transition: all 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
 	position: relative;
-	color: black;
+	color: white;
 	font-weight: 400;
 	font-size: 1.5rem;
 	flex: 1; /* Standardmäßige Breite der anderen Tabs */
