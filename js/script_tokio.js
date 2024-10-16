@@ -8,7 +8,7 @@ const height = 500;
 // Farbskala
 const color = d3.scaleOrdinal()
     .domain(["Entire home/apt", "Private room", "Shared room", "Hotel room"])
-    .range(["#ffffff", "#B3B3B3", "#858585", "#e5e5e5"]);
+    .range(["#ffffff", "#B3B3B3", "#D9D9D9", "#e5e5e5"]);
 
 // Erstelle ein SVG-Element
 const svg = d3
