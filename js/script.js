@@ -10,7 +10,7 @@ function countIds(listings) {
 
 const cities = [
 	{ name: "paris", file: "../data/paris.json" },
-	{ name: "tokyo", file: "../data/tokyo.json" },
+	{ name: "tokyo", file: "../data/tokyo.js" },
 	{ name: "new-york", file: "../data/newyork.json" }
 ];
 
