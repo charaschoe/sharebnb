@@ -81,10 +81,8 @@ body {
 	background-color: white;
 	margin: 0 auto;
 	padding: 100px;
-	width: calc(50% - 100px); /* 50% minus 100px padding (50px on each side) */
-	height: calc(
-		50vh - 100px
-	); /* 50vh minus 100px padding (50px on each side) */
+	width: 75vw; /* 50% minus 100px padding (50px on each side) */
+	height: 75vh; /* 50vh minus 100px padding (50px on each side) */
 	text-align: left;
 	border-radius: 10px;
 	position: absolute;
