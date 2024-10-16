@@ -1,0 +1,25 @@
+.dot {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	display: inline-block;
+	margin: 5px;
+}
+.affordable {
+	background-color: white;
+	border: 1px solid black;
+}
+.non-affordable {
+	background-color: black;
+}
+.container {
+	background-color: #a8f0c6;
+	padding: 20px;
+	text-align: center;
+}
+.dots-wrapper {
+	display: grid;
+	grid-template-columns: repeat(10, auto);
+	gap: 5px;
+	justify-content: center;
+}
