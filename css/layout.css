@@ -6,3 +6,9 @@
 	align-items: stretch;
 	justify-content: stretch;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
