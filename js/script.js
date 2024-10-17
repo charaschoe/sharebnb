@@ -1,5 +1,6 @@
 import { populationData } from "../data/population.js";
 import { apartments } from "../data/apartments.js"; // Import der Apartment-Daten
+import { tokyoData } from "../data/tokyo.js"; // Import der Tokyo JS-Daten
 
 // Funktion zur Zählung der Gesamtanzahl der Vorkommen von '"id": '
 function countIds(listings) {
@@ -8,18 +9,56 @@ function countIds(listings) {
 	}, 0);
 }
 
-import { tokyoData } from "../data/tokyo.js";
-
 const cities = [
 	{ name: "paris", file: "../data/paris.json" },
-	// { name: "tokyo", file: "../data/tokyo.js" },
 	{ name: "new-york", file: "../data/newyork.json" },
+	// Tokyo hier manuell hinzufügen, da wir es direkt importieren
 ];
-console.log(`Data for tokyo:`, tokyoData);
-const totalIds = countIds(tokyoData);
 
 const numberFormatter = new Intl.NumberFormat("de-DE");
 
+// ** Verarbeitung für Tokyo, da kein fetch verwendet wird **
+console.log(`Data for tokyo:`, tokyoData);
+const totalIdsTokyo = countIds(tokyoData);
+const tokyoCityData = populationData.find(
+	(p) => p.city.toLowerCase().replace(" ", "-") === "tokyo"
+);
+const tokyoApartmentData = apartments.find(
+	(a) => a.city.toLowerCase().replace(" ", "-") === "tokyo"
+);
+
+if (tokyoCityData && tokyoApartmentData) {
+	const populationTokyo = tokyoCityData.population;
+	const touristsTokyo = tokyoCityData.tourists;
+	const apartmentCountTokyo = tokyoApartmentData.apartments;
+	const airbnbIndexTokyo = totalIdsTokyo / apartmentCountTokyo;
+
+	document.getElementById(`total-ids-tokyo`).textContent =
+		numberFormatter.format(totalIdsTokyo);
+	document.getElementById(
+		`population-tokyo`
+	).textContent = `Population: ${numberFormatter.format(populationTokyo)}`;
+	document.getElementById(
+		`tourists-tokyo`
+	).textContent = `Tourists: ${numberFormatter.format(touristsTokyo)}`;
+	document.getElementById(
+		`apartments-tokyo`
+	).textContent = `Apartments: ${numberFormatter.format(
+		apartmentCountTokyo
+	)}`;
+	document.getElementById(
+		`airbnb-index-tokyo`
+	).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndexTokyo)}`;
+} else {
+	console.error(`No data found for Tokyo`);
+	document.getElementById(`total-ids-tokyo`).textContent = "Error";
+	document.getElementById(`population-tokyo`).textContent = "Error";
+	document.getElementById(`tourists-tokyo`).textContent = "Error";
+	document.getElementById(`apartments-tokyo`).textContent = "Error";
+	document.getElementById(`airbnb-index-tokyo`).textContent = "Error";
+}
+
+// ** Verarbeitung für die anderen Städte mit fetch **
 cities.forEach((city) => {
 	fetch(city.file)
 		.then((response) => response.json())
@@ -53,17 +92,12 @@ cities.forEach((city) => {
 				`apartments-${city.name}`
 			).textContent = `Apartments: ${numberFormatter.format(
 				apartmentCount
-			)}`; // Anzeige der Apartment-Anzahl
+			)}`;
 			document.getElementById(
 				`airbnb-index-${city.name}`
 			).textContent = `Airbnb Index: ${numberFormatter.format(
 				airbnbIndex
 			)}`; // Anzeige des neuen Index
-			
-			// Check if city is Paris and then initiate the circle animation logic
-			if (city.name === "paris") {
-				initializeParisCircles(data); // Init animation with data
-			}
 		})
 		.catch((error) => {
 			console.error(
@@ -83,85 +117,33 @@ cities.forEach((city) => {
 		});
 });
 
-// Funktion für Paris-Circles
-function initializeParisCircles(data) {
-	const canvas = document.getElementById("canvas");
-	const ctx = canvas.getContext("2d");
-	const slider = document.getElementById("slider");
-	const sliderValueDisplay = document.getElementById("slider-value");
+const contentData = {
+	1: ["ShareBnB 1", "ShareBnB 2", "ShareBnB 3"],
+	2: ["NEW YORK 1", "NEW YORK 2", "NEW YORK 3"],
+	3: ["RIO 1", "RIO 2", "RIO 3"],
+	4: ["CAPE TOWN 1", "CAPE TOWN 2", "CAPE TOWN 3"],
+	5: ["PARIS 1", "PARIS 2", "PARIS 3"],
+	6: ["TOKYO 1", "TOKYO 2", "TOKYO 3"],
+	7: ["SYDNEY 1", "SYDNEY 2", "SYDNEY 3"],
+	8: ["ISTANBUL 1", "ISTANBUL 2", "ISTANBUL 3"],
+	// Füge hier Inhalte für die weiteren Tabs hinzu
+};
 
-	const maxRadius = 120; // Maximum radius of the largest circle
+let currentIndex = { 1: 0, 2: 0, 3: 0, 4: 0 };
 
-	let currentAvailableRadius = 0;
-	let currentNonAvailableRadius = 0;
-	let targetAvailableRadius = 0;
-	let targetNonAvailableRadius = 0;
-	const animationDuration = 500; // Animation duration in milliseconds
-	let animationStartTime = null;
+document.querySelectorAll(".arrow").forEach((arrow) => {
+	arrow.addEventListener("click", function () {
+		const labelId = this.id.split("-")[1]; // extrahiert die ID (z.B. "1" aus "prev-1")
+		const direction = this.id.split("-")[0]; // erkennt ob prev oder next
 
-	// Adjust canvas for high DPI displays to prevent blurriness
-	function adjustCanvasSize() {
-		const dpr = window.devicePixelRatio || 1;
-		const rect = canvas.getBoundingClientRect();
-		
-		// Set canvas width and height based on device pixel ratio for sharpness
-		canvas.width = rect.width * dpr;
-		canvas.height = rect.height * dpr;
-		
-		// Scale the drawing context to match the device pixel ratio
-		ctx.scale(dpr, dpr);
-	}
-
-	// Function to draw a circle
-	// Function to draw a circle
-// Function to draw a circle
-// Function to draw a circle
-// Function to draw a circle and percentage text
-function drawCircle(x, y, radius, percentage) {
-    // Zeichne den Kreis
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = "#ffffff"; // Weißer Füllkreis
-    ctx.fill();
-
-    const backgroundColor = "#c5ecc9"; // Hintergrundfarbe
-    const fontSize = 30; // Schriftgröße der Prozentzahl
-    const text = percentage + "%";
-
-    // Setze die Text-Eigenschaften
-    ctx.font = `bold ${fontSize}px Arial`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    const textWidth = ctx.measureText(text).width;
-
-    // Zeichne den Text in Weiß (für den gesamten Text, sowohl innen als auch außen)
-    ctx.fillStyle = "#ffffff"; // Weiße Schriftfarbe
-    ctx.fillText(text, x, y);
-
-    // Clipping-Bereich für den inneren Kreis
-    ctx.save(); // Speichere den aktuellen Canvas-Zustand
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, 2 * Math.PI); // Zeichne den Kreis als Clip-Bereich
-    ctx.clip(); // Clip nur den inneren Teil des Kreises
-
-    // Zeichne den Text erneut, diesmal in der Hintergrundfarbe nur innerhalb des Kreises
-    ctx.fillStyle = backgroundColor; // Textfarbe = Hintergrundfarbe innerhalb des Kreises
-    ctx.fillText(text, x, y);
-
-    // Clipping aufheben
-    ctx.restore(); // Stelle den Canvas-Zustand wieder her (Clip aufheben)
-}
-
-
-
-
-
-	// Function to calculate the average availability and non-availability
-	function calculateAverages(minimumNights) {
-		const filteredData = data.filter(airbnb => airbnb.minimum_nights === minimumNights);
-
-		if (filteredData.length === 0) {
-			return { availablePercentage: 0, nonAvailablePercentage: 0 };
+		// Inhalt für das jeweilige Label updaten
+		if (direction === "prev") {
+			currentIndex[labelId] =
+				(currentIndex[labelId] - 1 + contentData[labelId].length) %
+				contentData[labelId].length;
+		} else {
+			currentIndex[labelId] =
+				(currentIndex[labelId] + 1) % contentData[labelId].length;
 		}
 
 		let totalAvailable = 0;
