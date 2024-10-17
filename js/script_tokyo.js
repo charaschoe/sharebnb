@@ -9,7 +9,7 @@ const height = 500;
 // Farbskala (angepasst für besseren Kontrast)
 const color = d3.scaleOrdinal()
   .domain(["Entire home/apt", "Private room", "Shared room", "Hotel room"])
-  .range(["#fff", "#E5E5E5", "#B3B3B3", "#858585"]); // Kontrastreichere Farben
+  .range(["#fff", "#E5E5E5", "#858585", "#b3b3b3"]); // Kontrastreichere Farben
 
 // Erstelle ein SVG-Element im richtigen Container
 const svg = d3
