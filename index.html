@@ -4,34 +4,46 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>ShareBnB</title>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"rel="stylesheet"/>
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/layout.css">
-		<link rel="stylesheet" href="css/tabs.css">
-		<link rel="stylesheet" href="css/tab-interaction.css">
-		<link rel="stylesheet" href="css/content.css">
-        <link rel="stylesheet" href="css/newyork_dots.css" />	
-		<link rel="stylesheet" href="css/tokyo.css">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/layout.css" />
+		<link rel="stylesheet" href="css/tabs.css" />
+		<link rel="stylesheet" href="css/tab-interaction.css" />
+		<link rel="stylesheet" href="css/content.css" />
+		<link rel="stylesheet" href="css/newyork_dots.css" />
+		<link rel="stylesheet" href="css/tokyo.css" />
 	</head>
 	<body>
 		<main>
 			<section>
 				<div class="container">
 					<label for="tab_1">
-						<div id="content" class="sharebnb" style="color: black;">ShareBnB</div>
+						<div id="content" class="sharebnb" style="color: black">
+							ShareBnB
+						</div>
 						<div class="tab-content">
 							<div>
-								<h3 style="color: black;">
-									In vielen Großstädten wird Wohnraum knapp, während immer mehr Wohnungen über Plattformen wie Airbnb an Tourist*innen vermietet werden. 
-									Dies trägt zur Verdrängung von Einheimischen und steigenden Mietpreisen bei. 
-									Unsere Visualisierung zeigt die Verteilung von Airbnb-Angeboten in sieben Städten und soll ein Bewusstsein für die Auswirkungen auf den Wohnungsmarkt schaffen.
+								<h3 style="color: black">
+									In vielen Großstädten wird Wohnraum knapp,
+									während immer mehr Wohnungen über
+									Plattformen wie Airbnb an Tourist*innen
+									vermietet werden. Dies trägt zur Verdrängung
+									von Einheimischen und steigenden Mietpreisen
+									bei. Unsere Visualisierung zeigt die
+									Verteilung von Airbnb-Angeboten in sieben
+									Städten und soll ein Bewusstsein für die
+									Auswirkungen auf den Wohnungsmarkt schaffen.
 								</h3>
 							</div>
 							<div>
-								<h6 style="color: black;">
+								<h6 style="color: black">
 									Dr. Franklin Hernández Castro
-									<br>Data Visualisation<br> HfG Schwäbisch Gmünd IG3 
-									<br>Jonas Wienberg, Marlon Mutlu, Philipp Maginot
+									<br />Data Visualisation<br />
+									HfG Schwäbisch Gmünd IG3 <br />Jonas
+									Wienberg, Marlon Mutlu, Philipp Maginot
 								</h6>
 							</div>
 						</div>
@@ -54,9 +66,22 @@
 								<span id="tourists-new-york">Loading...</span>
 							</h3>
 							<h3>
-								<span id="airbnb-index-new-york">Loading...</span>
+								<span id="airbnb-index-new-york"
+									>Loading...</span
+								>
 							</h3>
+							<div class="container">
+								<div class="dots-wrapper" id="dots"></div>
+								<p id="info-text">
+									Out of 50 people, only a few can afford to
+									live in NYC based on the median income.
+								</p>
+							</div>
 							<script src="js/newyork.js"></script>
+							<script
+								type="module"
+								src="js/script_new_york.js"
+							></script>
 						</div>
 					</label>
 
@@ -78,11 +103,14 @@
 							<h3>
 								<span id="airbnb-index-tokyo">Loading...</span>
 							</h3>
-							<div id="treemap-container" style="width: 100%; height: 500px;"></div>
-							
+							<div
+								id="treemap-container"
+								style="width: 100%; height: 500px"
+							></div>
 						</div>
-							<script src="data/tokyo.js"></script> <!-- Tokyo-Daten laden -->
-							<script type="module" src="js/script_tokyo.js"></script>
+						<script src="data/tokyo.js"></script>
+						<!-- Tokyo-Daten laden -->
+						<script type="module" src="js/script_tokyo.js"></script>
 					</label>
 
 					<label for="tab_4">
