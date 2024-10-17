@@ -20,8 +20,12 @@ const numberFormatter = new Intl.NumberFormat("de-DE");
 // ** Verarbeitung für Tokyo, da kein fetch verwendet wird **
 console.log(`Data for tokyo:`, tokyoData);
 const totalIdsTokyo = countIds(tokyoData);
-const tokyoCityData = populationData.find((p) => p.city.toLowerCase().replace(" ", "-") === "tokyo");
-const tokyoApartmentData = apartments.find((a) => a.city.toLowerCase().replace(" ", "-") === "tokyo");
+const tokyoCityData = populationData.find(
+	(p) => p.city.toLowerCase().replace(" ", "-") === "tokyo"
+);
+const tokyoApartmentData = apartments.find(
+	(a) => a.city.toLowerCase().replace(" ", "-") === "tokyo"
+);
 
 if (tokyoCityData && tokyoApartmentData) {
 	const populationTokyo = tokyoCityData.population;
@@ -29,11 +33,22 @@ if (tokyoCityData && tokyoApartmentData) {
 	const apartmentCountTokyo = tokyoApartmentData.apartments;
 	const airbnbIndexTokyo = totalIdsTokyo / apartmentCountTokyo;
 
-	document.getElementById(`total-ids-tokyo`).textContent = numberFormatter.format(totalIdsTokyo);
-	document.getElementById(`population-tokyo`).textContent = `Population: ${numberFormatter.format(populationTokyo)}`;
-	document.getElementById(`tourists-tokyo`).textContent = `Tourists: ${numberFormatter.format(touristsTokyo)}`;
-	document.getElementById(`apartments-tokyo`).textContent = `Apartments: ${numberFormatter.format(apartmentCountTokyo)}`;
-	document.getElementById(`airbnb-index-tokyo`).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndexTokyo)}`;
+	document.getElementById(`total-ids-tokyo`).textContent =
+		numberFormatter.format(totalIdsTokyo);
+	document.getElementById(
+		`population-tokyo`
+	).textContent = `Population: ${numberFormatter.format(populationTokyo)}`;
+	document.getElementById(
+		`tourists-tokyo`
+	).textContent = `Tourists: ${numberFormatter.format(touristsTokyo)}`;
+	document.getElementById(
+		`apartments-tokyo`
+	).textContent = `Apartments: ${numberFormatter.format(
+		apartmentCountTokyo
+	)}`;
+	document.getElementById(
+		`airbnb-index-tokyo`
+	).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndexTokyo)}`;
 } else {
 	console.error(`No data found for Tokyo`);
 	document.getElementById(`total-ids-tokyo`).textContent = "Error";
@@ -75,10 +90,14 @@ cities.forEach((city) => {
 			).textContent = `Tourists: ${numberFormatter.format(tourists)}`;
 			document.getElementById(
 				`apartments-${city.name}`
-			).textContent = `Apartments: ${numberFormatter.format(apartmentCount)}`;
+			).textContent = `Apartments: ${numberFormatter.format(
+				apartmentCount
+			)}`;
 			document.getElementById(
 				`airbnb-index-${city.name}`
-			).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndex)}`;
+			).textContent = `Airbnb Index: ${numberFormatter.format(
+				airbnbIndex
+			)}`;
 		})
 		.catch((error) => {
 			console.error(
@@ -98,16 +117,11 @@ cities.forEach((city) => {
 		});
 });
 
-
 const contentData = {
 	1: ["ShareBnB 1", "ShareBnB 2", "ShareBnB 3"],
 	2: ["NEW YORK 1", "NEW YORK 2", "NEW YORK 3"],
-	3: ["RIO 1", "RIO 2", "RIO 3"],
-	4: ["CAPE TOWN 1", "CAPE TOWN 2", "CAPE TOWN 3"],
 	5: ["PARIS 1", "PARIS 2", "PARIS 3"],
 	6: ["TOKYO 1", "TOKYO 2", "TOKYO 3"],
-	7: ["SYDNEY 1", "SYDNEY 2", "SYDNEY 3"],
-	8: ["ISTANBUL 1", "ISTANBUL 2", "ISTANBUL 3"],
 	// Füge hier Inhalte für die weiteren Tabs hinzu
 };
 
