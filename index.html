@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="css/content.css" />
 		<link rel="stylesheet" href="css/newyork_dots.css" />
 		<link rel="stylesheet" href="css/tokyo.css" />
-		<link rel="stylesheet" href="css/circle.css" /> <!-- Neuer Link für Paris-Kreise -->
+		<link rel="stylesheet" href="css/circle.css" /> 
 	</head>
 	<body>
 		<main>
@@ -70,7 +70,8 @@
 							</h3>
 							<div class="dots-wrapper" id="dots"></div>
 							<p id="info-text">
-						Out of 50 people, only a few can afford to live in NYC based on the median income.
+								Out of 50 people, only a few can afford to live in NYC based on the median income.
+							</p>
 						</div>
 					</label>
 
@@ -92,13 +93,10 @@
 							<h3>
 								<span id="airbnb-index-tokyo">Loading...</span>
 							</h3>
-							<h3>
-								<div id="treemap-container" style="width: 100%; height: 500px"></div>
-								<div id="percentage-output"></div>
-
+							<div id="treemap-container" style="width: 100%; height: 500px"></div>
+							<div id="percentage-output"></div>
 						</div>
 						<script type="module" src="data/tokyo.js"></script>
-						<!-- Tokyo-Daten laden -->
 						<script type="module" src="js/script_tokyo.js"></script>
 					</label>
 
@@ -123,19 +121,22 @@
 
 							<!-- Neuer Canvas und Slider für die Kreise in Paris -->
 							<div class="label-container">
-								<div class="label">not available</div>
 								<div class="label">available</div>
+								<div class="label">not available</div>
 							</div>
 
+							<!-- Kreise werden auf dem Canvas gezeichnet -->
 							<canvas id="canvas"></canvas>
 
+							<!-- Slider zur Steuerung -->
 							<div id="slider-container">
 								<input type="range" id="slider" min="1" max="32" value="7">
 								<div id="slider-value">Minimum Nights: 7</div>
 							</div>
+
+							<script src="js/circle.js"></script>
 						</div>
 					</label>
-					
 				</div>
 			</section>
 		</main>
@@ -144,6 +145,6 @@
 		<script type="module" src="js/script4.js"></script>
 		<script src="/data/apartmentPrices.js"></script>
 		<script src="js/newyork.js"></script>
-		<script src="js/circle.js"></script> <!-- Neuer Script für Paris-Kreise -->
+		<script src="js/circle.js"></script>
 	</body>
 </html>
