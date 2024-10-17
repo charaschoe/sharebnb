@@ -4,7 +4,6 @@ import * as d3 from "https://cdn.skypack.dev/d3@7"; // Nutze "import" innerhalb 
 // Größe des SVG-Containers
 const width = 700;
 const height = 500;
-console.log(tokyoData);  // Überprüfe, ob die Daten existieren
 
 // Farbskala
 const color = d3.scaleOrdinal()

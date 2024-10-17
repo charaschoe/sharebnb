@@ -8,12 +8,15 @@ function countIds(listings) {
 	}, 0);
 }
 
+import { tokyoData } from "../data/tokyo.js";
 
 const cities = [
 	{ name: "paris", file: "../data/paris.json" },
 	// { name: "tokyo", file: "../data/tokyo.js" },
 	{ name: "new-york", file: "../data/newyork.json" }
 ];
+console.log(`Data for tokyo:`, tokyoData);
+const totalIds = countIds(tokyoData);
 
 const numberFormatter = new Intl.NumberFormat("de-DE");
 
