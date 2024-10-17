@@ -1,5 +1,6 @@
 import { populationData } from "../data/population.js";
 import { apartments } from "../data/apartments.js"; // Import der Apartment-Daten
+import { tokyoData } from "../data/tokyo.js"; // Import der Tokyo JS-Daten
 
 // Funktion zur Zählung der Gesamtanzahl der Vorkommen von '"id": '
 function countIds(listings) {
@@ -8,18 +9,41 @@ function countIds(listings) {
 	}, 0);
 }
 
-import { tokyoData } from "../data/tokyo.js";
-
 const cities = [
 	{ name: "paris", file: "../data/paris.json" },
-	// { name: "tokyo", file: "../data/tokyo.js" },
 	{ name: "new-york", file: "../data/newyork.json" },
+	// Tokyo hier manuell hinzufügen, da wir es direkt importieren
 ];
-console.log(`Data for tokyo:`, tokyoData);
-const totalIds = countIds(tokyoData);
 
 const numberFormatter = new Intl.NumberFormat("de-DE");
 
+// ** Verarbeitung für Tokyo, da kein fetch verwendet wird **
+console.log(`Data for tokyo:`, tokyoData);
+const totalIdsTokyo = countIds(tokyoData);
+const tokyoCityData = populationData.find((p) => p.city.toLowerCase().replace(" ", "-") === "tokyo");
+const tokyoApartmentData = apartments.find((a) => a.city.toLowerCase().replace(" ", "-") === "tokyo");
+
+if (tokyoCityData && tokyoApartmentData) {
+	const populationTokyo = tokyoCityData.population;
+	const touristsTokyo = tokyoCityData.tourists;
+	const apartmentCountTokyo = tokyoApartmentData.apartments;
+	const airbnbIndexTokyo = totalIdsTokyo / apartmentCountTokyo;
+
+	document.getElementById(`total-ids-tokyo`).textContent = numberFormatter.format(totalIdsTokyo);
+	document.getElementById(`population-tokyo`).textContent = `Population: ${numberFormatter.format(populationTokyo)}`;
+	document.getElementById(`tourists-tokyo`).textContent = `Tourists: ${numberFormatter.format(touristsTokyo)}`;
+	document.getElementById(`apartments-tokyo`).textContent = `Apartments: ${numberFormatter.format(apartmentCountTokyo)}`;
+	document.getElementById(`airbnb-index-tokyo`).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndexTokyo)}`;
+} else {
+	console.error(`No data found for Tokyo`);
+	document.getElementById(`total-ids-tokyo`).textContent = "Error";
+	document.getElementById(`population-tokyo`).textContent = "Error";
+	document.getElementById(`tourists-tokyo`).textContent = "Error";
+	document.getElementById(`apartments-tokyo`).textContent = "Error";
+	document.getElementById(`airbnb-index-tokyo`).textContent = "Error";
+}
+
+// ** Verarbeitung für die anderen Städte mit fetch **
 cities.forEach((city) => {
 	fetch(city.file)
 		.then((response) => response.json())
@@ -51,14 +75,10 @@ cities.forEach((city) => {
 			).textContent = `Tourists: ${numberFormatter.format(tourists)}`;
 			document.getElementById(
 				`apartments-${city.name}`
-			).textContent = `Apartments: ${numberFormatter.format(
-				apartmentCount
-			)}`; // Anzeige der Apartment-Anzahl
+			).textContent = `Apartments: ${numberFormatter.format(apartmentCount)}`;
 			document.getElementById(
 				`airbnb-index-${city.name}`
-			).textContent = `Airbnb Index: ${numberFormatter.format(
-				airbnbIndex
-			)}`; // Anzeige des neuen Index
+			).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndex)}`;
 		})
 		.catch((error) => {
 			console.error(
@@ -77,6 +97,7 @@ cities.forEach((city) => {
 				"Error"; // Fehleranzeige für den neuen Index
 		});
 });
+
 
 const contentData = {
 	1: ["ShareBnB 1", "ShareBnB 2", "ShareBnB 3"],
