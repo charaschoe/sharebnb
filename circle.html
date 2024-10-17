@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Comparison Circles</title>
+
     <style>
+        /* Lade die Schriftart Inter von Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
         body {
             display: flex;
             flex-direction: column;
@@ -13,6 +17,7 @@
             height: 100vh;
             margin: 0;
             background-color: #c5ecc9;
+            font-family: 'Inter', sans-serif; /* Setze die Schriftart auf Inter */
         }
 
         canvas {
@@ -27,40 +32,50 @@
         }
 
         .label {
-            font-family: Arial, sans-serif;
             font-weight: bold;
             font-size: 24px;
         }
 
         #slider-container {
-            width: 80%;
+            width: 30%; /* Nochmals die Breite um 50% reduziert (vorher 60%) */
             margin-top: 20px;
             position: relative;
         }
 
         #slider {
             width: 100%;
+            appearance: none;
+            height: 3px; /* Höhe des Sliders nochmals um 50% reduziert */
+            background: white; /* Slider-Hintergrund auf weiß setzen */
+            border-radius: 5px;
+            outline: none;
+        }
+
+        /* Slider-Styling für WebKit-basierte Browser (Chrome, Safari, Edge) */
+        #slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 7px; /* Größe des Daumenknopfes nochmals um 50% reduziert */
+            height: 7px; /* Höhe des Daumenknopfes nochmals um 50% reduziert */
+            background: #333; /* Daumenknopf des Sliders */
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Slider-Styling für Firefox */
+        #slider::-moz-range-thumb {
+            width: 7px; /* Größe des Daumenknopfes nochmals um 50% reduziert */
+            height: 7px; /* Höhe des Daumenknopfes nochmals um 50% reduziert */
+            background: #333;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
         #slider-value {
-            font-family: Arial, sans-serif;
             font-size: 16px;
             text-align: center;
             margin-top: 5px;
         }
 
-        .ticks {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .tick {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            text-align: center;
-            width: 5px;
-        }
     </style>
 </head>
 <body>
@@ -74,15 +89,9 @@
     <canvas id="canvas"></canvas>
 
     <div id="slider-container">
-        <input type="range" id="slider" min="1" max="32" value="7" step="1">
+        <!-- Entferne das 'step'-Attribut für glattes Sliden -->
+        <input type="range" id="slider" min="1" max="32" value="7">
         <div id="slider-value">Minimum Nights: 7</div>
-        <div class="ticks">
-            <div class="tick">1</div>
-            <div class="tick">8</div>
-            <div class="tick">16</div>
-            <div class="tick">24</div>
-            <div class="tick">32</div>
-        </div>
     </div>
 
     <script src="circle.js"></script>
