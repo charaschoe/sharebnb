@@ -9,7 +9,7 @@ const height = 500;
 // Farbskala (angepasst für besseren Kontrast)
 const color = d3.scaleOrdinal()
   .domain(["Entire home/apt", "Private room", "Shared room", "Hotel room"])
-  .range(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728"]); // Kontrastreichere Farben
+  .range(["#fff", "#E5E5E5", "#B3B3B3", "#858585"]); // Kontrastreichere Farben
 
 // Erstelle ein SVG-Element im richtigen Container
 const svg = d3
@@ -17,7 +17,6 @@ const svg = d3
   .append("svg")
   .attr("width", width)
   .attr("height", height)
-  .style("background-color", "#e0e0e0") // Hellgrauer Hintergrund
   .style("font-family", "Inter, sans-serif");
 
 console.log("SVG-Element im #treemap-container erstellt:", svg);
