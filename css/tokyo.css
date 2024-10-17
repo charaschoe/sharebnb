@@ -28,7 +28,7 @@ svg {
 }
 
 rect.clicked {
-  animation: clickAnimation 0.3s ease;
+  animation: clickAnimation 0.9s ease;
 }
 
 rect:nth-child(odd) {
@@ -59,4 +59,8 @@ rect:nth-child(even) {
     transform: translateX(0) scale(1);
     opacity: 1;
   }
+}
+
+rect:hover {
+  fill: #e35470;
 }

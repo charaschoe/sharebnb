@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Airbnb Listings by Borough</title>
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<style>
+			.bubble {
+				fill: steelblue;
+				stroke: black;
+				stroke-width: 2px;
+				cursor: pointer;
+			}
+			text {
+				fill: white;
+				font-size: 12px;
+				text-anchor: middle;
+				pointer-events: none;
+			}
+		</style>
+	</head>
+	<body>
+		<svg width="800" height="600"></svg>
+
+		<script>
+			const data = [
+				{ borough: "Brooklyn", count: 20 },
+				{ borough: "Manhattan", count: 25 },
+				{ borough: "Queens", count: 15 },
+				{ borough: "Bronx", count: 10 },
+				{ borough: "Staten Island", count: 5 },
+			];
+
+			const width = 800;
+			const height = 600;
+
+			const svg = d3.select("svg");
+
+			// Draw boundary circle
+			const boundaryRadius = Math.min(width, height) / 2 - 20;
+			const centerX = width / 2;
+			const centerY = height / 2;
+			svg.append("circle")
+				.attr("cx", centerX)
+				.attr("cy", centerY)
+				.attr("r", boundaryRadius)
+				.attr("fill", "none")
+				.attr("stroke", "black")
+				.attr("stroke-width", 2);
+
+			const sizeScale = d3
+				.scaleLinear()
+				.domain([0, d3.max(data, (d) => d.count)])
+				.range([20, 70]);
+
+			const simulation = d3
+				.forceSimulation(data)
+				.force("x", d3.forceX(centerX).strength(0.1))
+				.force("y", d3.forceY(centerY).strength(0.1))
+				.force(
+					"collision",
+					d3.forceCollide().radius((d) => sizeScale(d.count) + 2)
+				)
+				.on("tick", ticked);
+
+			const drag = d3.drag()
+				.on("start", dragstarted)
+				.on("drag", dragged)
+				.on("end", dragended);
+
+			function ticked() {
+				const u = svg.selectAll("circle.bubble").data(data);
+
+				u.enter()
+					.append("circle")
+					.attr("class", "bubble")
+					.attr("r", (d) => sizeScale(d.count))
+					.call(drag)
+					.on("click", (event, d) => {
+						alert(`Total Airbnbs in ${d.borough}: ${d.count}`);
+					})
+					.merge(u)
+					.attr("cx", (d) => {
+						const r = sizeScale(d.count);
+						const dx = d.x - centerX;
+						const dy = d.y - centerY;
+						const distance = Math.sqrt(dx * dx + dy * dy);
+						if (distance + r > boundaryRadius) {
+							const angle = Math.atan2(dy, dx);
+							d.x = centerX + (boundaryRadius - r) * Math.cos(angle);
+						}
+						return d.x;
+					})
+					.attr("cy", (d) => {
+						const r = sizeScale(d.count);
+						const dx = d.x - centerX;
+						const dy = d.y - centerY;
+						const distance = Math.sqrt(dx * dx + dy * dy);
+						if (distance + r > boundaryRadius) {
+							const angle = Math.atan2(dy, dx);
+							d.y = centerY + (boundaryRadius - r) * Math.sin(angle);
+						}
+						return d.y;
+					});
+
+				const t = svg.selectAll("text").data(data);
+
+				t.enter()
+					.append("text")
+					.merge(t)
+					.attr("x", (d) => d.x)
+					.attr("y", (d) => d.y + 4)
+					.text((d) => d.borough);
+			}
+
+			function dragstarted(event, d) {
+				if (!event.active) simulation.alphaTarget(0.3).restart();
+				d.fx = d.x;
+				d.fy = d.y;
+			}
+
+			function dragged(event, d) {
+				d.fx = event.x;
+				d.fy = event.y;
+			}
+
+			function dragended(event, d) {
+				if (!event.active) simulation.alphaTarget(0);
+				d.fx = null;
+				d.fy = null;
+			}
+		</script>
+	</body>
+</html>
