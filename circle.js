@@ -6,6 +6,13 @@ const sliderValueDisplay = document.getElementById("slider-value");
 const maxRadius = 120; // Maximum radius of the largest circle
 let data = []; // Placeholder for the data from paris.json
 
+let currentAvailableRadius = 0;
+let currentNonAvailableRadius = 0;
+let targetAvailableRadius = 0;
+let targetNonAvailableRadius = 0;
+const animationDuration = 500; // Animation duration in milliseconds
+let animationStartTime = null;
+
 // Fetch the data from paris.json
 fetch('data/paris.json')
     .then(response => response.json())
@@ -37,11 +44,13 @@ function drawCircle(x, y, radius, percentage) {
 
     // Draw percentage text in the center of the circle
     ctx.fillStyle = "#000000";
-    ctx.font = "30px Arial";
+    ctx.font = "bold 30px Arial"; // Schrift auf Fett und 30px gesetzt
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(percentage + "%", x, y);
 }
+
+
 
 // Function to calculate the average availability and non-availability
 function calculateAverages(minimumNights) {
@@ -68,7 +77,7 @@ function calculateAverages(minimumNights) {
     return { availablePercentage, nonAvailablePercentage };
 }
 
-// Function to update the circle sizes dynamically based on the slider value and data
+// Function to update the target radii based on the slider value and data
 function updateCircles() {
     adjustCanvasSize(); // Adjust canvas size for sharpness on high-DPI displays
 
@@ -76,21 +85,43 @@ function updateCircles() {
 
     const { availablePercentage, nonAvailablePercentage } = calculateAverages(minimumNights);
 
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Update target radii for the animation
+    targetAvailableRadius = (availablePercentage / 100) * maxRadius;
+    targetNonAvailableRadius = (nonAvailablePercentage / 100) * maxRadius;
 
-    // Calculate the radii for each circle
-    const availableRadius = (availablePercentage / 100) * maxRadius;
-    const nonAvailableRadius = (nonAvailablePercentage / 100) * maxRadius;
-
-    // Draw the "available" circle (left side)
-    drawCircle(150, 150, availableRadius, availablePercentage);
-
-    // Draw the "not available" circle (right side)
-    drawCircle(350, 150, nonAvailableRadius, nonAvailablePercentage);
+    // Start animation
+    animationStartTime = null;
+    requestAnimationFrame(animateCircles);
 
     // Update the slider value display
     sliderValueDisplay.innerText = `Minimum Nights: ${minimumNights}`;
+}
+
+// Function to animate the circle sizes
+function animateCircles(timestamp) {
+    if (!animationStartTime) animationStartTime = timestamp;
+    const elapsed = timestamp - animationStartTime;
+
+    // Calculate progress (0 to 1)
+    const progress = Math.min(elapsed / animationDuration, 1);
+
+    // Smoothly interpolate the radii
+    currentAvailableRadius = currentAvailableRadius + (targetAvailableRadius - currentAvailableRadius) * progress;
+    currentNonAvailableRadius = currentNonAvailableRadius + (targetNonAvailableRadius - currentNonAvailableRadius) * progress;
+
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw the "available" circle (left side)
+    drawCircle(150, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100));
+
+    // Draw the "not available" circle (right side)
+    drawCircle(350, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100));
+
+    // Continue the animation if it's not done yet
+    if (progress < 1) {
+        requestAnimationFrame(animateCircles);
+    }
 }
 
 // Event listener for the slider input
