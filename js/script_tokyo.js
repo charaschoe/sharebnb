@@ -33,6 +33,20 @@ const roomTypeData = d3.rollup(
 );
 console.log("Gruppierte Daten nach room_type:", roomTypeData);
 
+// Gesamtzahl der Einträge
+const totalEntries = data.length;
+
+// Anzahl der "Entire home/apt" Einträge
+const entireHomeCount = roomTypeData.get("Entire home/apt") || 0;
+
+// Berechnung des Prozentsatzes
+const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(2);
+console.log(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
+
+// Ausgabe des Prozentsatzes in HTML
+d3.select("#percentage-output")
+  .text(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
+
 // Konvertiere die Daten in ein hierarchisches Format
 const root = d3
   .hierarchy({ children: Array.from(roomTypeData, ([key, value]) => ({ name: key, value })) })
