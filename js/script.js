@@ -8,9 +8,10 @@ function countIds(listings) {
 	}, 0);
 }
 
+
 const cities = [
 	{ name: "paris", file: "../data/paris.json" },
-	{ name: "tokyo", file: "../data/tokyo.js" },
+	// { name: "tokyo", file: "../data/tokyo.js" },
 	{ name: "new-york", file: "../data/newyork.json" }
 ];
 

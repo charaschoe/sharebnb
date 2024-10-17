@@ -57,4 +57,4 @@ function drawBarChart(selector, data) {
 
 
 // Call the function to draw the chart
-drawBarChart("svg", data);
+// drawBarChart("svg", data);
