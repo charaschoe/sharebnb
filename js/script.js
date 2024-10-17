@@ -59,6 +59,11 @@ cities.forEach((city) => {
 			).textContent = `Airbnb Index: ${numberFormatter.format(
 				airbnbIndex
 			)}`; // Anzeige des neuen Index
+			
+			// Check if city is Paris and then initiate the circle animation logic
+			if (city.name === "paris") {
+				initializeParisCircles(data); // Init animation with data
+			}
 		})
 		.catch((error) => {
 			console.error(
@@ -78,79 +83,164 @@ cities.forEach((city) => {
 		});
 });
 
-const contentData = {
-	1: ["ShareBnB 1", "ShareBnB 2", "ShareBnB 3"],
-	2: ["NEW YORK 1", "NEW YORK 2", "NEW YORK 3"],
-	3: ["RIO 1", "RIO 2", "RIO 3"],
-	4: ["CAPE TOWN 1", "CAPE TOWN 2", "CAPE TOWN 3"],
-	5: ["PARIS 1", "PARIS 2", "PARIS 3"],
-	6: ["TOKYO 1", "TOKYO 2", "TOKYO 3"],
-	7: ["SYDNEY 1", "SYDNEY 2", "SYDNEY 3"],
-	8: ["ISTANBUL 1", "ISTANBUL 2", "ISTANBUL 3"],
-	// Füge hier Inhalte für die weiteren Tabs hinzu
-};
+// Funktion für Paris-Circles
+function initializeParisCircles(data) {
+	const canvas = document.getElementById("canvas");
+	const ctx = canvas.getContext("2d");
+	const slider = document.getElementById("slider");
+	const sliderValueDisplay = document.getElementById("slider-value");
 
-let currentIndex = { 1: 0, 2: 0, 3: 0, 4: 0 };
+	const maxRadius = 120; // Maximum radius of the largest circle
 
-document.querySelectorAll(".arrow").forEach((arrow) => {
-	arrow.addEventListener("click", function () {
-		const labelId = this.id.split("-")[1]; // extrahiert die ID (z.B. "1" aus "prev-1")
-		const direction = this.id.split("-")[0]; // erkennt ob prev oder next
+	let currentAvailableRadius = 0;
+	let currentNonAvailableRadius = 0;
+	let targetAvailableRadius = 0;
+	let targetNonAvailableRadius = 0;
+	const animationDuration = 500; // Animation duration in milliseconds
+	let animationStartTime = null;
 
-		// Inhalt für das jeweilige Label updaten
-		if (direction === "prev") {
-			currentIndex[labelId] =
-				(currentIndex[labelId] - 1 + contentData[labelId].length) %
-				contentData[labelId].length;
-		} else {
-			currentIndex[labelId] =
-				(currentIndex[labelId] + 1) % contentData[labelId].length;
+	// Adjust canvas for high DPI displays to prevent blurriness
+	function adjustCanvasSize() {
+		const dpr = window.devicePixelRatio || 1;
+		const rect = canvas.getBoundingClientRect();
+		
+		// Set canvas width and height based on device pixel ratio for sharpness
+		canvas.width = rect.width * dpr;
+		canvas.height = rect.height * dpr;
+		
+		// Scale the drawing context to match the device pixel ratio
+		ctx.scale(dpr, dpr);
+	}
+
+	// Function to draw a circle
+	// Function to draw a circle
+// Function to draw a circle
+// Function to draw a circle
+// Function to draw a circle and percentage text
+function drawCircle(x, y, radius, percentage) {
+    // Zeichne den Kreis
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = "#ffffff"; // Weißer Füllkreis
+    ctx.fill();
+
+    const backgroundColor = "#c5ecc9"; // Hintergrundfarbe
+    const fontSize = 30; // Schriftgröße der Prozentzahl
+    const text = percentage + "%";
+
+    // Setze die Text-Eigenschaften
+    ctx.font = `bold ${fontSize}px Arial`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const textWidth = ctx.measureText(text).width;
+
+    // Zeichne den Text in Weiß (für den gesamten Text, sowohl innen als auch außen)
+    ctx.fillStyle = "#ffffff"; // Weiße Schriftfarbe
+    ctx.fillText(text, x, y);
+
+    // Clipping-Bereich für den inneren Kreis
+    ctx.save(); // Speichere den aktuellen Canvas-Zustand
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI); // Zeichne den Kreis als Clip-Bereich
+    ctx.clip(); // Clip nur den inneren Teil des Kreises
+
+    // Zeichne den Text erneut, diesmal in der Hintergrundfarbe nur innerhalb des Kreises
+    ctx.fillStyle = backgroundColor; // Textfarbe = Hintergrundfarbe innerhalb des Kreises
+    ctx.fillText(text, x, y);
+
+    // Clipping aufheben
+    ctx.restore(); // Stelle den Canvas-Zustand wieder her (Clip aufheben)
+}
+
+
+
+
+
+	// Function to calculate the average availability and non-availability
+	function calculateAverages(minimumNights) {
+		const filteredData = data.filter(airbnb => airbnb.minimum_nights === minimumNights);
+
+		if (filteredData.length === 0) {
+			return { availablePercentage: 0, nonAvailablePercentage: 0 };
 		}
 
-		document.getElementById(`content-${labelId}`).textContent =
-			contentData[labelId][currentIndex[labelId]];
-	});
-});
+		let totalAvailable = 0;
+		let totalNonAvailable = 0;
 
-const apartmentPrices = {};
-apartments.forEach((apartment) => {
-	apartmentPrices[apartment.city.toLowerCase().replace(" ", "_")] =
-		apartment.apartments;
-});
+		filteredData.forEach(airbnb => {
+			totalAvailable += airbnb.availability_365;
+			totalNonAvailable += (365 - airbnb.availability_365);
+		});
 
-const numberOfPeople = 50;
+		const averageAvailable = totalAvailable / filteredData.length;
+		const averageNonAvailable = totalNonAvailable / filteredData.length;
 
-// Assuming apartmentPrices.js exports an object with prices
-const averageRent = apartmentPrices["new_york"]; // Use the price from the external file
+		const availablePercentage = Math.round((averageAvailable / 365) * 100);
+		const nonAvailablePercentage = 100 - availablePercentage;
 
-// Average salary calculation
-const averageSalary = 134000 / 12; // Monthly income based on $134,000 annual salary
+		return { availablePercentage, nonAvailablePercentage };
+	}
 
-// Calculate affordable people based on the 30% rule
-const affordablePeople = Math.floor(
-	((averageSalary * 0.3) / averageRent) * numberOfPeople
-);
+	// Function to update the target radii based on the slider value and data
+	function updateCircles() {
+		adjustCanvasSize(); // Adjust canvas size for sharpness on high-DPI displays
 
-const dotsContainer = document.getElementById("dots");
-const infoText = document.getElementById("info-text");
+		const minimumNights = parseInt(slider.value, 10); // Get the minimum nights from the slider
 
-for (let i = 0; i < numberOfPeople; i++) {
-	const dot = document.createElement("div");
-	dot.className =
-		"dot " + (i < affordablePeople ? "affordable" : "non-affordable");
+		const { availablePercentage, nonAvailablePercentage } = calculateAverages(minimumNights);
 
-	dot.addEventListener("mouseenter", () => {
-		infoText.textContent = `Median income is $${averageSalary.toFixed(
-			2
-		)} per month. Airbnb price per night is $${(averageRent / 30).toFixed(
-			2
-		)}.`;
-	});
+		// Update target radii for the animation
+		targetAvailableRadius = (availablePercentage / 100) * maxRadius;
+		targetNonAvailableRadius = (nonAvailablePercentage / 100) * maxRadius;
 
-	dot.addEventListener("mouseleave", () => {
-		infoText.textContent =
-			"Out of 50 people, only a few can afford to live in NYC based on the median income.";
-	});
+		// Start animation
+		animationStartTime = null;
+		requestAnimationFrame(animateCircles);
 
-	dotsContainer.appendChild(dot);
+		// Update the slider value display
+		sliderValueDisplay.innerText = `Minimum Nights: ${minimumNights}`;
+	}
+
+	// Function to animate the circle sizes
+	function animateCircles(timestamp) {
+		if (!animationStartTime) animationStartTime = timestamp;
+		const elapsed = timestamp - animationStartTime;
+
+		// Calculate progress (0 to 1)
+		const progress = Math.min(elapsed / animationDuration, 1);
+
+		// Smoothly interpolate the radii
+		currentAvailableRadius = currentAvailableRadius + (targetAvailableRadius - currentAvailableRadius) * progress;
+		currentNonAvailableRadius = currentNonAvailableRadius + (targetNonAvailableRadius - currentNonAvailableRadius) * progress;
+
+		// Clear the canvas
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		// Draw the "available" circle (left side)
+		drawCircle(150, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100));
+
+		// Draw the "not available" circle (right side)
+		drawCircle(350, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100));
+
+		// Continue the animation if it's not done yet
+		if (progress < 1) {
+			requestAnimationFrame(animateCircles);
+		}
+	}
+
+	// Event listener for the slider input
+	slider.addEventListener("input", updateCircles);
+
+	// Set the initial canvas size based on device pixel ratio
+	function initializeCanvas() {
+		const dpr = window.devicePixelRatio || 1;
+		canvas.style.width = '500px';
+		canvas.style.height = '300px';
+		canvas.width = 500 * dpr;
+		canvas.height = 300 * dpr;
+		ctx.scale(dpr, dpr);
+	}
+
+	// Initialize and draw the first frame
+	initializeCanvas();
 }

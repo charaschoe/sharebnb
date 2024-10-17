@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="css/content.css" />
 		<link rel="stylesheet" href="css/newyork_dots.css" />
 		<link rel="stylesheet" href="css/tokyo.css" />
+		<link rel="stylesheet" href="css/circle.css" /> <!-- Neuer Link für Paris-Kreise -->
 	</head>
 	<body>
 		<main>
@@ -130,14 +131,30 @@
 							<h3>
 								<span id="airbnb-index-paris">Loading...</span>
 							</h3>
+
+							<!-- Neuer Canvas und Slider für die Kreise in Paris -->
+							<div class="label-container">
+								<div class="label">not available</div>
+								<div class="label">available</div>
+							</div>
+
+							<canvas id="canvas"></canvas>
+
+							<div id="slider-container">
+								<input type="range" id="slider" min="1" max="32" value="7">
+								<div id="slider-value">Minimum Nights: 7</div>
+							</div>
 						</div>
 					</label>
+					
 				</div>
 			</section>
 		</main>
+
 		<script type="module" src="js/script.js"></script>
 		<script type="module" src="js/script4.js"></script>
 		<script src="/data/apartmentPrices.js"></script>
 		<script src="js/newyork.js"></script>
+		<script src="js/circle.js"></script> <!-- Neuer Script für Paris-Kreise -->
 	</body>
 </html>
