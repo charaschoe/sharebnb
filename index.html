@@ -49,41 +49,40 @@
 						</div>
 					</label>
 
-					<label for="tab_2">
-						<div id="content" class="ny">NEW YORK CITY</div>
-						<div class="tab-content">
-							<h1>
-								N° of Airbnb listings
-								<span class="city-name">New York City</span>
-								<span id="total-ids-new-york">Loading...</span>
-							</h1>
-							<h3>
-								<span id="apartments-new-york">Loading...</span>
-							</h3>
-							<h3>
-								<span id="population-new-york">Loading...</span>
-								/
-								<span id="tourists-new-york">Loading...</span>
-							</h3>
-							<h3>
-								<span id="airbnb-index-new-york"
-									>Loading...</span
-								>
-							</h3>
-							<div class="container">
-								<div class="dots-wrapper" id="dots"></div>
-								<p id="info-text">
-									Out of 50 people, only a few can afford to
-									live in NYC based on the median income.
-								</p>
-							</div>
-							<script src="js/newyork.js"></script>
-							<script
-								type="module"
-								src="js/script_new_york.js"
-							></script>
-						</div>
-					</label>
+<label for="tab_2">
+	<div id="content" class="newyork">NEW YORK CITY</div>
+	<div class="tab-content">
+		<div style="display: flex; flex-wrap: wrap;">
+			<div style="flex: 1 1 50%; padding: 10px;">
+				<h1>
+					N° of Airbnb listings
+					<span class="city-name">New York City</span>
+					<span id="total-ids-new-york">Loading...</span>
+				</h1>
+			</div>
+			<div style="flex: 1 1 50%; padding: 10px;">
+				<h3>
+					<span class="population-new-york">New York City</span>
+					<span id="population-new-york" class="population">Loading...</span> /
+					<span id="tourists-new-york" class="tourists">Loading...</span>
+				</h3>
+			</div>
+			<div style="flex: 1 1 50%; padding: 10px;">
+				<h3>
+					<span id="airbnb-index-new-york">Loading...</span>
+				</h3>
+				<div class="dots-wrapper" id="dots"></div>
+				<p id="info-text">
+					Out of 50 people, only a few can afford to live in NYC based on the median income.
+				</p>
+			</div>
+			<div style="flex: 1 1 50%; padding: 10px;">
+				<!-- Empty div for layout purposes -->
+			</div>
+		</div>
+		<script type="module" src="js/script_new_york.js"></script>
+	</div>
+</label>
 
 					<label for="tab_3">
 						<div id="content" class="tokyo">TOKYO</div>
