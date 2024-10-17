@@ -45,7 +45,7 @@ console.log(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
 
 // Ausgabe des Prozentsatzes in HTML
 d3.select("#percentage-output")
-  .text(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
+  .text(`In ${percentageEntireHome}% der Zeit hast du ein Appartment für dich alleine.`);
 
 // Konvertiere die Daten in ein hierarchisches Format
 const root = d3
