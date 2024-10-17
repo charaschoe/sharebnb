@@ -139,10 +139,10 @@ function updateTreemap(roomType) {
         .merge(g.selectAll("text"))
         .attr("x", 10)
         .attr("y", 20)
-        .text((d) => `${d.data.name}: ${d.value}`)
+        .text((d) => `Minimum ${d.data.name} Night${d.data.name > 1 ? 's' : ''}: ${d.value} AirBnBs`)     //hier wird der Text von minimum_nights angezeigt
         .attr("fill", "#000")
         .style("font-size", "14px")
-        .style("font-weight", "bold");
+        .style("font-weight", "lighter");
     });
 
   nodes.exit().remove();
@@ -191,10 +191,10 @@ function drawInitialTreemap() {
         .merge(g.selectAll("text"))
         .attr("x", 10)
         .attr("y", 20)
-        .text((d) => `${d.data.name}: ${d.value}`)
+        .text((d) => `${d.data.name}: ${d.value} AirBnBs`)        //hier wird der Text von roomtypes angezeigt
         .attr("fill", "#000")
         .style("font-size", "14px")
-        .style("font-weight", "bold");
+        .style("font-weight", "lighter");
     });
 
   node.exit().remove();
@@ -224,3 +224,4 @@ drawInitialTreemap();
 
 // // Füge die Hover-Effekte hinzu
 // addHoverEffects();
+

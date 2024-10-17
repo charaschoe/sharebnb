@@ -1,50 +1,62 @@
-/* Allgemeines Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Animation beim Laden der Seite */
+@keyframes loadAnimation {
+  0% {
+    transform: translateX(-100%) scale(0);
+    opacity: 0;
   }
-  
-  /* Styling für das SVG-Element */
-  svg {
-    transition: transform 0.3s ease;
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
   }
-  
-  svg:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Styling für die Rechtecke (Treemap-Elemente) */
-  rect {
-    transition: fill 0.2s ease;
-    cursor: pointer;
-  }
-  
-  rect:hover {
-    fill: #e35470;
-  }
-  
-  /* text:hover {
-    fill: #fff;
-  } */
-  /* Text innerhalb der Rechtecke */
-  text {
-    fill: #000;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  /* Responsive Design */
-  /* @media (max-width: 768px) {
+}
 
-  
-    svg {
-      width: 100%;
-      height: auto;
-    }
-  
-    text {
-      font-size: 12px;
-    }
-  } */
-  
+svg {
+  animation: loadAnimation 1s ease-out;
+}
+
+/* Animation beim Klicken */
+@keyframes clickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+rect.clicked {
+  animation: clickAnimation 0.3s ease;
+}
+
+rect:nth-child(odd) {
+  animation: loadAnimationFromLeft 1s ease-out;
+}
+
+rect:nth-child(even) {
+  animation: loadAnimationFromRight 1s ease-out;
+}
+
+@keyframes loadAnimationFromLeft {
+  0% {
+    transform: translateX(-100%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes loadAnimationFromRight {
+  0% {
+    transform: translateX(100%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
