@@ -1,6 +1,6 @@
 // Verwende die d3-Bibliothek direkt aus einem CDN
 import * as d3 from "https://cdn.skypack.dev/d3@7"; // Nutze "import" innerhalb eines Moduls
-
+import { tokyoData } from "../data/tokyo.js";
 // Größe des SVG-Containers
 const width = 700;
 const height = 500;
