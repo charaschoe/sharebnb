@@ -12,6 +12,7 @@
             width: 700px;
             height: 700px;
             margin: 0 auto;
+            position: relative; /* Add relative positioning */
         }
         #percentage-output {
             text-align: center;
@@ -34,8 +35,7 @@
             width: auto;
             height: auto;
             padding: 5px;
-            font: 12px sans-serif;
-            background: lightsteelblue;
+            font: 16px sans-serif; /* Increased font size */
             border: 0;
             border-radius: 8px;
             pointer-events: none;
@@ -156,8 +156,8 @@
                     .duration(200)
                     .style("opacity", .9);
                 tooltip.html(`Host with ${d[0]} listings: ${d[1]} AirBnBs`)
-                    .style("left", (event.pageX + 5) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                    .style("left", `${height -285 + margin.left}px`)
+                    .style("top", `${height - margin.bottom + 10}px`);  // Fixed position below the x axis line
             })
             .on("mouseout", function() {
                 d3.select(this).transition()
