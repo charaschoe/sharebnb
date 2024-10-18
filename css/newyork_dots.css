@@ -23,3 +23,9 @@
 	gap: 5px;
 	justify-content: center;
 }
+
+.info-text {
+	font-size: 1.5rem;
+	font-weight: 400;
+	text-align: left;
+}
