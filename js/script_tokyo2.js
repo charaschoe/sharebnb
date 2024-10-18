@@ -1,8 +1,8 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 import { tokyoData } from "../data/tokyo.js";
 
-const width = 700;
-const height = 700;
+const height = 350;
+const width = (700 / 500) * height;
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
 const svg = d3

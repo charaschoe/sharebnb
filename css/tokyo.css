@@ -1,4 +1,7 @@
 /* Animation beim Laden der Seite */
+body {
+  overflow: hidden;
+}
 @keyframes loadAnimation {
   0% {
     transform: translateX(-100%) scale(0);

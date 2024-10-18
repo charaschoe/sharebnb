@@ -38,4 +38,5 @@ body {
     border-radius: 8px;
     pointer-events: none;
     opacity: 0;
+    color: #000;
 }
