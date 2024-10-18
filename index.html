@@ -17,6 +17,8 @@
 		<link rel="stylesheet" href="css/tokyo.css" />
 		<link rel="stylesheet" href="css/circle.css" /> 
 		<link rel="stylesheet" href="css/barchart.css" /> 
+		<link rel="stylesheet" href="css/bubbles_newyork.css" />
+		<script src="https://d3js.org/d3.v7.min.js"></script>
 	</head>
 	<body>
 		<main>
@@ -54,6 +56,24 @@
 					<label for="tab_2">
 						<div id="content" class="new-york">NEW YORK</div>
 						<div class="tab-content">
+							<div
+								class="dots-wrapper"
+								id="dots"
+								style="
+									transform: translateX(-100px);
+									transform: translateY(520px);
+								"
+							></div>
+							<p
+								id="info-text"
+								style="
+									transform: translateX(-660px);
+									transform: translateY(520px);
+								"
+							></p>
+							<div class="svg-container">
+								<svg width="500" height="500"></svg>
+							</div>
 							<div class="dots-wrapper" id="dots" style="transform: translateX(-100px); transform: translateY(520px);"></div>
 							<p id="info-text" style="transform: translateX(-660px); transform: translateY(520px);"></p>
 							</p>
@@ -163,5 +183,6 @@
 		<script src="/data/apartmentPrices.js"></script>
 		<script src="js/newyork.js"></script>
 		<script src="js/circle.js"></script>
+		<script src="js/bubbles_newyork.js"></script>
 	</body>
 </html>
