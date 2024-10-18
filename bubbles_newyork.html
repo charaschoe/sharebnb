@@ -3,17 +3,17 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Airbnb Listings by Borough</title>
+		<title>Airbnb Listings by District</title>
 		<script src="https://d3js.org/d3.v7.min.js"></script>
 		<style>
 			.bubble {
-				fill: steelblue;
+				fill: transparent;
 				stroke: black;
 				stroke-width: 2px;
 				cursor: pointer;
 			}
 			text {
-				fill: white;
+				fill: black;
 				font-size: 12px;
 				text-anchor: middle;
 				pointer-events: none;
@@ -21,115 +21,277 @@
 		</style>
 	</head>
 	<body>
-		<svg width="800" height="600"></svg>
+		<svg width="500" height="500"></svg>
 
 		<script>
-			const data = [
-				{ borough: "Brooklyn", count: 20 },
-				{ borough: "Manhattan", count: 25 },
-				{ borough: "Queens", count: 15 },
-				{ borough: "Bronx", count: 10 },
-				{ borough: "Staten Island", count: 5 },
-			];
+			// Load data from JSON file
+			d3.json("data/newyork.json").then(function (data) {
+				// Comprehensive mapping of neighborhoods to districts
+				const neighborhoodToDistrict = {
+					// Manhattan
+					Chelsea: "Manhattan",
+					Harlem: "Manhattan",
+					"Upper East Side": "Manhattan",
+					"Upper West Side": "Manhattan",
+					"Greenwich Village": "Manhattan",
+					SoHo: "Manhattan",
+					Tribeca: "Manhattan",
+					"Financial District": "Manhattan",
+					"East Village": "Manhattan",
+					"Lower East Side": "Manhattan",
+					Midtown: "Manhattan",
+					"Hell's Kitchen": "Manhattan",
+					Chinatown: "Manhattan",
+					"East Harlem": "Manhattan",
+					NoHo: "Manhattan",
+					"Gramercy Park": "Manhattan",
+					"Battery Park City": "Manhattan",
+					"Little Italy": "Manhattan",
+					"Washington Heights": "Manhattan",
+					Inwood: "Manhattan",
+					// Brooklyn
+					Williamsburg: "Brooklyn",
+					Bushwick: "Brooklyn",
+					"Park Slope": "Brooklyn",
+					"Coney Island": "Brooklyn",
+					"Brooklyn Heights": "Brooklyn",
+					DUMBO: "Brooklyn",
+					"Bedford-Stuyvesant": "Brooklyn",
+					Flatbush: "Brooklyn",
+					Greenpoint: "Brooklyn",
+					"Red Hook": "Brooklyn",
+					"Brooklyn Navy Yard": "Brooklyn",
+					"Prospect Heights": "Brooklyn",
+					"Sunset Park": "Brooklyn",
+					"Brighton Beach": "Brooklyn",
+					Canarsie: "Brooklyn",
+					Gravesend: "Brooklyn",
+					// Queens
+					Astoria: "Queens",
+					Flushing: "Queens",
+					Jamaica: "Queens",
+					"Long Island City": "Queens",
+					"Forest Hills": "Queens",
+					"Rego Park": "Queens",
+					"Jackson Heights": "Queens",
+					Elmhurst: "Queens",
+					// Bronx
+					Riverdale: "Bronx",
+					Fordham: "Bronx",
+					// Staten Island
+					"St. George": "Staten Island",
+					// Additional neighborhoods with high Airbnb listings
+					"East Williamsburg": "Brooklyn",
+					Gowanus: "Brooklyn",
+					// More neighborhoods
+					"Sheepshead Bay": "Brooklyn",
+					Flatlands: "Brooklyn",
+					"East New York": "Brooklyn",
+					"Kew Gardens": "Queens",
+					Bayside: "Queens",
+					"College Point": "Queens",
+					Whitestone: "Queens",
+					Ridgewood: "Queens",
+					Woodside: "Queens",
+					Corona: "Queens",
+					"Far Rockaway": "Queens",
+					"Rockaway Park": "Queens",
+					"Howard Beach": "Queens",
+					"Mott Haven": "Bronx",
+					"Pelham Bay": "Bronx",
+					"Throgs Neck": "Bronx",
+					"Hunts Point": "Bronx",
+					Belmont: "Bronx",
+					Norwood: "Bronx",
+					Soundview: "Bronx",
+					"West Farms": "Bronx",
+					Melrose: "Bronx",
+					Concourse: "Bronx",
+					Highbridge: "Bronx",
+					"University Heights": "Bronx",
+					// Staten Island continued
+					Tottenville: "Staten Island",
+					"Great Kills": "Staten Island",
+					"New Dorp": "Staten Island",
+					"Port Richmond": "Staten Island",
+					Stapleton: "Staten Island",
+					Rosebank: "Staten Island",
+					"West Brighton": "Staten Island",
+					"Mariners Harbor": "Staten Island",
+					"South Beach": "Staten Island",
+					Oakwood: "Staten Island",
+					Arrochar: "Staten Island",
+					// Additional Brooklyn neighborhoods
+					"Bushwick South": "Brooklyn",
+					"Greenwood Heights": "Brooklyn",
+					"Fort Greene": "Brooklyn",
+					"Clinton Hill": "Brooklyn",
+					"Boerum Hill": "Brooklyn",
+					"Carroll Gardens": "Brooklyn",
+					"Cobble Hill": "Brooklyn",
+					"Vinegar Hill": "Brooklyn",
+					"Downtown Brooklyn": "Brooklyn",
+					"South Slope": "Brooklyn",
+					"Prospect Lefferts Gardens": "Brooklyn",
+					"Ditmas Park": "Brooklyn",
+					Midwood: "Brooklyn",
+					"Marine Park": "Brooklyn",
+					"Bay Ridge": "Brooklyn",
+					Bensonhurst: "Brooklyn",
+					"Borough Park": "Brooklyn",
+					"Dyker Heights": "Brooklyn",
+					"Bath Beach": "Brooklyn",
+					Mapleton: "Brooklyn",
+					"Fort Hamilton": "Brooklyn",
+					"Gravesend Neck Road": "Brooklyn",
+					Homecrest: "Brooklyn",
+					Madison: "Brooklyn",
+					"Mill Basin": "Brooklyn",
+					"Old Mill Basin": "Brooklyn",
+					"Plumb Beach": "Brooklyn",
+					Georgetown: "Brooklyn",
+					"Bergen Beach": "Brooklyn",
+					"Floyd Bennett Field": "Brooklyn",
+					"Spring Creek": "Brooklyn",
+					"Starrett City": "Brooklyn",
+					"Highland Park": "Brooklyn",
+					"City Line": "Brooklyn",
+					"New Lots": "Brooklyn",
+					"Paerdegat Basin": "Brooklyn",
+					"Remsen Village": "Brooklyn",
+					Rugby: "Brooklyn",
+					Weeksville: "Brooklyn",
+					"Wyckoff Gardens": "Brooklyn",
+					"Ocean Hill": "Brooklyn",
+					Brownsville: "Brooklyn",
+					"Broadway Junction": "Brooklyn",
+					"Ocean Parkway": "Brooklyn",
+					Seagate: "Brooklyn",
+					"Sea Gate": "Brooklyn",
+				};
 
-			const width = 800;
-			const height = 600;
+				// Count districts
+				const districtCounts = {};
+				data.forEach((listing) => {
+					const neighborhood = listing.neighbourhood;
+					const district =
+						neighborhoodToDistrict[neighborhood] || "Other";
+					if (districtCounts[district]) {
+						districtCounts[district]++;
+					} else {
+						districtCounts[district] = 1;
+					}
+				});
 
-			const svg = d3.select("svg");
-
-			// Draw boundary circle
-			const boundaryRadius = Math.min(width, height) / 2 - 20;
-			const centerX = width / 2;
-			const centerY = height / 2;
-			svg.append("circle")
-				.attr("cx", centerX)
-				.attr("cy", centerY)
-				.attr("r", boundaryRadius)
-				.attr("fill", "none")
-				.attr("stroke", "black")
-				.attr("stroke-width", 2);
-
-			const sizeScale = d3
-				.scaleLinear()
-				.domain([0, d3.max(data, (d) => d.count)])
-				.range([20, 70]);
-
-			const simulation = d3
-				.forceSimulation(data)
-				.force("x", d3.forceX(centerX).strength(0.1))
-				.force("y", d3.forceY(centerY).strength(0.1))
-				.force(
-					"collision",
-					d3.forceCollide().radius((d) => sizeScale(d.count) + 2)
-				)
-				.on("tick", ticked);
-
-			const drag = d3.drag()
-				.on("start", dragstarted)
-				.on("drag", dragged)
-				.on("end", dragended);
-
-			function ticked() {
-				const u = svg.selectAll("circle.bubble").data(data);
-
-				u.enter()
-					.append("circle")
-					.attr("class", "bubble")
-					.attr("r", (d) => sizeScale(d.count))
-					.call(drag)
-					.on("click", (event, d) => {
-						alert(`Total Airbnbs in ${d.borough}: ${d.count}`);
+				// Convert counts to an array suitable for D3
+				const districtData = Object.keys(districtCounts).map(
+					(district) => ({
+						district: district,
+						count: districtCounts[district],
 					})
-					.merge(u)
-					.attr("cx", (d) => {
-						const r = sizeScale(d.count);
-						const dx = d.x - centerX;
-						const dy = d.y - centerY;
-						const distance = Math.sqrt(dx * dx + dy * dy);
-						if (distance + r > boundaryRadius) {
-							const angle = Math.atan2(dy, dx);
-							d.x = centerX + (boundaryRadius - r) * Math.cos(angle);
-						}
-						return d.x;
-					})
-					.attr("cy", (d) => {
-						const r = sizeScale(d.count);
-						const dx = d.x - centerX;
-						const dy = d.y - centerY;
-						const distance = Math.sqrt(dx * dx + dy * dy);
-						if (distance + r > boundaryRadius) {
-							const angle = Math.atan2(dy, dx);
-							d.y = centerY + (boundaryRadius - r) * Math.sin(angle);
-						}
-						return d.y;
-					});
+				);
 
-				const t = svg.selectAll("text").data(data);
+				const width = 500;
+				const height = 500;
 
-				t.enter()
-					.append("text")
-					.merge(t)
-					.attr("x", (d) => d.x)
-					.attr("y", (d) => d.y + 4)
-					.text((d) => d.borough);
-			}
+				const svg = d3.select("svg");
 
-			function dragstarted(event, d) {
-				if (!event.active) simulation.alphaTarget(0.3).restart();
-				d.fx = d.x;
-				d.fy = d.y;
-			}
+				// Draw boundary circle
+				const boundaryRadius = Math.min(width, height) / 2 - 20;
+				const centerX = width / 2;
+				const centerY = height / 2;
+				svg.append("circle")
+					.attr("cx", centerX)
+					.attr("cy", centerY)
+					.attr("r", boundaryRadius)
+					.attr("fill", "none")
+					.attr("stroke", "black")
+					.attr("stroke-width", 2);
 
-			function dragged(event, d) {
-				d.fx = event.x;
-				d.fy = event.y;
-			}
+				const sizeScale = d3
+					.scaleLinear()
+					.domain([0, d3.max(districtData, (d) => d.count)])
+					.range([20, 70]);
 
-			function dragended(event, d) {
-				if (!event.active) simulation.alphaTarget(0);
-				d.fx = null;
-				d.fy = null;
-			}
+				const simulation = d3
+					.forceSimulation(districtData)
+					.force("x", d3.forceX(centerX).strength(0.1))
+					.force("y", d3.forceY(centerY).strength(0.1))
+					.force(
+						"collision",
+						d3.forceCollide().radius((d) => sizeScale(d.count) + 2)
+					)
+					.on("tick", ticked);
+
+				const drag = d3
+					.drag()
+					.on("start", dragstarted)
+					.on("drag", dragged)
+					.on("end", dragended);
+
+				function ticked() {
+					const u = svg.selectAll("circle.bubble").data(districtData);
+
+					u.enter()
+						.append("circle")
+						.attr("class", "bubble")
+						.attr("r", (d) => sizeScale(d.count))
+						.call(drag)
+						.merge(u)
+						.attr("cx", (d) => {
+							const r = sizeScale(d.count);
+							const dx = d.x - centerX;
+							const dy = d.y - centerY;
+							const distance = Math.sqrt(dx * dx + dy * dy);
+							if (distance + r > boundaryRadius) {
+								const angle = Math.atan2(dy, dx);
+								d.x =
+									centerX +
+									(boundaryRadius - r) * Math.cos(angle);
+							}
+							return d.x;
+						})
+						.attr("cy", (d) => {
+							const r = sizeScale(d.count);
+							const dx = d.x - centerX;
+							const dy = d.y - centerY;
+							const distance = Math.sqrt(dx * dx + dy * dy);
+							if (distance + r > boundaryRadius) {
+								const angle = Math.atan2(dy, dx);
+								d.y =
+									centerY +
+									(boundaryRadius - r) * Math.sin(angle);
+							}
+							return d.y;
+						});
+
+					const t = svg.selectAll("text").data(districtData);
+
+					t.enter()
+						.append("text")
+						.merge(t)
+						.attr("x", (d) => d.x)
+						.attr("y", (d) => d.y + 4)
+						.text((d) => d.district);
+				}
+
+				function dragstarted(event, d) {
+					if (!event.active) simulation.alphaTarget(0.3).restart();
+					d.fx = d.x;
+					d.fy = d.y;
+				}
+
+				function dragged(event, d) {
+					d.fx = event.x;
+					d.fy = event.y;
+				}
+
+				function dragended(event, d) {
+					if (!event.active) simulation.alphaTarget(0);
+					d.fx = null;
+					d.fy = null;
+				}
+			});
 		</script>
 	</body>
 </html>

@@ -1,3 +1,4 @@
+
 export function initializeParisCircles(data) {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -90,7 +91,7 @@ export function initializeParisCircles(data) {
         drawCircle(150, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100));
 
         // Zeichnen des "not available"-Kreises (rechte Seite)
-        drawCircle(350, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100), true);
+        drawCircle(350, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100));
 
         // Fortsetzen der Animation, falls sie noch nicht abgeschlossen ist
         if (progress < 1) {
@@ -99,14 +100,14 @@ export function initializeParisCircles(data) {
     }
 
     // Funktion zum Zeichnen eines Kreises und der Prozentanzeige
-    function drawCircle(x, y, radius, percentage, isRightCircle = false) {
+    function drawCircle(x, y, radius, percentage) {
         // Zeichnen des Kreises
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
         ctx.fillStyle = "#ffffff"; // Füllfarbe des Kreises
         ctx.fill();
 
-        const backgroundColor = "#ffffff"; // Hintergrundfarbe
+        const backgroundColor = "#c5ecc9"; // Hintergrundfarbe
         const fontSize = 30; // Schriftgröße der Prozentzahl
         const text = percentage + "%";
 
@@ -114,31 +115,25 @@ export function initializeParisCircles(data) {
         ctx.font = `bold ${fontSize}px Arial`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
+        const textWidth = ctx.measureText(text).width;
 
-        // Bestimme die Textfarbe abhängig davon, ob es der rechte Kreis ist
-        if (isRightCircle) {
-            if (radius > fontSize) {
-                ctx.fillStyle = backgroundColor; // Textfarbe für den rechten Kreis = Hintergrundfarbe
-            } else {
-                ctx.fillStyle = "#000000"; // Textfarbe für den rechten Kreis = Standardfarbe
-            }
-        } else {
-            if (radius > fontSize) {
-                ctx.fillStyle = backgroundColor; // Textfarbe für den linken Kreis = Hintergrundfarbe
-            } else {
-                ctx.fillStyle = "#000000"; // Textfarbe für den linken Kreis = Standardfarbe
-            }
-        }
-
-        // Zeichne den Hintergrund
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = backgroundColor;
-        ctx.fill();
-
-        // Zeichne den Text
-        ctx.fillStyle = ctx.fillStyle === backgroundColor ? "#000000" : backgroundColor;
+        // Zeichne den Text in Weiß (für den gesamten Text, sowohl innen als auch außen)
+        ctx.fillStyle = "#ffffff"; // Weiße Schriftfarbe
         ctx.fillText(text, x, y);
+
+        // Wenn der Kreis kleiner als der Text ist, färbe den Text im inneren Bereich des Kreises
+        if (radius * 2 < textWidth) {
+            ctx.save(); // Speichere den aktuellen Canvas-Zustand
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI); // Definiere den Clip-Bereich (innerhalb des Kreises)
+            ctx.clip(); // Clip nur den inneren Teil des Kreises
+
+            // Zeichne den Text erneut, diesmal in der Hintergrundfarbe nur innerhalb des Kreises
+            ctx.fillStyle = backgroundColor; // Textfarbe = Hintergrundfarbe innerhalb des Kreises
+            ctx.fillText(text, x, y);
+
+            ctx.restore(); // Stelle den Canvas-Zustand wieder her
+        }
     }
 
     // Eventlistener für den Slider-Input
