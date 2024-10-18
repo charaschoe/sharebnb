@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="css/content.css" />
 		<link rel="stylesheet" href="css/newyork_dots.css" />
 		<link rel="stylesheet" href="css/tokyo.css" />
-		<link rel="stylesheet" href="css/circle.css" />
+		<link rel="stylesheet" href="css/circle.css" /> 
 	</head>
 	<body>
 		<main>
@@ -53,10 +53,24 @@
 					<label for="tab_2">
 						<div id="content" class="new-york">NEW YORK</div>
 						<div class="tab-content">
+							<h1>
+								N° of Airbnb listings
+								<span class="city-name">New York</span>
+								<span id="total-ids-new-york">Loading...</span>
+							</h1>
+							<h3>
+								<span id="apartments-new-york">Loading...</span>
+							</h3>
+							<h3>
+								<span id="population-new-york">Loading...</span> /
+								<span id="tourists-new-york">Loading...</span>
+							</h3>
+							<h3>
+								<span id="airbnb-index-new-york">Loading...</span>
+							</h3>
 							<div class="dots-wrapper" id="dots"></div>
 							<p id="info-text">
-								Out of 50 people, only a few can afford to live
-								in NYC based on the median income.
+								Out of 50 people, only a few can afford to live in NYC based on the median income.
 							</p>
 						</div>
 					</label>
@@ -79,10 +93,7 @@
 							<h3>
 								<span id="airbnb-index-tokyo">Loading...</span>
 							</h3>
-							<div
-								id="treemap-container"
-								style="width: 100%; height: 500px"
-							></div>
+							<div id="treemap-container" style="width: 100%; height: 500px"></div>
 							<div id="percentage-output"></div>
 						</div>
 						<script type="module" src="data/tokyo.js"></script>
@@ -119,13 +130,7 @@
 
 							<!-- Slider zur Steuerung -->
 							<div id="slider-container">
-								<input
-									type="range"
-									id="slider"
-									min="1"
-									max="32"
-									value="7"
-								/>
+								<input type="range" id="slider" min="1" max="32" value="7">
 								<div id="slider-value">Minimum Nights: 7</div>
 							</div>
 
