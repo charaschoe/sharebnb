@@ -67,3 +67,28 @@ rect:nth-child(even) {
 rect:hover {
   fill: #e35470;
 }
+
+/* Allgemeine Schriftart */
+body, svg {
+  font-family: "Inter", sans-serif;
+}
+
+/* Textstile für die Treemap */
+text {
+  fill: #000; /* Schwarzer Text für bessere Sichtbarkeit */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Container-Eigenschaften */
+#treemap-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Prozentanzeige */
+#percentage-output {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}

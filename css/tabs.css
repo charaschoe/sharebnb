@@ -36,11 +36,11 @@
 }
 
 .container label:nth-child(3) {
-	background: #e35470; /* Base */
+	background: #d9333f; /* Base */
 	opacity: 0.8;
 }
 .container label:nth-child(3):hover {
-	background: #e5889f;
+	background: #e35470;
 	opacity: 0.9; /* Lighter Shade */
 }
 .container label:nth-child(3):active {
@@ -58,3 +58,15 @@
 .container label:nth-child(4):active {
 	background: #96bcab;
 }
+
+/* .container label:nth-child(3) {
+	background: #e35470; 
+	opacity: 0.8;
+}
+.container label:nth-child(3):hover {
+	background: #e5889f;
+	opacity: 0.9; 
+}
+.container label:nth-child(3):active {
+	background: #e7a8ba; 
+} */

@@ -66,7 +66,7 @@ svg.append("g")
 const path = svg.append("path")
     .datum(sortedData)
     .attr("fill", "none")
-    .attr("stroke", "black")
+    .attr("stroke", "white")
     .attr("stroke-width", 5)
     .attr("d", line);
 
@@ -90,7 +90,7 @@ svg.selectAll(".dot")
     .attr("cx", d => x(d[0]))
     .attr("cy", d => y(d[1]))
     .attr("r", 0)
-    .attr("fill", "black")
+    .attr("fill", "white")
     .transition()
     .duration(2000)
     .attr("r", 10);
