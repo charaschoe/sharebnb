@@ -21,5 +21,11 @@
 	display: grid;
 	grid-template-columns: repeat(10, auto);
 	gap: 5px;
-	justify-content: center;
+	justify-content: right;
+}
+
+.info-text {
+	font-size: 1.5rem;
+	font-weight: 400;
+	text-align: right;
 }
