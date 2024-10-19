@@ -2,12 +2,6 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-#chart-container {
-    width: 700px;
-    height: 700px;
-    margin: 0 auto;
-    position: relative;
-}
 
 #percentage-output {
     text-align: center;
@@ -24,7 +18,8 @@ body {
 }
 
 .axis text {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .tooltip {
@@ -32,10 +27,13 @@ body {
     text-align: center;
     width: auto;
     height: auto;
-    padding: 5px;
-    font: 16px sans-serif;
-    border: 0;
+    font: 18px 'Inter', sans-serif;
+    font-weight: 600;
+    border: none;
     pointer-events: none;
     opacity: 0;
     color: #000;
+    background-color: none;
+    box-shadow: none;
 }
+

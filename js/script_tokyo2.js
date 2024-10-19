@@ -122,12 +122,20 @@ svg.selectAll(".dot")
 
         tooltip.transition()
             .duration(200)
-            .style("opacity", .9);
-        tooltip.html(`Host with ${d[0]} listings: ${d[1]} AirBnBs`)
-            .style("left", `${height -285 + margin.left}px`)
-            .style("top", `${height - margin.bottom + 10}px`);
-    })
-    .on("mouseout", function() {
+            .style("opacity", 1);
+        const listingText = d[0] === "1" ? "Inserat" : "Inseraten";
+        tooltip.html(`${d[1]} AirBnBs sind von Hosts mit ${d[0]} ${listingText}`)
+            .style("left", `${margin.left + 815}px`)
+            .style("top", `${height - margin.bottom + 325}px`)
+            .style("background-color", "transparent")
+            .style("color", "white")
+            .style("border", "none")  
+            .style("font-size", "16px")
+            .style("font-family", "Inter")
+            .style("text-shadow", "none")  // Remove drop shadow
+            .style("stroke", "transparent");
+        })
+        .on("mouseout", function() {
         d3.select(this).transition()
             .duration(200)
             .attr("r", 10);

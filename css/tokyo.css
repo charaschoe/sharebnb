@@ -14,7 +14,7 @@ body {
 }
 
 svg {
-  animation: loadAnimation 1s ease-out;
+  animation: loadAnimation cubic-bezier(0.39, 1.575, 1.965, 2.5) ease-in-out;
 }
 
 /* Animation beim Klicken */
@@ -30,15 +30,15 @@ svg {
   }
 }
 
-rect.clicked {
+circle.clicked {
   animation: clickAnimation 0.9s ease;
 }
 
-rect:nth-child(odd) {
+circle:nth-child(odd) {
   animation: loadAnimationFromLeft 1s ease-out;
 }
 
-rect:nth-child(even) {
+circle:nth-child(even) {
   animation: loadAnimationFromRight 1s ease-out;
 }
 
