@@ -75,7 +75,7 @@ body, svg {
 
 /* Textstile für die Treemap */
 text {
-  fill: #000; /* Schwarzer Text für bessere Sichtbarkeit */
+  fill: green; /* Schwarzer Text für bessere Sichtbarkeit */
   font-size: 14px;
   font-weight: bold;
 }
@@ -86,9 +86,22 @@ text {
   text-align: center;
 }
 
-/* Prozentanzeige */
-#percentage-output {
+
+#percentage-output {                /* bearbeiten */
   font-size: 16px;
   font-weight: bold;
   margin-top: 20px;
 }
+
+/* Styles für die Kreise im Pack-Layout von script_tokyo.js */
+circle {
+  transition: fill 0.3s ease;
+}
+
+circle:hover {
+  stroke: black;
+  stroke-width: 2px;
+  cursor: pointer;
+  /* opacity: 0.25; */
+}
+
