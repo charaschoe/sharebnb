@@ -63,7 +63,7 @@ function showPercentageOutput(roomType, count, neighborhood = null) {           
   }
   let text = `Es gibt  ${count} ${roomTypeName}`;
   if (neighborhood !== null) {
-    text += `in der Nachbarschaft ${neighborhood}`;
+    text += ` in der Nachbarschaft ${neighborhood}`;
   }
   d3.select("#percentage-output")
     .text(text)
