@@ -76,28 +76,33 @@ export function initializeParisCircles(data) {
     function animateCircles(timestamp) {
         if (!animationStartTime) animationStartTime = timestamp;
         const elapsed = timestamp - animationStartTime;
-
+    
         // Berechnung des Fortschritts (0 bis 1)
         const progress = Math.min(elapsed / animationDuration, 1);
-
+    
         // Weiche Interpolation der Radien
         currentAvailableRadius = currentAvailableRadius + (targetAvailableRadius - currentAvailableRadius) * progress;
         currentNonAvailableRadius = currentNonAvailableRadius + (targetNonAvailableRadius - currentNonAvailableRadius) * progress;
-
+    
         // Löschen des Canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
+        // Zeichnen der Labels
+        drawLabel("Available", 150, 20); // Position für den Text über dem linken Kreis
+        drawLabel("Not Available", 350, 20); // Position für den Text über dem rechten Kreis
+    
         // Zeichnen des "available"-Kreises (linke Seite)
         drawCircle(150, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100));
-
+    
         // Zeichnen des "not available"-Kreises (rechte Seite)
         drawCircle(350, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100));
-
+    
         // Fortsetzen der Animation, falls sie noch nicht abgeschlossen ist
         if (progress < 1) {
             requestAnimationFrame(animateCircles);
         }
     }
+    
 
     function drawCircle(x, y, radius, percentage) {
         // Zeichnen des Kreises
@@ -131,6 +136,16 @@ export function initializeParisCircles(data) {
     
         ctx.restore(); // Stelle den Canvas-Zustand wieder her
     }
+    
+    // Neue Funktion zum Zeichnen von Labels über den Kreisen
+    function drawLabel(text, x, y) {
+        ctx.font = "20px Arial"; // Schriftgröße der Labels
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+        ctx.fillStyle = "#ffffff"; // Farbe des Textes
+        ctx.fillText(text, x, y);
+    }
+    
     
     
     
