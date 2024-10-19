@@ -42,102 +42,79 @@ const entireHomeCount = roomTypeData.get("Entire home/apt") || 0;
 const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(2);
 console.log(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
 
-// Konvertiere die Daten in ein hierarchisches Format
-const root = d3
-  .hierarchy({ children: Array.from(roomTypeData, ([key, value]) => ({ name: key, value })) })
-  .sum((d) => d.value)
-  .sort((a, b) => b.value - a.value);
-
-console.log("Hierarchische Datenstruktur (root):", root);
-
-// Erstelle ein Pack-Layout
-d3.pack().size([width, height]).padding(2)(root);
-console.log("Pack-Layout erstellt:", root.leaves());
-
-// Zeichne die Kreise des Pack-Layouts
-const node = svg
-  .selectAll("g")
-  .data(root.leaves())
-  .enter()
-  .append("g")
-  .attr("transform", (d) => `translate(${d.x},${d.y})`);
-
-console.log("Anzahl der Knoten (Kreise):", node.size());
-
-// Kreise
-node
-  .append("circle")
-  .attr("r", (d) => d.r)
-  .attr("fill", (d) => color(d.data.name));
-
-console.log("Kreise wurden gezeichnet.");
-
-// Show percentage output on hover
-node.on("mouseover", function (event, d) {
-  d3.select(this).raise(); // Bring the hovered element to the front
-  const roomType = d.data.name;
-  const minNights = d.data.value;
+// Funktion zur Anzeige des Prozentsatzes
+function showPercentageOutput(roomType, count, neighborhood = null) {
+  let text = `Unterkunftsart: ${roomType === "Entire home/apt" ? "Gesamte Wohnung" : roomType}, Anzahl: ${count}`;
+  if (neighborhood !== null) {
+    text += `, Nachbarschaft: ${neighborhood}`;
+  }
   d3.select("#percentage-output")
-    .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}`)
-    .style("display", "block"); // Show the percentage output
-}).on("mouseout", function () {
-  d3.select("#percentage-output")
-    .style("display", "none"); // Hide the percentage output
-});
+    .text(text)
+    .style("display", "block")
+    .style("position", "fixed")
+    .style("left", "25%") // Center horizontally
+    .style("transform", "translateX(-50%)") // Adjust for centering
+    .style("bottom", "10px") // Fixed position from the bottom
+    .style("font-size", "16px")
+    .style("font-family", "Inter")
+    .style("font-weight", "400");
+}
 
-console.log("Pack-Layout erfolgreich erstellt.");
+// Funktion zum Zeichnen des Pack-Layouts
+function drawPackLayout(root, isFiltered = false) {
+  const nodes = svg.selectAll("g").data(root.leaves(), d => d.data.name);
+
+  const nodesEnter = nodes.enter().append("g")
+    .attr("transform", (d) => `translate(${d.x},${d.y})`);
+
+  nodesEnter.append("circle")
+    .attr("r", (d) => d.r)
+    .attr("fill", (d) => color(d.data.name));
+
+  nodesEnter.merge(nodes)
+    .attr("transform", (d) => `translate(${d.x},${d.y})`);
+
+  nodes.exit().remove();
+
+  nodesEnter.on("mouseover", function (event, d) {
+    const roomType = d.data.name;
+    const count = d.value;
+    const neighborhood = isFiltered ? d.data.name : null;
+    showPercentageOutput(roomType, count, neighborhood);
+  }).on("mouseout", function () {
+    d3.select("#percentage-output")
+      .style("display", "none");
+  });
+
+  nodesEnter.on("click", (event, d) => {
+    if (isFiltered) {
+      drawInitialPackLayout();
+    } else {
+      updatePackLayout(d.data.name);
+    }
+  });
+}
 
 // Funktion zum Aktualisieren des Pack-Layouts basierend auf dem ausgewählten Raumtyp
 function updatePackLayout(roomType) {
   const filteredData = data.filter((d) => d.room_type === roomType);
-  const minNightsData = d3.rollup(
+  const neighborhoodData = d3.rollup(
     filteredData,
     (v) => v.length,
-    (d) => d.minimum_nights >= 7 ? "7+" : d.minimum_nights
+    (d) => d.neighbourhood
   );
 
   const newRoot = d3
-    .hierarchy({ children: Array.from(minNightsData, ([key, value]) => ({ name: key, value })) })
+    .hierarchy({ children: Array.from(neighborhoodData, ([key, value]) => ({ name: key, value })) })
     .sum((d) => d.value)
     .sort((a, b) => b.value - a.value);
 
   d3.pack().size([width, height]).padding(2)(newRoot);
 
-  const nodes = svg.selectAll("g").data(newRoot.leaves());
-
-  nodes
-    .enter()
-    .append("g")
-    .merge(nodes)
-    .attr("transform", (d) => `translate(${d.x},${d.y})`)
-    .each(function (d) {
-      const g = d3.select(this);
-      g.selectAll("circle").data([d])
-        .enter()
-        .append("circle")
-        .merge(g.selectAll("circle"))
-        .attr("r", (d) => d.r)
-        .attr("fill", (d) => color(roomType));
-    });
-
-  nodes.exit().remove();
-
-  nodes.on("mouseover", function (event, d) {
-    const minNights = d.data.name;
-    const count = d.value;
-    d3.select("#percentage-output")
-      .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}, Count: ${count}`)
-      .style("display", "block"); // Show the percentage output
-  }).on("mouseout", function () {
-    d3.select("#percentage-output")
-      .style("display", "none"); // Hide the percentage output
-  });
-
-  nodes.on("click", () => {
-    drawInitialPackLayout();
-  });
+  drawPackLayout(newRoot, true);
 }
 
+// Zeichne das initiale Pack-Layout
 function drawInitialPackLayout() {
   const root = d3
     .hierarchy({ children: Array.from(roomTypeData, ([key, value]) => ({ name: key, value })) })
@@ -146,43 +123,7 @@ function drawInitialPackLayout() {
 
   d3.pack().size([width, height]).padding(2)(root);
 
-  const node = svg.selectAll("g").data(root.leaves());
-
-  node
-    .enter()
-    .append("g")
-    .merge(node)
-    .attr("transform", (d) => `translate(${d.x},${d.y})`)
-    .each(function (d) {
-      const g = d3.select(this);
-      g.selectAll("circle").data([d])
-        .enter()
-        .append("circle")
-        .merge(g.selectAll("circle"))
-        .attr("r", (d) => d.r)
-        .attr("fill", (d) => color(d.data.name));
-    });
-
-  node.exit().remove();
-
-  node.on("mouseover", function (event, d) {
-    const roomType = d.data.name;
-    const count = d.value;
-    d3.select("#percentage-output")
-      .text(`Room Type: ${roomType}, Count: ${count}`)
-      .style("display", "block")
-      .style("position", "fixed")
-      .style("left", "10px") // Fixed position from the left
-      .style("bottom", "10px"); // Fixed position from the bottom
-  }).on("mouseout", function () {
-    d3.select("#percentage-output")
-      .style("display", "none");
-  });
-
-  node.on("click", (event, d) => {
-    updatePackLayout(d.data.name);
-  });
+  drawPackLayout(root);
 }
 
-// Zeichne das initiale Pack-Layout
 drawInitialPackLayout();
