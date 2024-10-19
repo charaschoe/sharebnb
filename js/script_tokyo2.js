@@ -1,7 +1,7 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 import { tokyoData } from "../data/tokyo.js";
 
-const height = 350;
+const height = 450;
 const width = (700 / 500) * height;
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
@@ -53,20 +53,39 @@ const sortedData = Array.from(hostListingsData).sort((a, b) => {
     return x.domain().indexOf(a[0]) - x.domain().indexOf(b[0]);
 });
 
-svg.append("g")
+const xAxis = svg.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
     .call(d3.axisBottom(x).tickSize(0).tickPadding(10).tickFormat(""));
 
-svg.append("g")
+const yAxis = svg.append("g")
     .attr("class", "axis")
     .call(d3.axisLeft(y).tickSize(0).tickPadding(10).tickFormat(""));
+
+// Add x-axis label
+xAxis.append("text")
+    .attr("class", "axis-label")
+    .attr("x", (width - margin.left - margin.right) / 2)
+    .attr("y", margin.bottom - 10)
+    .style("fill", "white")
+    .style("text-anchor", "middle")
+    .text("Anzahl der Wohnungen des Hosts");
+
+// Add y-axis label
+yAxis.append("text")
+    .attr("class", "axis-label")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -(height - margin.top - margin.bottom) / 2)
+    .attr("y", -margin.left + 10)
+    .style("fill", "white")
+    .style("text-anchor", "left")
+    .text("Anzahl der AirBnBs");
 
 // Initiale Animation für die Linie
 const path = svg.append("path")
     .datum(sortedData)
     .attr("fill", "none")
-    .attr("stroke", "white")
+    .attr("stroke", "white")                // Farbe der Linie
     .attr("stroke-width", 5)
     .attr("d", line);
 
@@ -90,7 +109,7 @@ svg.selectAll(".dot")
     .attr("cx", d => x(d[0]))
     .attr("cy", d => y(d[1]))
     .attr("r", 0)
-    .attr("fill", "white")
+    .attr("fill", "white")              // Farbe der Punkte
     .transition()
     .duration(2000)
     .attr("r", 10);
