@@ -23,20 +23,20 @@ rect {
 
 /* Hover-Effekt für die Balken */
 rect:hover {
-  fill: #373737; /* Farbe ändern, wenn der Benutzer über den Balken fährt */
+  fill: #464646; /* Farbe ändern, wenn der Benutzer über den Balken fährt */
 }
 
 /* Style für die X-Achsen-Beschriftungen */
 .axis text {
   font-size: 12px; /* Größe der Achsenbeschriftungen */
-  fill: #333; /* Textfarbe */
+  fill: #ffffff; /* Textfarbe */
 }
 
 /* Style für die Y-Achsen-Beschriftung */
 .axis text.y-axis-label {
   font-size: 14px;
   font-weight: bold;
-  fill: #333;
+  fill: #ffffff;
 }
 
 /* Style für den Tooltip */
@@ -60,7 +60,7 @@ rect:hover {
 
 /* Drehe die X-Achsenbeschriftungen leicht */
 .axis-x text {
-  transform: rotate(-15deg);
+  transform: rotate(36deg);
   text-anchor: end;
   font-size: 12px;
 }
