@@ -3,7 +3,7 @@ import * as d3 from "https://cdn.skypack.dev/d3@7";
 import { tokyoData } from "../data/tokyo.js";
 
 // Größe des SVG-Containers
-const height = 350;
+const height = 425;
 const width = (700 / 500) * height; // Maintain the same aspect ratio
 
 // Farbskala (angepasst für besseren Kontrast)
@@ -43,8 +43,8 @@ const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(2)
 console.log(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
 
 // Ausgabe des Prozentsatzes in HTML
-d3.select("#percentage-output")
-  .text(`In ${percentageEntireHome}% der Zeit hast du ein Appartment für dich alleine.`);
+// d3.select("#percentage-output")
+//   .text(`In ${percentageEntireHome}% der Zeit hast du ein Appartment für dich alleine.`);
 
 // Konvertiere die Daten in ein hierarchisches Format
 const root = d3
@@ -76,22 +76,13 @@ node
 
 console.log("Kreise wurden gezeichnet.");
 
-// Text
-const text = node
-  .append("text")
-  .attr("dy", (d) => d.r + 10) // Position the text below the circles
-  .attr("text-anchor", "middle")
-  .attr("opacity", 0) // Hide the text initially
-  .text((d) => `${d.data.name}: ${d.value}`);
-
-console.log("Texte wurden hinzugefügt.");
-
-// Show text on hover
+// Show percentage output on hover
 node.on("mouseover", function (event, d) {
   d3.select(this).raise(); // Bring the hovered element to the front
-  d3.select(this).select("text").attr("opacity", 1);
-}).on("mouseout", function (event, d) {
-  d3.select(this).select("text").attr("opacity", 0);
+  const roomType = d.data.name;
+  const minNights = d.data.value;
+  d3.select("#percentage-output")
+    .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}`);
 });
 
 console.log("Pack-Layout erfolgreich erstellt.");
@@ -127,23 +118,18 @@ function updatePackLayout(roomType) {
         .merge(g.selectAll("circle"))
         .attr("r", (d) => d.r)
         .attr("fill", (d) => color(roomType));
-
-      g.selectAll("text").data([d])
-        .enter()
-        .append("text")
-        .merge(g.selectAll("text"))
-        .attr("dy", (d) => d.r + 10) // Position the text below the circles
-        .attr("text-anchor", "middle")
-        .attr("opacity", 0) // Hide the text initially
-        .text((d) => `Minimum ${d.data.name} Night${d.data.name > 1 ? 's' : ''}: ${d.value}`);
     });
 
   nodes.exit().remove();
 
   nodes.on("mouseover", function (event, d) {
-    d3.select(this).select("text").attr("opacity", 1);
+    const minNights = d.data.name;
+    const count = d.value;
+    d3.select("#percentage-output")
+      .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}, Count: ${count}`);
   }).on("mouseout", function (event, d) {
-    d3.select(this).select("text").attr("opacity", 0);
+    d3.select("#percentage-output")
+      .text(`Room Type: ${d.data.name}, Count: ${d.value}`);
   });
 
   nodes.on("click", () => {
@@ -174,23 +160,18 @@ function drawInitialPackLayout() {
         .merge(g.selectAll("circle"))
         .attr("r", (d) => d.r)
         .attr("fill", (d) => color(d.data.name));
-
-      g.selectAll("text").data([d])
-        .enter()
-        .append("text")
-        .merge(g.selectAll("text"))
-        .attr("dy", (d) => d.r + 10) // Position the text below the circles
-        .attr("text-anchor", "middle")
-        .attr("opacity", 0) // Hide the text initially
-        .text((d) => `${d.data.name}: ${d.value} AirBnBs`);
     });
 
   node.exit().remove();
 
   node.on("mouseover", function (event, d) {
-    d3.select(this).select("text").attr("opacity", 1);
+    const roomType = d.data.name;
+    const count = d.value;
+    d3.select("#percentage-output")
+      .text(`Room Type: ${roomType}, Count: ${count}`);
   }).on("mouseout", function (event, d) {
-    d3.select(this).select("text").attr("opacity", 0);
+    d3.select("#percentage-output")
+      .text(`Room Type: ${d.data.name}, Count: ${d.value}`);
   });
 
   node.on("click", (event, d) => {
