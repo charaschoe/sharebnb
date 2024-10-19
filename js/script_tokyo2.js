@@ -1,7 +1,7 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 import { tokyoData } from "../data/tokyo.js";
 
-const height = 450;
+const height = 425;
 const width = (700 / 500) * height;
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
@@ -32,8 +32,8 @@ const totalEntries = data.length;
 const entireHomeCount = hostListingsData.get("Entire home/apt") || 0;
 const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(2);
 
-d3.select("#percentage-output")
-    .text(`In ${percentageEntireHome}% der Zeit hast du ein Appartment für dich alleine.`);
+// d3.select("#percentage-output")
+//     .text(`In ${percentageEntireHome}% der Zeit hast du ein Appartment für dich alleine.`);
 
 const x = d3.scalePoint()
     .domain(["1", "2", "3", "4", "5-9", "10-19", "20-49", "50+"])
@@ -86,7 +86,7 @@ const path = svg.append("path")
     .datum(sortedData)
     .attr("fill", "none")
     .attr("stroke", "white")                // Farbe der Linie
-    .attr("stroke-width", 5)
+    .attr("stroke-width", 3)
     .attr("d", line);
 
 const totalLength = path.node().getTotalLength();
@@ -109,7 +109,9 @@ svg.selectAll(".dot")
     .attr("cx", d => x(d[0]))
     .attr("cy", d => y(d[1]))
     .attr("r", 0)
-    .attr("fill", "white")              // Farbe der Punkte
+    .attr("fill", "transparent")              // Farbe der Punkte
+    .attr("stroke", "white")            // Randfarbe der Punkte
+    .attr("stroke-width", 3)
     .transition()
     .duration(2000)
     .attr("r", 10);
@@ -124,9 +126,10 @@ svg.selectAll(".dot")
             .duration(200)
             .style("opacity", 1);
         const listingText = d[0] === "1" ? "Inserat" : "Inseraten";
-        tooltip.html(`${d[1]} AirBnBs sind von Hosts mit ${d[0]} ${listingText}`)
-            .style("left", `${margin.left + 815}px`)
-            .style("top", `${height - margin.bottom + 325}px`)
+        const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
+        tooltip.html(`<b>${d[1]}</b> AirBnBs sind von Hosts mit <b>${d[0]} </b>${listingText}.<br> Das sind <b>${percentage}%</b> aller AirBnBs in Tokio!`)
+            .style("left", `${margin.left + 835}px`)
+            .style("top", `${height - margin.bottom + 390}px`)
             .style("background-color", "transparent")
             .style("color", "white")
             .style("border", "none")  
@@ -141,6 +144,6 @@ svg.selectAll(".dot")
             .attr("r", 10);
 
         tooltip.transition()
-            .duration(500)
+            .duration(200)
             .style("opacity", 0);
     });
