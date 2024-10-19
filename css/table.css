@@ -4,8 +4,8 @@ table {
     height: calc(100% - 25px);
     margin: 0 12.5px;
     table-layout: fixed;
-    width: 1500px;
-    height: 850px;
+    width: auto;
+    height: auto;
     font-size: 1rem;
     text-align: left;
 }
