@@ -1,4 +1,3 @@
-
 d3.json("data/paris.json").then(function(data) {
     // Falls data ein einzelnes Objekt ist, es in ein Array konvertieren
     if (!Array.isArray(data)) {
@@ -95,18 +94,21 @@ d3.json("data/paris.json").then(function(data) {
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(d3.axisBottom(x).tickSizeOuter(0))
         .selectAll("text")
-        .attr("transform", "rotate(-15)") 
+        .attr("transform", "rotate(0)")
+        .style("fill", "white") // Setze die Textfarbe der X-Achse auf Weiß
         .style("text-anchor", "end");
 
     // Füge die Y-Achse hinzu und beschrifte sie
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y).ticks(null, "s"))
+        .call(g => g.selectAll("text").style("fill", "white")) // Setze die Textfarbe der Y-Achse auf Weiß
+        .call(g => g.selectAll(".tick line").style("stroke", "white")) // Setze die Linien der Y-Achse auf Weiß
         .call(g => g.select(".domain").remove())
         .call(g => g.append("text")
             .attr("x", -marginLeft)
             .attr("y", 10)
-            .attr("fill", "currentColor")
+            .attr("fill", "white") // Setze die Beschriftungsfarbe auf Weiß
             .attr("text-anchor", "start")
-            .text("↑ Count of Room Types"));
+            .text(""));
 });

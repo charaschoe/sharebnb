@@ -99,42 +99,41 @@ export function initializeParisCircles(data) {
         }
     }
 
-    // Funktion zum Zeichnen eines Kreises und der Prozentanzeige
     function drawCircle(x, y, radius, percentage) {
         // Zeichnen des Kreises
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
         ctx.fillStyle = "#ffffff"; // Füllfarbe des Kreises
         ctx.fill();
-
-        const backgroundColor = "#c5ecc9"; // Hintergrundfarbe
+    
         const fontSize = 30; // Schriftgröße der Prozentzahl
         const text = percentage + "%";
-
+    
         // Setze die Text-Eigenschaften
         ctx.font = `bold ${fontSize}px Arial`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         const textWidth = ctx.measureText(text).width;
-
-        // Zeichne den Text in Weiß (für den gesamten Text, sowohl innen als auch außen)
+    
+        // Zeichne den Text in Weiß außerhalb des Kreises
         ctx.fillStyle = "#ffffff"; // Weiße Schriftfarbe
         ctx.fillText(text, x, y);
-
-        // Wenn der Kreis kleiner als der Text ist, färbe den Text im inneren Bereich des Kreises
-        if (radius * 2 < textWidth) {
-            ctx.save(); // Speichere den aktuellen Canvas-Zustand
-            ctx.beginPath();
-            ctx.arc(x, y, radius, 0, 2 * Math.PI); // Definiere den Clip-Bereich (innerhalb des Kreises)
-            ctx.clip(); // Clip nur den inneren Teil des Kreises
-
-            // Zeichne den Text erneut, diesmal in der Hintergrundfarbe nur innerhalb des Kreises
-            ctx.fillStyle = backgroundColor; // Textfarbe = Hintergrundfarbe innerhalb des Kreises
-            ctx.fillText(text, x, y);
-
-            ctx.restore(); // Stelle den Canvas-Zustand wieder her
-        }
+    
+        // Erstelle ein Clip-Bereich für den Kreis und zeichne den Text in Schwarz innerhalb des Kreises
+        ctx.save(); // Speichere den aktuellen Canvas-Zustand
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI); // Definiere den Clip-Bereich (innerhalb des Kreises)
+        ctx.clip(); // Clip nur den inneren Teil des Kreises
+    
+        // Zeichne den Text erneut, diesmal in Schwarz nur innerhalb des Kreises
+        ctx.fillStyle = "#96bcab"; // Textfarbe = Schwarz innerhalb des Kreises
+        ctx.fillText(text, x, y);
+    
+        ctx.restore(); // Stelle den Canvas-Zustand wieder her
     }
+    
+    
+    
 
     // Eventlistener für den Slider-Input
     slider.addEventListener("input", updateCircles);
