@@ -128,14 +128,14 @@ svg.selectAll(".dot")
         const listingText = d[0] === "1" ? "Inserat" : "Inseraten";
         const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
         tooltip.html(`<b>${d[1]}</b> AirBnBs sind von Hosts mit <b>${d[0]} </b>${listingText}.<br> Das sind <b>${percentage}%</b> aller AirBnBs in Tokio!`)
-            .style("left", `${margin.left + 835}px`)
+            .style("left", `${margin.left + 675}px`)
             .style("top", `${height - margin.bottom + 390}px`)
             .style("background-color", "transparent")
             .style("color", "white")
             .style("border", "none")  
             .style("font-size", "16px")
             .style("font-family", "Inter")
-            .style("text-shadow", "none")  // Remove drop shadow
+            .style("text-shadow", "none")  
             .style("stroke", "transparent");
         })
         .on("mouseout", function() {
