@@ -6,7 +6,7 @@ table {
     table-layout: fixed;
     width: 1500px;
     height: 850px;
-    font-size: small;
+    font-size: 1rem;
     text-align: left;
 }
 

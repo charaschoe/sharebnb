@@ -86,7 +86,7 @@ const path = svg.append("path")
     .datum(sortedData)
     .attr("fill", "none")
     .attr("stroke", "white")                // Farbe der Linie
-    .attr("stroke-width", 5)
+    .attr("stroke-width", 3)
     .attr("d", line);
 
 const totalLength = path.node().getTotalLength();
@@ -109,7 +109,9 @@ svg.selectAll(".dot")
     .attr("cx", d => x(d[0]))
     .attr("cy", d => y(d[1]))
     .attr("r", 0)
-    .attr("fill", "white")              // Farbe der Punkte
+    .attr("fill", "transparent")              // Farbe der Punkte
+    .attr("stroke", "white")            // Randfarbe der Punkte
+    .attr("stroke-width", 3)
     .transition()
     .duration(2000)
     .attr("r", 10);
@@ -142,6 +144,6 @@ svg.selectAll(".dot")
             .attr("r", 10);
 
         tooltip.transition()
-            .duration(500)
+            .duration(200)
             .style("opacity", 0);
     });
