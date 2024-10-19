@@ -43,10 +43,27 @@ const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(2)
 console.log(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
 
 // Funktion zur Anzeige des Prozentsatzes
-function showPercentageOutput(roomType, count, neighborhood = null) {
-  let text = `Unterkunftsart: ${roomType === "Entire home/apt" ? "Gesamte Wohnung" : roomType}, Anzahl: ${count}`;
+function showPercentageOutput(roomType, count, neighborhood = null) {           //prozentzahl anzeigen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  let roomTypeName;
+  switch (roomType) {
+    case "Entire home/apt":
+      roomTypeName = "gesamte Wohnungen";
+      break;
+    case "Private room":
+      roomTypeName = "private Zimmer";
+      break;
+    case "Shared room":
+      roomTypeName = "geteilte Zimmer";
+      break;
+    case "Hotel room":
+      roomTypeName = "Hotelzimmer";
+      break;
+    default:
+      roomTypeName = roomType;
+  }
+  let text = `Es gibt  ${count} ${roomTypeName}`;
   if (neighborhood !== null) {
-    text += `, Nachbarschaft: ${neighborhood}`;
+    text += `in der Nachbarschaft ${neighborhood}`;
   }
   d3.select("#percentage-output")
     .text(text)
