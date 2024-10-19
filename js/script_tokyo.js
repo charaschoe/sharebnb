@@ -71,7 +71,7 @@ function showPercentageOutput(roomType, count, neighborhood = null) {           
     .style("position", "fixed")
     .style("left", "25%") // Center horizontally
     .style("transform", "translateX(-50%)") // Adjust for centering
-    .style("bottom", "10px") // Fixed position from the bottom
+    .style("top", "230px") // Fixed position from the bottom
     .style("font-size", "16px")
     .style("font-family", "Inter")
     .style("font-weight", "400");

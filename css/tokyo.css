@@ -81,13 +81,15 @@ text {
 #treemap-container {
   margin: 0 auto;
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: -50px;
 }
 
 
 #percentage-output {                /* bearbeiten */
   font-size: 16px;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 /* Styles für die Kreise im Pack-Layout von script_tokyo.js */
