@@ -42,10 +42,6 @@ const entireHomeCount = roomTypeData.get("Entire home/apt") || 0;
 const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(2);
 console.log(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
 
-// Ausgabe des Prozentsatzes in HTML
-// d3.select("#percentage-output")
-//   .text(`In ${percentageEntireHome}% der Zeit hast du ein Appartment für dich alleine.`);
-
 // Konvertiere die Daten in ein hierarchisches Format
 const root = d3
   .hierarchy({ children: Array.from(roomTypeData, ([key, value]) => ({ name: key, value })) })
@@ -82,7 +78,11 @@ node.on("mouseover", function (event, d) {
   const roomType = d.data.name;
   const minNights = d.data.value;
   d3.select("#percentage-output")
-    .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}`);
+    .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}`)
+    .style("display", "block"); // Show the percentage output
+}).on("mouseout", function () {
+  d3.select("#percentage-output")
+    .style("display", "none"); // Hide the percentage output
 });
 
 console.log("Pack-Layout erfolgreich erstellt.");
@@ -126,10 +126,11 @@ function updatePackLayout(roomType) {
     const minNights = d.data.name;
     const count = d.value;
     d3.select("#percentage-output")
-      .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}, Count: ${count}`);
-  }).on("mouseout", function (event, d) {
+      .text(`Room Type: ${roomType}, Minimum Nights: ${minNights}, Count: ${count}`)
+      .style("display", "block"); // Show the percentage output
+  }).on("mouseout", function () {
     d3.select("#percentage-output")
-      .text(`Room Type: ${d.data.name}, Count: ${d.value}`);
+      .style("display", "none"); // Hide the percentage output
   });
 
   nodes.on("click", () => {
@@ -168,10 +169,14 @@ function drawInitialPackLayout() {
     const roomType = d.data.name;
     const count = d.value;
     d3.select("#percentage-output")
-      .text(`Room Type: ${roomType}, Count: ${count}`);
-  }).on("mouseout", function (event, d) {
+      .text(`Room Type: ${roomType}, Count: ${count}`)
+      .style("display", "block")
+      .style("position", "fixed")
+      .style("left", "10px") // Fixed position from the left
+      .style("bottom", "10px"); // Fixed position from the bottom
+  }).on("mouseout", function () {
     d3.select("#percentage-output")
-      .text(`Room Type: ${d.data.name}, Count: ${d.value}`);
+      .style("display", "none");
   });
 
   node.on("click", (event, d) => {
