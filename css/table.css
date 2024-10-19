@@ -1,0 +1,24 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: calc(100% - 25px);
+    margin: 0 12.5px;
+    table-layout: fixed;
+    width: 1500px;
+}
+
+/* Table row styling */
+tr {
+    border: 1px solid black;
+}
+
+/* Table data cell styling */
+td {
+    border: 1px solid black;
+}
+
+/* Center text in table cells */
+td {
+    text-align: center;
+    vertical-align: middle;
+}

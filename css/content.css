@@ -36,12 +36,20 @@
 	line-height: 1.5;
 	font-weight: 400;
 }
+.tab-content h1 {
+	max-width: 1000px;
+	margin-left: auto;
+	text-align: right;
+	font-weight: 600;
+	font-size: 1.75rem;
+}
 
 .tab-content h3 {
 	max-width: 1000px;
 	margin-left: auto;
 	text-align: right;
-	font-weight: 400;
+	font-weight: 300;
+	font-size: 1.5rem;
 }
 
 .tab-content h6 {
