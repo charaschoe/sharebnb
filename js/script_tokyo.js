@@ -43,7 +43,7 @@ const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(2)
 console.log(`Prozentsatz der 'Entire home/apt': ${percentageEntireHome}%`);
 
 // Funktion zur Anzeige des Prozentsatzes
-function showPercentageOutput(roomType, count, neighborhood = null) {           //prozentzahl anzeigen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+function showPercentageOutput(roomType, count, neighborhood = null) {           
   let roomTypeName;
   switch (roomType) {
     case "Entire home/apt":
@@ -61,10 +61,12 @@ function showPercentageOutput(roomType, count, neighborhood = null) {           
     default:
       roomTypeName = roomType;
   }
-  let text = `Es gibt  ${count} ${roomTypeName}`;
+  let text = `Es gibt ${count} ${roomTypeName}`;                                        //prozentzahl anzeigen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   if (neighborhood !== null) {
     text += ` in der Nachbarschaft ${neighborhood}`;
   }
+  const percentage = ((count / totalEntries) * 100).toFixed(2);
+  text += ` Das sind ${percentage}%.`;
   d3.select("#percentage-output")
     .text(text)
     .style("display", "block")
