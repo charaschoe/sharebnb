@@ -24,11 +24,11 @@ body {
 
 .tooltip {
     position: absolute;
-    text-align: center;
+    text-align: left;
     width: auto;
     height: auto;
-    font: 18px 'Inter', sans-serif;
-    font-weight: 600;
+    font: 20px 'Inter', sans-serif;
+    font-weight: 400;
     border: none;
     pointer-events: none;
     opacity: 0;

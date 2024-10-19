@@ -1,10 +1,13 @@
 table {
     border: 1px solid black;
     border-collapse: collapse;
-    width: calc(100% - 25px);
+    height: calc(100% - 25px);
     margin: 0 12.5px;
     table-layout: fixed;
     width: 1500px;
+    height: 850px;
+    font-size: small;
+    text-align: left;
 }
 
 /* Table row styling */
@@ -19,7 +22,7 @@ td {
 
 /* Center text in table cells */
 td {
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
 }
 

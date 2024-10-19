@@ -124,9 +124,10 @@ svg.selectAll(".dot")
             .duration(200)
             .style("opacity", 1);
         const listingText = d[0] === "1" ? "Inserat" : "Inseraten";
-        tooltip.html(`${d[1]} AirBnBs sind von Hosts mit ${d[0]} ${listingText}`)
+        const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
+        tooltip.html(`<b>${d[1]}</b> AirBnBs sind von Hosts mit <b>${d[0]} </b>${listingText}.<br> Das sind <b>${percentage}%</b> aller AirBnBs in Tokio!`)
             .style("left", `${margin.left + 815}px`)
-            .style("top", `${height - margin.bottom + 325}px`)
+            .style("top", `${height - margin.bottom + 370}px`)
             .style("background-color", "transparent")
             .style("color", "white")
             .style("border", "none")  
