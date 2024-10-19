@@ -137,62 +137,64 @@
 					<label for="tab_4">
 						<div id="content" class="paris">PARIS</div>
 						<div class="tab-content">
-							<h1>
-								N° of Airbnb listings
-								<span class="city-name">Paris</span>
-								<span id="total-ids-paris">Loading...</span>
-							</h1>
-							<h3>
-								<span id="apartments-paris">Loading...</span>
-							</h3>
-							<h3>
-								<span id="population-paris">Loading...</span> /
-								<span id="tourists-paris">Loading...</span>
-							</h3>
-							<h3>
-								<span id="airbnb-index-paris">Loading...</span>
-							</h3>
-
-							
-							<div class="container" style="display: flex; justify-content: space-around; margin-left: -300px; gap: 20px; margin-top: 350px;">
-
-
-								<div class="chart-group">
-									<div id="chart"></div>
-								</div>
-								<div class="rest-group">
-									<div class="label-container">
-										<div class="label">available</div>
-										<div class="label">not available</div>
-									</div>
-									<canvas id="canvas"></canvas>
-									<div id="slider-container">
-										<input type="range" id="slider" min="1" max="32" value="7">
-										<div id="slider-value">Minimum Nights: 7</div>
-									</div>
-								</div>
-							</div>
-
+							<table>
+								<tr>
+									<td>
+										<h1>
+											N° of Airbnb listings
+											<span class="city-name">Paris</span>
+											<span id="total-ids-paris">Loading...</span>
+										</h1>
+										<h3>
+											<span id="apartments-paris">Loading...</span>
+										</h3>
+										<h3>
+											<span id="population-paris">Loading...</span> /
+											<span id="tourists-paris">Loading...</span>
+										</h3>
+										<h3>
+											<span id="airbnb-index-paris">Loading...</span>
+										</h3>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div id="chart-container-paris">
+											<div class="chart-group">
+												<div id="chart"></div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="rest-group">
+											<div class="label-container">
+												<div class="label"></div>
+												<div class="label"></div>
+											</div>
+											<canvas id="canvas"></canvas>
+											<div id="slider-container">
+												<input type="range" id="slider" min="1" max="32" value="7">
+												<div id="slider-value">Minimum Nights: 7</div>
+												<h5>
+													Slide to find out how many AirBnB's are available per minimum nights!
+												</h5>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+					
 							<!-- Include D3.js library -->
 							<script src="https://d3js.org/d3.v6.min.js"></script>
-						
+					
 							<!-- Include your JavaScript code -->
 							<script src="js/barchart.js"></script>
-
-
-
-
-
-
-
-
 							<script type="module" src="js/circle.js"></script>
-							
-							
-
 							<script src="js/circle.js"></script>
 						</div>
 					</label>
+					
+					
 				</div>
 			</section>
 		</main>

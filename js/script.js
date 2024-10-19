@@ -114,3 +114,7 @@ cities.forEach((city) => {
 			document.getElementById(`airbnb-index-${city.name}`).textContent = "Error";
 		});
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Beispielaufruf, um die Kreise zu initialisieren
+    initializeParisCircles(yourDataArray);
+});

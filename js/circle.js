@@ -1,4 +1,3 @@
-
 export function initializeParisCircles(data) {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -72,33 +71,36 @@ export function initializeParisCircles(data) {
         sliderValueDisplay.innerText = `Minimum Nights: ${minimumNights}`;
     }
 
-    // Funktion zur Animation der Kreisgrößen
     function animateCircles(timestamp) {
         if (!animationStartTime) animationStartTime = timestamp;
         const elapsed = timestamp - animationStartTime;
-
+    
         // Berechnung des Fortschritts (0 bis 1)
         const progress = Math.min(elapsed / animationDuration, 1);
-
+    
         // Weiche Interpolation der Radien
         currentAvailableRadius = currentAvailableRadius + (targetAvailableRadius - currentAvailableRadius) * progress;
         currentNonAvailableRadius = currentNonAvailableRadius + (targetNonAvailableRadius - currentNonAvailableRadius) * progress;
-
+    
         // Löschen des Canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
+        // Zeichnen der Labels
+        drawLabel("Available", 250, 20); // Verschiebe die Position des linken Texts weiter nach rechts
+        drawLabel("Not Available", 450, 20); // Verschiebe die Position des rechten Texts weiter nach rechts
+    
         // Zeichnen des "available"-Kreises (linke Seite)
-        drawCircle(150, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100));
-
+        drawCircle(250, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100)); // x = 250
+    
         // Zeichnen des "not available"-Kreises (rechte Seite)
-        drawCircle(350, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100));
-
+        drawCircle(450, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100)); // x = 450
+    
         // Fortsetzen der Animation, falls sie noch nicht abgeschlossen ist
         if (progress < 1) {
             requestAnimationFrame(animateCircles);
         }
     }
-
+    
     function drawCircle(x, y, radius, percentage) {
         // Zeichnen des Kreises
         ctx.beginPath();
@@ -132,21 +134,27 @@ export function initializeParisCircles(data) {
         ctx.restore(); // Stelle den Canvas-Zustand wieder her
     }
     
-    
-    
-
-    // Eventlistener für den Slider-Input
-    slider.addEventListener("input", updateCircles);
+    // Neue Funktion zum Zeichnen von Labels über den Kreisen
+    function drawLabel(text, x, y) {
+        ctx.font = "20px Arial"; // Schriftgröße der Labels
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+        ctx.fillStyle = "#ffffff"; // Farbe des Textes
+        ctx.fillText(text, x, y);
+    }
 
     // Setze die initiale Canvas-Größe basierend auf der Geräte-Pixel-Ratio
     function initializeCanvas() {
         const dpr = window.devicePixelRatio || 1;
-        canvas.style.width = '500px';
-        canvas.style.height = '300px';
-        canvas.width = 500 * dpr;
-        canvas.height = 300 * dpr;
+        canvas.style.width = '600px'; // Erhöhe die Breite des Canvas
+        canvas.style.height = '400px'; // Die Höhe kann bleiben oder angepasst werden
+        canvas.width = 600 * dpr; // Passe auch die tatsächliche Breite an die Geräte-Pixel-Ratio an
+        canvas.height = 100 * dpr;
         ctx.scale(dpr, dpr);
     }
+
+    // Eventlistener für den Slider-Input
+    slider.addEventListener("input", updateCircles);
 
     // Initialisieren und Zeichnen des ersten Frames
     initializeCanvas();
