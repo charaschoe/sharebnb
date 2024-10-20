@@ -69,7 +69,7 @@ xAxis.append("text")
     .attr("y", margin.bottom - 10)
     .style("fill", "white")
     .style("text-anchor", "middle")
-    .text("Anzahl der Wohnungen des Hosts");
+    .text("Number of apartments of the host");
 
 // Add y-axis label
 yAxis.append("text")
@@ -79,7 +79,7 @@ yAxis.append("text")
     .attr("y", -margin.left + 10)
     .style("fill", "white")
     .style("text-anchor", "left")
-    .text("Anzahl der AirBnBs");
+    .text("Number of AirBnBs");
 
 // Initiale Animation für die Linie
 const path = svg.append("path")
@@ -125,9 +125,9 @@ svg.selectAll(".dot")
         tooltip.transition()
             .duration(200)
             .style("opacity", 1);
-        const listingText = d[0] === "1" ? "Inserat" : "Inseraten";
+        const listingText = d[0] === "1" ? "listing" : "listings";
         const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
-        tooltip.html(`<b>${d[1]}</b> AirBnBs sind von Hosts mit <b>${d[0]} </b>${listingText}.<br> Das sind <b>${percentage}%</b> aller AirBnBs in Tokio!`)
+        tooltip.html(`<b>${d[1]}</b> AirBnBs are from hosts with <b>${d[0]} </b>${listingText}.<br> That is <b>${percentage}%</b> of all AirBnBs in Tokyo!`)
             .style("left", `${margin.left + 675}px`)
             .style("top", `${height - margin.bottom + 390}px`)
             .style("background-color", "transparent")
