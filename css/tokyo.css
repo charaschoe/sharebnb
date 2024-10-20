@@ -93,14 +93,13 @@ text {
 }
 
 /* Styles für die Kreise im Pack-Layout von script_tokyo.js */
-circle {
+/* circle {
 	transition: fill 0.3s ease;
-}
+} */
 
 circle:hover {
 	stroke: black;
 	stroke-width: 2px;
 	cursor: pointer;
-
-	/* opacity: 0.25; */
 }
+
