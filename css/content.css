@@ -36,6 +36,20 @@
 	line-height: 1.5;
 	font-weight: 400;
 }
+
+.tab-content-frontpage {
+	display: none;
+	color: rgb(255, 0, 0);
+	text-align: left;
+	font-size: 1.5rem;
+	position: absolute;
+	top: 15%;
+	align-items: center;
+	transform: translateX(0);
+	line-height: 1.5;
+	font-weight: 400;
+}
+
 .tab-content h1 {
 	max-width: 1000px;
 	margin-left: auto;

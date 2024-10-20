@@ -1,45 +1,45 @@
 /* Animation beim Laden der Seite */
 body {
-  overflow: hidden;
+	overflow: hidden;
 }
 @keyframes loadAnimation {
-  0% {
-    transform: translateX(-100%) scale(0);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
+	0% {
+		transform: translateX(-100%) scale(0);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0) scale(1);
+		opacity: 1;
+	}
 }
 
 svg {
-  animation: loadAnimation cubic-bezier(0.39, 1.575, 1.965, 2.5) ease-in-out;
+	animation: loadAnimation cubic-bezier(0.39, 1.575, 1.965, 2.5) ease-in-out;
 }
 
 /* Animation beim Klicken */
 @keyframes clickAnimation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+	}
 }
 
 circle.clicked {
-  animation: clickAnimation 0.9s ease;
+	animation: clickAnimation 0.9s ease;
 }
 
 circle:nth-child(odd) {
-  animation: loadAnimationFromLeft 1s ease-out;
+	animation: loadAnimationFromLeft 1s ease-out;
 }
 
 circle:nth-child(even) {
-  animation: loadAnimationFromRight 1s ease-out;
+	animation: loadAnimationFromRight 1s ease-out;
 }
 
 /* @keyframes loadAnimationFromLeft {
@@ -64,44 +64,43 @@ circle:nth-child(even) {
   }
 } */
 
-
 /* Allgemeine Schriftart */
-body, svg {
-  font-family: "Inter", sans-serif;
+body,
+svg {
+	font-family: "Inter", sans-serif;
 }
 
 /* Textstile für die Treemap */
 text {
-  fill: green; /* Schwarzer Text für bessere Sichtbarkeit */
-  font-size: 14px;
-  font-weight: bold;
+	fill: green; /* Schwarzer Text für bessere Sichtbarkeit */
+	font-size: 14px;
+	font-weight: bold;
 }
 
 /* Container-Eigenschaften */
 #treemap-container {
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: -50px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: -50px;
 }
 
-
-#percentage-output {                /* bearbeiten */
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 0px;
+#percentage-output {
+	/* bearbeiten */
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 0px;
 }
 
 /* Styles für die Kreise im Pack-Layout von script_tokyo.js */
 circle {
-  transition: fill 0.3s ease;
+	transition: fill 0.3s ease;
 }
 
 circle:hover {
-  stroke: black;
-  stroke-width: 2px;
-  cursor: pointer;
+	stroke: black;
+	stroke-width: 2px;
+	cursor: pointer;
 
-  /* opacity: 0.25; */
+	/* opacity: 0.25; */
 }
-

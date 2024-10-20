@@ -1,38 +1,36 @@
 body {
-    font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 }
 
-
 #percentage-output {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .axis path,
 .axis line {
-    fill: none;
-    stroke: #fff;
-    shape-rendering: crispEdges;
+	fill: none;
+	stroke: #fff;
+	shape-rendering: crispEdges;
 }
 
 .axis text {
-    font-size: 14px;
-    font-weight: 400;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 .tooltip {
-    position: absolute;
-    text-align: left;
-    width: auto;
-    height: auto;
-    font: 20px 'Inter', sans-serif;
-    font-weight: 400;
-    border: none;
-    pointer-events: none;
-    opacity: 0;
-    color: #000;
-    background-color: none;
-    box-shadow: none;
+	position: absolute;
+	text-align: left;
+	width: auto;
+	height: auto;
+	font: 20px "Inter", sans-serif;
+	font-weight: 400;
+	border: none;
+	pointer-events: none;
+	opacity: 0;
+	color: #000;
+	background-color: none;
+	box-shadow: none;
 }
-
