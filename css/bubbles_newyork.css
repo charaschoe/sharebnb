@@ -1,12 +1,12 @@
 .bubble {
 	fill: transparent;
-	stroke: black;
+	stroke: white;
 	stroke-width: 2px;
 	cursor: pointer;
 }
 
 text {
-	fill: black;
+	fill: white;
 	font-size: 12px;
 	text-anchor: middle;
 	pointer-events: none;
@@ -19,3 +19,9 @@ text {
 	width: 100%;
 	height: 100vh; /* Full viewport height */
 }
+
+/* .bubble:hover {
+	stroke: white;
+} */
+
+
