@@ -130,25 +130,26 @@ svg.selectAll(".dot")
 	.on("mouseover", function (event, d) {
 		d3.select(this).transition().duration(200).attr("r", 13);
 
-		tooltip.transition().duration(200).style("opacity", 1);
-		const listingText = d[0] === "1" ? "listing" : "listings";
-		const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
-		tooltip
-			.html(
-				`<b>${d[1]}</b> AirBnBs are from hosts with <b>${d[0]} </b>${listingText}.<br> That is <b>${percentage}%</b> of all AirBnBs in Tokyo!`
-			)
-			.style("left", `${margin.left + 675}px`)
-			.style("top", `${height - margin.bottom + 390}px`)
-			.style("background-color", "transparent")
-			.style("color", "white")
-			.style("border", "none")
-			.style("font-size", "16px")
-			.style("font-family", "Inter")
-			.style("text-shadow", "none")
-			.style("stroke", "transparent");
-	})
-	.on("mouseout", function () {
-		d3.select(this).transition().duration(200).attr("r", 10);
+        tooltip.transition()
+            .duration(200)
+            .style("opacity", 1);
+        const listingText = d[0] === "1" ? "listing" : "listings";
+        const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
+        tooltip.html(`<b>${d[1]}</b> AirBnBs are from hosts with <b>${d[0]} </b>${listingText}.<br> That is <b>${percentage}%</b> of all AirBnBs in Tokyo!`)
+            .style("left", `${margin.left + 1170}px`)
+            .style("top", `${height - margin.bottom + 290}px`)
+            .style("background-color", "transparent")
+            .style("color", "white")
+            .style("border", "none")  
+            .style("font-size", "16px")
+            .style("font-family", "Inter")
+            .style("text-shadow", "none")  
+            .style("stroke", "transparent");
+        })
+        .on("mouseout", function() {
+        d3.select(this).transition()
+            .duration(200)
+            .attr("r", 10);
 
 		tooltip.transition().duration(200).style("opacity", 0);
 	});
