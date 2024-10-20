@@ -86,14 +86,14 @@ export function initializeParisCircles(data) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     
         // Zeichnen der Labels
-        drawLabel("Available", 250, 20); // Verschiebe die Position des linken Texts weiter nach rechts
-        drawLabel("Not Available", 450, 20); // Verschiebe die Position des rechten Texts weiter nach rechts
+        drawLabel("Available", 200, 20); // Verschiebe die Position des linken Texts weiter nach rechts
+        drawLabel("Not Available", 400, 20); // Verschiebe die Position des rechten Texts weiter nach rechts
     
         // Zeichnen des "available"-Kreises (linke Seite)
-        drawCircle(250, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100)); // x = 250
+        drawCircle(200, 150, currentAvailableRadius, Math.round((currentAvailableRadius / maxRadius) * 100)); // x = 250
     
         // Zeichnen des "not available"-Kreises (rechte Seite)
-        drawCircle(450, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100)); // x = 450
+        drawCircle(400, 150, currentNonAvailableRadius, Math.round((currentNonAvailableRadius / maxRadius) * 100)); // x = 350
     
         // Fortsetzen der Animation, falls sie noch nicht abgeschlossen ist
         if (progress < 1) {
