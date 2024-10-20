@@ -47,26 +47,26 @@ function showPercentageOutput(roomType, count, neighborhood = null) {
   let roomTypeName;
   switch (roomType) {
     case "Entire home/apt":
-      roomTypeName = "gesamte Wohnungen";
+      roomTypeName = "entire apartments";
       break;
     case "Private room":
-      roomTypeName = "private Zimmer";
+      roomTypeName = "private rooms";
       break;
     case "Shared room":
-      roomTypeName = "geteilte Zimmer";
+      roomTypeName = "shared rooms";
       break;
     case "Hotel room":
-      roomTypeName = "Hotelzimmer";
+      roomTypeName = "Hotel rooms";
       break;
     default:
       roomTypeName = roomType;
   }
-  let text = `Es gibt ${count} ${roomTypeName}`;                                        //prozentzahl anzeigen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  let text = `There are ${count} ${roomTypeName}.`;                                        //prozentzahl anzeigen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   if (neighborhood !== null) {
-    text += ` in der Nachbarschaft ${neighborhood}`;
+    text += ` in the neighborhood ${neighborhood}.`;
   }
   const percentage = ((count / totalEntries) * 100).toFixed(2);
-  text += ` Das sind ${percentage}%.`;
+  text += ` That is ${percentage}%.`;
   d3.select("#percentage-output")
     .text(text)
     .style("display", "block")
