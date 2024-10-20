@@ -50,7 +50,7 @@
 /* Spezifische Stile für den Inhalt von tab_1 */
 #tab_1-content h3 {
 	color: rgb(0, 0, 0); /* Beispiel: Ändert die Textfarbe zu Blau */
-	font-size: 1.5rem; /* Beispiel: Ändert die Schriftgröße */
+	font-size: 1.3rem; /* Beispiel: Ändert die Schriftgröße */
 	text-align: left; /* Beispiel: Text linksbündig ausrichten */
 }
 
