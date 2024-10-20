@@ -80,9 +80,9 @@
 .tab-content h6 {
 	max-width: 1000px;
 	right: 2%;
-	text-align: right;
+	text-align: left;
 	font-weight: 400;
-	position: absolute;
+	position: relative;
 	margin-left: auto;
 	bottom: -300px;
 	line-height: 1.5;
