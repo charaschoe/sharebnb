@@ -1,34 +1,34 @@
-/* Style für den Diagrammbereich */
+
 /* body {
   overflow: hidden;
 } */
 #chart {
 	width: 100%;
 	height: 100%;
-	overflow-x: auto; /* Ermöglicht horizontales Scrollen */
-	overflow-y: hidden; /* Kein vertikales Scrollen */
+	overflow-x: auto; 
+	overflow-y: hidden; 
 }
 
-/* Style für das SVG-Diagramm */
+
 svg {
-	font-family: Arial, sans-serif; /* Schrift für Achsenbeschriftungen */
-	overflow-x: scroll; /* Horizontales Scrollen ermöglichen */
+	font-family: Arial, sans-serif; 
+	overflow-x: scroll; 
 }
 
-/* Style für die Balken */
+
 rect {
-	fill: rgb(255, 255, 255); /* Standardfarbe für die Balken */
-	transition: fill 0.2s ease-in-out; /* Weiche Farbänderung bei Hover */
+	fill: rgb(255, 255, 255); 
+	transition: fill 0.8s ease-in-out; 
 }
 
-/* Hover-Effekt für die Balken */
+
 rect:hover {
-	fill: #464646; /* Farbe ändern, wenn der Benutzer über den Balken fährt */
+	fill: #000; 
 }
 
-/* Style für die X-Achsen-Beschriftungen */
+
 .axis text {
-	font-size: 12px; /* Größe der Achsenbeschriftungen */
+	font-size: 14px; /* Größe der Achsenbeschriftungen */
 	fill: #ffffff; /* Textfarbe */
 }
 
@@ -42,15 +42,12 @@ rect:hover {
 /* Style für den Tooltip */
 .tooltip {
 	position: absolute;
-	background-color: white;
 	border: 1px solid #d3d3d3;
 	padding: 5px;
-	border-radius: 4px;
 	font-size: 12px;
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 	pointer-events: none;
 	opacity: 0; /* Initial unsichtbar */
-	transition: opacity 0.2s ease-in-out; /* Weiche Einblendung */
+	transition: opacity 0.3s ease-in-out; /* Weiche Einblendung */
 }
 
 /* Sichtbarkeit des Tooltips erhöhen, wenn aktiv */
