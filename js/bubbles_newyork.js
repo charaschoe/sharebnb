@@ -55,8 +55,8 @@ d3.json("data/newyork.json")
 			count: districtCounts[district],
 		}));
 
-		const width = 500;
-		const height = 500;
+		const height = 425;
+		const width = (700 / 500) * height;
 
 		const svg = d3.select("svg");
 
@@ -70,7 +70,7 @@ d3.json("data/newyork.json")
 			.attr("cy", centerY)
 			.attr("r", boundaryRadius)
 			.attr("fill", "none")
-			.attr("stroke", "black")
+			.attr("stroke", "white")
 			.attr("stroke-width", 2);
 
 		const sizeScale = d3
