@@ -1,6 +1,6 @@
 import { populationData } from "../data/population.js";
 import { apartments } from "../data/apartments.js"; // Import der Apartment-Daten
-import { initializeParisCircles } from './circle.js'; // Importiere die Funktion aus der circle.js
+import { initializeParisCircles } from "./circle.js"; // Importiere die Funktion aus der circle.js
 
 // Funktion zur Zählung der Gesamtanzahl der Vorkommen von '"id": '
 function countIds(listings) {
@@ -12,11 +12,10 @@ function countIds(listings) {
 import { tokyoData } from "../data/tokyo.js";
 
 // Überprüfe, ob die Daten geladen wurden
-console.log('Tokyo Data:', tokyoData);
+console.log("Tokyo Data:", tokyoData);
 
 const totalListings = tokyoData.length; // Beispiel: Gesamtzahl der Einträge
-document.getElementById('total-ids-tokyo').textContent = totalListings;
-
+document.getElementById("total-ids-tokyo").textContent = totalListings;
 
 const cities = [
 	{ name: "paris", file: "../data/paris.json" },
@@ -29,39 +28,39 @@ const numberFormatter = new Intl.NumberFormat("de-DE");
 console.log(`Data for tokyo:`, tokyoData);
 const totalIdsTokyo = countIds(tokyoData);
 const tokyoCityData = populationData.find(
-    (p) => p.city.toLowerCase().replace(" ", "-") === "tokyo"
+	(p) => p.city.toLowerCase().replace(" ", "-") === "tokyo"
 );
 const tokyoApartmentData = apartments.find(
-    (a) => a.city.toLowerCase().replace(" ", "-") === "tokyo"
+	(a) => a.city.toLowerCase().replace(" ", "-") === "tokyo"
 );
 if (tokyoCityData && tokyoApartmentData) {
-    const populationTokyo = tokyoCityData.population;
-    const touristsTokyo = tokyoCityData.tourists;
-    const apartmentCountTokyo = tokyoApartmentData.apartments;
-    const airbnbIndexTokyo = totalIdsTokyo / apartmentCountTokyo;
-    document.getElementById(`total-ids-tokyo`).textContent =
-        numberFormatter.format(totalIdsTokyo);
-    document.getElementById(
-        `population-tokyo`
-    ).textContent = `Population: ${numberFormatter.format(populationTokyo)}`;
-    document.getElementById(
-        `tourists-tokyo`
-    ).textContent = `Tourists: ${numberFormatter.format(touristsTokyo)}`;
-    document.getElementById(
-        `apartments-tokyo`
-    ).textContent = `Apartments: ${numberFormatter.format(
-        apartmentCountTokyo
-    )}`;
-    document.getElementById(
-        `airbnb-index-tokyo`
-    ).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndexTokyo)}`;
+	const populationTokyo = tokyoCityData.population;
+	const touristsTokyo = tokyoCityData.tourists;
+	const apartmentCountTokyo = tokyoApartmentData.apartments;
+	const airbnbIndexTokyo = totalIdsTokyo / apartmentCountTokyo;
+	document.getElementById(`total-ids-tokyo`).textContent =
+		numberFormatter.format(totalIdsTokyo);
+	document.getElementById(
+		`population-tokyo`
+	).textContent = `Population: ${numberFormatter.format(populationTokyo)}`;
+	document.getElementById(
+		`tourists-tokyo`
+	).textContent = `Tourists: ${numberFormatter.format(touristsTokyo)}`;
+	document.getElementById(
+		`apartments-tokyo`
+	).textContent = `Apartments: ${numberFormatter.format(
+		apartmentCountTokyo
+	)}`;
+	document.getElementById(
+		`airbnb-index-tokyo`
+	).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndexTokyo)}`;
 } else {
-    console.error(`No data found for Tokyo`);
-    document.getElementById(`total-ids-tokyo`).textContent = "Error";
-    document.getElementById(`population-tokyo`).textContent = "Error";
-    document.getElementById(`tourists-tokyo`).textContent = "Error";
-    document.getElementById(`apartments-tokyo`).textContent = "Error";
-    document.getElementById(`airbnb-index-tokyo`).textContent = "Error";
+	console.error(`No data found for Tokyo`);
+	document.getElementById(`total-ids-tokyo`).textContent = "Error";
+	document.getElementById(`population-tokyo`).textContent = "Error";
+	document.getElementById(`tourists-tokyo`).textContent = "Error";
+	document.getElementById(`apartments-tokyo`).textContent = "Error";
+	document.getElementById(`airbnb-index-tokyo`).textContent = "Error";
 }
 cities.forEach((city) => {
 	fetch(city.file)
@@ -94,11 +93,15 @@ cities.forEach((city) => {
 			).textContent = `Tourists: ${numberFormatter.format(tourists)}`;
 			document.getElementById(
 				`apartments-${city.name}`
-			).textContent = `Apartments: ${numberFormatter.format(apartmentCount)}`;
+			).textContent = `Apartments: ${numberFormatter.format(
+				apartmentCount
+			)}`;
 
 			document.getElementById(
 				`airbnb-index-${city.name}`
-			).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndex)}`;
+			).textContent = `Airbnb Index: ${numberFormatter.format(
+				airbnbIndex
+			)}`;
 
 			// Check if city is Paris and then initiate the circle animation logic
 			if (city.name === "paris") {
@@ -106,15 +109,23 @@ cities.forEach((city) => {
 			}
 		})
 		.catch((error) => {
-			console.error(`Error fetching the Airbnb listings for ${city.name}:`, error);
-			document.getElementById(`total-ids-${city.name}`).textContent = "Error";
-			document.getElementById(`population-${city.name}`).textContent = "Error";
-			document.getElementById(`tourists-${city.name}`).textContent = "Error";
-			document.getElementById(`apartments-${city.name}`).textContent = "Error";
-			document.getElementById(`airbnb-index-${city.name}`).textContent = "Error";
+			console.error(
+				`Error fetching the Airbnb listings for ${city.name}:`,
+				error
+			);
+			document.getElementById(`total-ids-${city.name}`).textContent =
+				"Error";
+			document.getElementById(`population-${city.name}`).textContent =
+				"Error";
+			document.getElementById(`tourists-${city.name}`).textContent =
+				"Error";
+			document.getElementById(`apartments-${city.name}`).textContent =
+				"Error";
+			document.getElementById(`airbnb-index-${city.name}`).textContent =
+				"Error";
 		});
 });
 document.addEventListener("DOMContentLoaded", () => {
-    // Beispielaufruf, um die Kreise zu initialisieren
-    initializeParisCircles(yourDataArray);
+	// Beispielaufruf, um die Kreise zu initialisieren
+	initializeParisCircles(yourDataArray);
 });

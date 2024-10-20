@@ -1,5 +1,5 @@
 table {
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.163);
 	border-collapse: collapse;
 	height: calc(100% - 25px);
 	margin: 0 12.5px;
@@ -13,20 +13,17 @@ table {
 
 /* Table row styling */
 tr {
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.163);
 }
 
 /* Table data cell styling */
 td {
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.163);
 }
 
 /* Center text in table cells */
 td {
 	text-align: left;
 	vertical-align: middle;
-}
-
-td {
 	padding: 25px;
 }
