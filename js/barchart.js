@@ -92,19 +92,19 @@ d3.json("data/paris.json").then(function(data) {
     // Füge die X-Achse hinzu
     svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
-        .call(d3.axisBottom(x).tickSizeOuter(0))
+        .call(d3.axisBottom(x).tickSize(0).tickSizeOuter(0)) // Entfernt die kleinen Striche und überstehenden Linien
         .selectAll("text")
-        .attr("transform", "rotate(0)")
         .style("fill", "white")
-        .style("text-anchor", "end")
+        .style("text-anchor", "middle") // Zentriert den Text unter den Balken
         .style("font-family", "Inter")
         .style("font-size", "14px")
-        .style("font-weight", "400");
+        .style("font-weight", "400")
+        .attr("dy", "25px"); // Verschiebt die Texte um 10px nach unten
 
     // Füge die Y-Achse hinzu und beschrifte sie
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
-        .call(d3.axisLeft(y).ticks(5, "s")) // Reduzierte Anzahl der Ticks
+        .call(d3.axisLeft(y).ticks(5, "s"))
         .call(g => g.selectAll("text")
             .style("fill", "white")
             .style("font-family", "Inter")
