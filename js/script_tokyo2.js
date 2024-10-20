@@ -128,8 +128,8 @@ svg.selectAll(".dot")
         const listingText = d[0] === "1" ? "listing" : "listings";
         const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
         tooltip.html(`<b>${d[1]}</b> AirBnBs are from hosts with <b>${d[0]} </b>${listingText}.<br> That is <b>${percentage}%</b> of all AirBnBs in Tokyo!`)
-            .style("left", `${margin.left + 675}px`)
-            .style("top", `${height - margin.bottom + 390}px`)
+            .style("left", `${margin.left + 1170}px`)
+            .style("top", `${height - margin.bottom + 290}px`)
             .style("background-color", "transparent")
             .style("color", "white")
             .style("border", "none")  
