@@ -64,9 +64,28 @@ d3.json("data/paris.json").then(function(data) {
             hoverInfo.text("Hover over a bar to see details"); // Reset info when mouse out
         });
 
+
+    const roomTypeNames = {
+        "entire home/apt": "Entire Home",
+        "private room": "Private Room",
+        "shared room": "Shared Room",
+        "hotel room": "Hotel Room"
+    };
+
+    // Update hover info to use roomTypeNames
+    svg.selectAll("rect")
+        .on("mouseover", function(event, d) {
+            d3.select(this).attr("fill", "#ff7f0e");
+            hoverInfo.text(`There are ${d.count} Airbnbs available as ${roomTypeNames[d.room_type] || d.room_type}.`); // Display info with roomTypeNames
+        })
+        .on("mouseout", function() {
+            d3.select(this).attr("fill", "steelblue");
+            hoverInfo.text("Hover over a bar to see details"); // Reset info when mouse out
+        });
+
     svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
-        .call(d3.axisBottom(x).tickSize(0).tickSizeOuter(0))
+        .call(d3.axisBottom(x).tickSize(0).tickSizeOuter(0).tickFormat(d => roomTypeNames[d] || d))
         .call(g => g.selectAll("text")
             .style("fill", "white")
             .style("text-anchor", "middle")
