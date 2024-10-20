@@ -144,7 +144,8 @@ svg.selectAll(".dot")
             .style("font-size", "16px")
             .style("font-family", "Inter")
             .style("text-shadow", "none")  
-            .style("stroke", "transparent");
+            .style("stroke", "transparent")
+            .style("text-align", "center");
         })
         .on("mouseout", function() {
         d3.select(this).transition()
