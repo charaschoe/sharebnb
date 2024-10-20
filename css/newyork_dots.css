@@ -16,12 +16,14 @@
 	padding: 20px;
 	text-align: center;
 } */
+
 .dots-wrapper {
 	display: grid;
 	grid-template-columns: repeat(10, auto);
-	gap: 2px;
+	grid-template-rows: repeat(5, auto); /* Ensure dots are placed in rows */
 	justify-content: center;
 }
+
 
 .dot:hover {
 	transition: transform 0.2s ease-in-out;
