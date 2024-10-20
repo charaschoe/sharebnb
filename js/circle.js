@@ -112,7 +112,7 @@ export function initializeParisCircles(data) {
         const text = percentage + "%";
     
         // Setze die Text-Eigenschaften
-        ctx.font = `bold ${fontSize}px Arial`;
+        ctx.font = `bold ${fontSize}px Inter`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         const textWidth = ctx.measureText(text).width;
@@ -136,7 +136,7 @@ export function initializeParisCircles(data) {
     
     // Neue Funktion zum Zeichnen von Labels über den Kreisen
     function drawLabel(text, x, y) {
-        ctx.font = "20px Arial"; // Schriftgröße der Labels
+        ctx.font = "16px Inter"; // Schriftgröße der Labels
         ctx.textAlign = "center";
         ctx.textBaseline = "bottom";
         ctx.fillStyle = "#ffffff"; // Farbe des Textes
@@ -146,9 +146,9 @@ export function initializeParisCircles(data) {
     // Setze die initiale Canvas-Größe basierend auf der Geräte-Pixel-Ratio
     function initializeCanvas() {
         const dpr = window.devicePixelRatio || 1;
-        canvas.style.width = '600px'; // Erhöhe die Breite des Canvas
-        canvas.style.height = '400px'; // Die Höhe kann bleiben oder angepasst werden
-        canvas.width = 600 * dpr; // Passe auch die tatsächliche Breite an die Geräte-Pixel-Ratio an
+        canvas.style.width = '600px'; 
+        canvas.style.height = '400px'; 
+        canvas.width = 600 * dpr; 
         canvas.height = 100 * dpr;
         ctx.scale(dpr, dpr);
     }
