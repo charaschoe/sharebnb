@@ -20,7 +20,7 @@ d3.json("data/paris.json").then(function(data) {
     }));
 
     const width = 600;
-    const height = 700;
+    const height = 600;
     const marginTop = 30;
     const marginRight = 50; 
     const marginBottom = 80; 
