@@ -31,7 +31,6 @@
 	top: 15%; /* Positionieren */
 	align-items: center;
 	transform: translateX(0); /* Zentrieren */
-	/* margin-left: auto; */
 	line-height: 1.5;
 	font-weight: 400;
 }
@@ -46,7 +45,20 @@
 	align-items: center;
 	transform: translateX(0);
 	line-height: 1.5;
-	font-weight: 400;
+}
+
+/* Spezifische Stile für den Inhalt von tab_1 */
+#tab_1-content h3 {
+	color: rgb(0, 0, 0); /* Beispiel: Ändert die Textfarbe zu Blau */
+	font-size: 1.5rem; /* Beispiel: Ändert die Schriftgröße */
+	text-align: left; /* Beispiel: Text linksbündig ausrichten */
+}
+
+#tab_1-content h6 {
+	color: rgb(0, 0, 0); /* Beispiel: Ändert die Textfarbe zu Grün */
+	font-size: 14px; /* Beispiel: Ändert die Schriftgröße */
+	font-style: italic; /* Beispiel: Macht den Text kursiv */
+	text-align: left; /* Beispiel: Text linksbündig ausrichten */
 }
 
 .tab-content h1 {
