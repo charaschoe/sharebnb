@@ -1,6 +1,6 @@
 .dot {
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	border-radius: 50%;
 	display: inline-block;
 	margin: 10px;
@@ -21,7 +21,6 @@
 	grid-template-columns: repeat(10, auto);
 	gap: 2px;
 	justify-content: center;
-
 }
 
 .dot:hover {
