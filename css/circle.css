@@ -1,9 +1,7 @@
-
 #paris-container canvas,
 #paris-container #slider-container {
 	display: none;
 }
-
 
 #content.paris:hover ~ .tab-content #paris-container canvas,
 #content.paris:hover ~ .tab-content #paris-container #slider-container,
@@ -12,35 +10,32 @@
 	display: block;
 }
 
-
 #paris-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center; 
-	height: 10%; 
-	padding: 20px; 
+	align-items: center;
+	height: 10%;
+	padding: 20px;
 }
-
 
 #paris-container canvas {
 	display: block;
-	margin: 10px auto; 
+	margin: 10px auto;
 }
 
-
 #slider-container {
-	width: 60%; 
+	width: 60%;
 	margin-top: 20px;
 	position: relative;
-	margin: 0 auto; 
+	margin: 0 auto;
 }
 
 #slider {
 	width: 100%;
 	appearance: none;
-	height: 6px; 
-	background: white; 
+	height: 6px;
+	background: white;
 	border-radius: 5px;
 	outline: none;
 }
