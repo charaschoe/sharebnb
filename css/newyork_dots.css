@@ -21,6 +21,7 @@
 	grid-template-columns: repeat(10, auto);
 	gap: 5px;
 	justify-content: right;
+
 }
 
 .info-text {
