@@ -1,20 +1,19 @@
-// Verwende die d3-Bibliothek direkt aus einem CDN
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 import { tokyoData } from "../data/tokyo.js";
 
 // Größe des SVG-Containers
 const height = 425;
-const width = (700 / 500) * height; // Maintain the same aspect ratio
+const width = (700 / 500) * height; 
 
-// Farbskala (angepasst für besseren Kontrast)
+
 const color = d3
 	.scaleOrdinal()
 	.domain(["Entire home/apt", "Private room", "Shared room", "Hotel room"])
-	.range(["#fff", "#E5E5E5", "#858585", "#b3b3b3"]); // Kontrastreichere Farben
+	.range(["#fff", "#E5E5E5", "#858585", "#b3b3b3"]); 
 
-// Erstelle ein SVG-Element im richtigen Container
+
 const svg = d3
-	.select("#treemap-container") // Hier wird der "treemap-container" verwendet
+	.select("#treemap-container") 
 	.append("svg")
 	.attr("width", width)
 	.attr("height", height);
@@ -64,8 +63,8 @@ function showPercentageOutput(roomType, count, neighborhood = null) {
 		default:
 			roomTypeName = roomType;
 	}
-	let text = `There are ${count} ${roomTypeName}.`; //prozentzahl anzeigen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	if (neighborhood !== null) {
+	let text = `There are ${count} ${roomTypeName}.`; 						//prozentzahl anzeigen!!!!!!
+	if (neighborhood) {
 		text += ` in the neighborhood ${neighborhood}.`;
 	}
 	const percentage = ((count / totalEntries) * 100).toFixed(2);
@@ -74,9 +73,9 @@ function showPercentageOutput(roomType, count, neighborhood = null) {
 		.text(text)
 		.style("display", "block")
 		.style("position", "fixed")
-		.style("left", "25%") // Center horizontally
-		.style("transform", "translateX(-50%)") // Adjust for centering
-		.style("top", "184px") // Fixed position from the bottom
+		.style("left", "25%") 
+		.style("transform", "translateX(-50%)") 
+		.style("top", "184px") 
 		.style("font-size", "16px")
 		.style("font-family", "Inter")
 		.style("font-weight", "400");
