@@ -54,7 +54,7 @@ export function initializeParisCircles(data) {
         animationStartTime = null;
         requestAnimationFrame(animateCircles);
 
-        sliderValueDisplay.innerText = `Minimum Nights: ${minimumNights}`;
+        sliderValueDisplay.innerText = `Amount of minimum nights: ${minimumNights}`;
     }
 
     function animateCircles(timestamp) {

@@ -57,7 +57,7 @@ d3.json("data/paris.json").then(function(data) {
         .attr("width", x.bandwidth())
         .on("mouseover", function(event, d) {
             d3.select(this).attr("fill", "#ff7f0e");
-            hoverInfo.text(`Room Type: ${d.room_type}, Count: ${d.count}`); // Display info
+            hoverInfo.text(`There are ${d.count} Airbnbs as ${d.room_type}.`); // Display info
         })
         .on("mouseout", function() {
             d3.select(this).attr("fill", "steelblue");
@@ -67,17 +67,18 @@ d3.json("data/paris.json").then(function(data) {
     svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(d3.axisBottom(x).tickSize(0).tickSizeOuter(0))
-        .selectAll("text")
-        .style("fill", "white")
-        .style("text-anchor", "middle")
-        .style("font-family", "Inter")
-        .style("font-size", "14px")
-        .style("font-weight", "400")
-        .attr("dy", "25px");
+        .call(g => g.selectAll("text")
+            .style("fill", "white")
+            .style("text-anchor", "middle")
+            .style("font-family", "Inter")
+            .style("font-size", "14px")
+            .style("font-weight", "400")
+            .attr("dy", "25px"))
+        .call(g => g.select(".domain").remove()); // Remove x-axis line
 
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
-        .call(d3.axisLeft(y).ticks(5, "s"))
+        .call(d3.axisLeft(y).ticks(5, "s").tickSize(0))
         .call(g => g.selectAll("text")
             .style("fill", "white")
             .style("font-family", "Inter")
