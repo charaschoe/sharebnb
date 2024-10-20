@@ -5,7 +5,7 @@ apartments.forEach((apartment) => {
 });
 const height = 425;
 const width = (700 / 500) * height;
-const numberOfPeople = 25;
+const numberOfPeople = 50;
 
 // Assuming apartmentPrices.js exports an object with prices
 const averageRent = apartmentPrices["new_york"]; // Use the price from the external file

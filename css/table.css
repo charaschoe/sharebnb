@@ -3,7 +3,7 @@ table {
 	border-collapse: collapse;
 	height: calc(100% - 25px);
 	margin: 0 12.5px;
-	table-layout: fixed;
+	table-layout: relative;
 	width: auto;
 	height: auto;
 	font-size: 1rem;
