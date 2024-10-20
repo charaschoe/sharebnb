@@ -1,31 +1,26 @@
-
 /* body {
   overflow: hidden;
 } */
 #chart {
 	width: 100%;
 	height: 100%;
-	overflow-x: auto; 
-	overflow-y: hidden; 
+	overflow-x: auto;
+	overflow-y: hidden;
 }
-
 
 svg {
-	font-family: Arial, sans-serif; 
-	overflow-x: scroll; 
+	font-family: Arial, sans-serif;
+	overflow-x: scroll;
 }
-
 
 rect {
-	fill: rgb(255, 255, 255); 
-	transition: fill 0.8s ease-in-out; 
+	fill: rgb(255, 255, 255);
+	transition: fill 0.8s ease-in-out;
 }
-
 
 rect:hover {
-	fill: #000; 
+	fill: #000;
 }
-
 
 .axis text {
 	font-size: 14px; /* Größe der Achsenbeschriftungen */
