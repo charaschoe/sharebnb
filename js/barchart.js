@@ -29,30 +29,31 @@ d3.json("data/paris.json").then(function(data) {
     }));
 
     // Dimensionen und Margins des Diagramms
-    const width = 700;
-    const height = 600;
-    const marginTop = 30;
-    const marginRight = 50; 
-    const marginBottom = 80; 
-    const marginLeft = 40;
+const width = 700; // Angepasste Breite um 30% vergrößert (1200 * 1.3)
+const height = 600; // Angepasste Höhe um 30% vergrößert (500 * 1.3)
+const marginTop = 30;
+const marginRight = 50; 
+const marginBottom = 80; 
+const marginLeft = 40;
 
-    // X-Achse: Skala für die verschiedenen room_type (horizontal)
-    const x = d3.scaleBand()
-        .domain(formattedData.map(d => d.room_type))
-        .range([marginLeft, formattedData.length * 195])
-        .padding(0.1); 
+// X-Achse: Skala für die verschiedenen room_type (horizontal)
+const x = d3.scaleBand()
+    .domain(formattedData.map(d => d.room_type))
+    .range([marginLeft, formattedData.length * 195]) // Breiterer Bereich um 30% vergrößert (150 * 1.3)
+    .padding(0.1); 
 
-    // Y-Achse: Skala für die Anzahl der jeweiligen room_type (vertikal)
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(formattedData, d => d.count)])
-        .range([height - marginBottom, marginTop]);
+// Y-Achse: Skala für die Anzahl der jeweiligen room_type (vertikal)
+const y = d3.scaleLinear()
+    .domain([0, d3.max(formattedData, d => d.count)]) // Sicherstellen, dass die Skala bei 0 beginnt
+    .range([height - marginBottom, marginTop]);
 
-    // Erstelle das SVG-Element für das Diagramm mit fester Höhe und horizontalem Scrollbereich
-    const svg = d3.select("#chart").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", `0 0 ${formattedData.length * 195} ${height}`)
-        .attr("style", "max-width: 100%; height: auto; overflow-x: scroll;");
+// Erstelle das SVG-Element für das Diagramm mit fester Höhe und horizontalem Scrollbereich
+const svg = d3.select("#chart").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", `0 0 ${formattedData.length * 195} ${height}`) // Vergrößert um 30%
+    .attr("style", "max-width: 100%; height: auto; overflow-x: scroll;");
+
 
     // Tooltip hinzufügen (verstecktes div)
     const tooltip = d3.select("body").append("div")
@@ -115,7 +116,7 @@ d3.json("data/paris.json").then(function(data) {
         .call(g => g.append("text")
             .attr("x", -marginLeft)
             .attr("y", 10)
-            .attr("fill", "white")
+            .attr("fill", "white") // Setze die Beschriftungsfarbe auf Weiß
             .attr("text-anchor", "start")
             .text(""));
 });

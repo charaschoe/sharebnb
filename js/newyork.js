@@ -3,7 +3,8 @@ apartments.forEach((apartment) => {
 	apartmentPrices[apartment.city.toLowerCase().replace(" ", "_")] =
 		apartment.apartments;
 });
-
+const height = 425;
+const width = (700 / 500) * height;
 const numberOfPeople = 50;
 
 // Assuming apartmentPrices.js exports an object with prices

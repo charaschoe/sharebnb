@@ -1,32 +1,32 @@
 table {
-    border: 1px solid black;
-    border-collapse: collapse;
-    height: calc(100% - 25px);
-    margin: 0 12.5px;
-    table-layout: fixed;
-    width: auto;
-    height: auto;
-    font-size: 1rem;
-    text-align: left;
-    margin-top: -50px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	height: calc(100% - 25px);
+	margin: 0 12.5px;
+	table-layout: fixed;
+	width: auto;
+	height: auto;
+	font-size: 1rem;
+	text-align: left;
+	margin-top: -50px;
 }
 
 /* Table row styling */
 tr {
-    border: 1px solid black;
+	border: 1px solid black;
 }
 
 /* Table data cell styling */
 td {
-    border: 1px solid black;
+	border: 1px solid black;
 }
 
 /* Center text in table cells */
 td {
-    text-align: left;
-    vertical-align: middle;
+	text-align: left;
+	vertical-align: middle;
 }
 
 td {
-    padding: 25px;
+	padding: 25px;
 }

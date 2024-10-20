@@ -112,7 +112,7 @@ export function initializeParisCircles(data) {
         const text = percentage + "%";
     
         // Setze die Text-Eigenschaften
-        ctx.font = ` ${16}px Inter`;
+        ctx.font = `bold ${fontSize}px Arial`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         const textWidth = ctx.measureText(text).width;
@@ -136,7 +136,7 @@ export function initializeParisCircles(data) {
     
     // Neue Funktion zum Zeichnen von Labels über den Kreisen
     function drawLabel(text, x, y) {
-        ctx.font = "16px Inter"; // Schriftgröße der Labels
+        ctx.font = "20px Arial"; // Schriftgröße der Labels
         ctx.textAlign = "center";
         ctx.textBaseline = "bottom";
         ctx.fillStyle = "#ffffff"; // Farbe des Textes

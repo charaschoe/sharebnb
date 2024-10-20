@@ -7,7 +7,6 @@
 }
 .affordable {
 	background-color: white;
-	border: 1px solid black;
 }
 .non-affordable {
 	background-color: black;
@@ -25,7 +24,7 @@
 }
 
 .info-text {
-	font-size: 1.5rem;
+	font-size: 16px;
 	font-weight: 400;
 	text-align: right;
 }

@@ -1,7 +1,7 @@
 /* Canvas und Slider standardmäßig ausblenden */
 #paris-container canvas,
 #paris-container #slider-container {
-    display: none;
+	display: none;
 }
 
 /* Zeige den Canvas und den Slider nur, wenn der Paris-Container oder der Label-Tab gehovered wird */
@@ -9,63 +9,61 @@
 #content.paris:hover ~ .tab-content #paris-container #slider-container,
 #paris-container:hover canvas,
 #paris-container:hover #slider-container {
-    display: block;
+	display: block;
 }
 
 /* Der Container für die Kreise und den Slider */
 #paris-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Zentriert den Inhalt horizontal */
-  height: 10%; /* Volle Höhe des Containers */
-  padding: 20px; /* Optional, um etwas Platz zu lassen */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center; /* Zentriert den Inhalt horizontal */
+	height: 10%; /* Volle Höhe des Containers */
+	padding: 20px; /* Optional, um etwas Platz zu lassen */
 }
 
 /* Zentriere den Canvas in der Mitte */
 #paris-container canvas {
-  display: block;
-  margin: 10px auto; /* Mittig ausrichten */
+	display: block;
+	margin: 10px auto; /* Mittig ausrichten */
 }
 
 /* Slider Container anpassen */
 #slider-container {
-  width: 60%; /* Slider etwas größer machen */
-  margin-top: 20px;
-  position: relative;
-  margin: 0 auto; /* Mittig ausrichten */
+	width: 60%; /* Slider etwas größer machen */
+	margin-top: 20px;
+	position: relative;
+	margin: 0 auto; /* Mittig ausrichten */
 }
 
-
-
 #slider {
-    width: 100%;
-    appearance: none;
-    height: 6px; /* Höhe des Sliders um 50% vergrößert */
-    background: white; /* Slider-Hintergrund */
-    border-radius: 5px;
-    outline: none;
+	width: 100%;
+	appearance: none;
+	height: 6px; /* Höhe des Sliders um 50% vergrößert */
+	background: white; /* Slider-Hintergrund */
+	border-radius: 5px;
+	outline: none;
 }
 
 #slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    background: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
+	appearance: none;
+	width: 14px;
+	height: 14px;
+	background: #ffffff;
+	border-radius: 50%;
+	cursor: pointer;
 }
 
 #slider::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-    background: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
+	width: 14px;
+	height: 14px;
+	background: #ffffff;
+	border-radius: 50%;
+	cursor: pointer;
 }
 
 #slider-value {
-    font-size: 16px;
-    text-align: center;
-    margin-top: 10px;
+	font-size: 16px;
+	text-align: center;
+	margin-top: 10px;
 }
