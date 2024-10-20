@@ -1,9 +1,9 @@
 .dot {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 	border-radius: 50%;
 	display: inline-block;
-	margin: 5px;
+	margin: 10px;
 }
 .affordable {
 	background-color: white;
@@ -19,13 +19,12 @@
 .dots-wrapper {
 	display: grid;
 	grid-template-columns: repeat(10, auto);
-	gap: 5px;
-	justify-content: right;
+	gap: 2px;
+	justify-content: center;
 
 }
 
-.info-text {
-	font-size: 16px;
-	font-weight: 400;
-	text-align: right;
+.dot:hover {
+	transform: scale(1.2);
+	transition: transform 0.2s ease-in-out;
 }
