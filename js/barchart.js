@@ -29,8 +29,8 @@ d3.json("data/paris.json").then(function(data) {
     }));
 
     // Dimensionen und Margins des Diagramms
-const width = 700; // Angepasste Breite um 30% vergrößert (1200 * 1.3)
-const height = 600; // Angepasste Höhe um 30% vergrößert (500 * 1.3)
+const width = 400; // Angepasste Breite um 30% vergrößert (1200 * 1.3)
+const height = 400; // Angepasste Höhe um 30% vergrößert (500 * 1.3)
 const marginTop = 30;
 const marginRight = 50; 
 const marginBottom = 80; 
