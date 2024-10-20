@@ -96,10 +96,6 @@ cities.forEach((city) => {
 				`apartments-${city.name}`
 			).textContent = `Apartments: ${numberFormatter.format(apartmentCount)}`;
 
-			document.getElementById(
-				`airbnb-index-${city.name}`
-			).textContent = `Airbnb Index: ${numberFormatter.format(airbnbIndex)}`;
-
 			// Check if city is Paris and then initiate the circle animation logic
 			if (city.name === "paris") {
 				initializeParisCircles(data); // Aufruf der circle.js Funktion
