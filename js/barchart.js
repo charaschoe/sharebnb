@@ -1,114 +1,102 @@
-d3.json("data/paris.json").then(function(data) {
-    if (!Array.isArray(data)) {
-        data = [data];
-    }
+// Sanitize input data
+function sanitizeData(data) {
+	if (!Array.isArray(data)) return [];
+	return data.map((item) => ({
+		...item,
+		price: Number(item.price) || 0,
+		minimum_nights: Number(item.minimum_nights) || 0,
+		availability_365: Number(item.availability_365) || 0,
+	}));
+}
 
-    data = data.map(d => ({
-        ...d,
-        room_type: d.room_type.trim().toLowerCase()
-    }));
+// Initialize bar chart with error handling
+async function initializeBarChart() {
+	try {
+		const container = document.getElementById("chart-container-paris");
+		if (!container) {
+			console.error("Chart container not found");
+			return;
+		}
 
-    const uniqueRoomTypes = Array.from(new Set(data.map(d => d.room_type)));
-    const roomTypeCounts = Array.from(d3.group(data, d => d.room_type), ([room_type, v]) => ({ room_type, count: v.length }));
+		// Clear any existing content
+		container.innerHTML = "";
 
-    console.log("Erkannte Room Types und ihre Zähler:", roomTypeCounts);
+		// Create SVG with proper namespace
+		const svg = d3
+			.select("#chart-container-paris")
+			.append("svg")
+			.attr("width", "100%")
+			.attr("height", "400")
+			.attr("viewBox", [0, 0, 800, 400])
+			.attr("style", "max-width: 100%; height: auto;");
 
-    const roomTypeMap = new Map(roomTypeCounts.map(d => [d.room_type, d.count]));
-    const formattedData = uniqueRoomTypes.map(type => ({
-        room_type: type,
-        count: roomTypeMap.get(type) || 0
-    }));
+		// Fetch and sanitize data
+		const response = await fetch("../data/paris.json");
+		if (!response.ok)
+			throw new Error(`HTTP error! status: ${response.status}`);
+		const data = await response.json();
+		const sanitizedData = sanitizeData(data);
 
-    const width = 600;
-    const height = 600;
-    const marginTop = 30;
-    const marginRight = 50; 
-    const marginBottom = 80; 
-    const marginLeft = 40;
+		// Create scales
+		const x = d3
+			.scaleBand()
+			.domain(sanitizedData.map((d) => d.minimum_nights))
+			.range([50, 750])
+			.padding(0.1);
 
-    const x = d3.scaleBand()
-        .domain(formattedData.map(d => d.room_type))
-        .range([marginLeft, width - marginRight])
-        .padding(0.1);
+		const y = d3
+			.scaleLinear()
+			.domain([0, d3.max(sanitizedData, (d) => d.price)])
+			.range([350, 50]);
 
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(formattedData, d => d.count)])
-        .range([height - marginBottom, marginTop]);
+		// Add axes
+		svg.append("g")
+			.attr("transform", `translate(0,${350})`)
+			.call(d3.axisBottom(x))
+			.selectAll("text")
+			.style("fill", "#ffffff");
 
-    const svg = d3.select("#chart").append("svg")
-        .attr("width", "100%")
-        .attr("height", height)
-        .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("preserveAspectRatio", "xMidYMid meet")
-        .style("max-width", "100%")
-        .style("overflow", "hidden");
+		svg.append("g")
+			.attr("transform", "translate(50,0)")
+			.call(d3.axisLeft(y))
+			.selectAll("text")
+			.style("fill", "#ffffff");
 
-    // Select the <p> element for displaying hover info
-    const hoverInfo = d3.select("#hover-info");
+		// Add bars with error handling
+		svg.selectAll("rect")
+			.data(sanitizedData)
+			.enter()
+			.append("rect")
+			.attr("x", (d) => x(d.minimum_nights))
+			.attr("y", (d) => y(d.price))
+			.attr("width", x.bandwidth())
+			.attr("height", (d) => 350 - y(d.price))
+			.attr("fill", "#96bcab")
+			.attr("opacity", 0.8)
+			.on("mouseover", function (event, d) {
+				d3.select(this).attr("opacity", 1);
 
-    svg.append("g")
-        .attr("fill", "steelblue")
-        .selectAll("rect")
-        .data(formattedData)
-        .join("rect")
-        .attr("x", d => x(d.room_type))
-        .attr("y", d => y(d.count))
-        .attr("height", d => y(0) - y(d.count))
-        .attr("width", x.bandwidth())
-        .on("mouseover", function(event, d) {
-            d3.select(this).attr("fill", "#ff7f0e");
-            hoverInfo.text(`There are ${d.count} Airbnbs as ${d.room_type}.`); // Display info
-        })
-        .on("mouseout", function() {
-            d3.select(this).attr("fill", "steelblue");
-            hoverInfo.text("Hover over a bar to see details"); // Reset info when mouse out
-        });
+				// Update hover info safely
+				const hoverInfo = document.getElementById("hover-info");
+				if (hoverInfo) {
+					hoverInfo.textContent = `Price: €${d.price.toFixed(
+						2
+					)} per night`;
+				}
+			})
+			.on("mouseout", function () {
+				d3.select(this).attr("opacity", 0.8);
 
+				// Reset hover info safely
+				const hoverInfo = document.getElementById("hover-info");
+				if (hoverInfo) {
+					hoverInfo.textContent = "Hover over a bar to see details";
+				}
+			});
+	} catch (error) {
+		console.error("Error initializing bar chart:", error);
+	}
+}
 
-    const roomTypeNames = {
-        "entire home/apt": "Entire Home",
-        "private room": "Private Room",
-        "shared room": "Shared Room",
-        "hotel room": "Hotel Room"
-    };
-
-    // Update hover info to use roomTypeNames
-    svg.selectAll("rect")
-        .on("mouseover", function(event, d) {
-            d3.select(this).attr("fill", "#ff7f0e");
-            hoverInfo.text(`There are ${d.count} Airbnbs available as ${roomTypeNames[d.room_type] || d.room_type}.`); // Display info with roomTypeNames
-        })
-        .on("mouseout", function() {
-            d3.select(this).attr("fill", "steelblue");
-            hoverInfo.text("Hover over a bar to see details"); // Reset info when mouse out
-        });
-
-    svg.append("g")
-        .attr("transform", `translate(0,${height - marginBottom})`)
-        .call(d3.axisBottom(x).tickSize(0).tickSizeOuter(0).tickFormat(d => roomTypeNames[d] || d))
-        .call(g => g.selectAll("text")
-            .style("fill", "white")
-            .style("text-anchor", "middle")
-            .style("font-family", "Inter")
-            .style("font-size", "14px")
-            .style("font-weight", "400")
-            .attr("dy", "25px"))
-        .call(g => g.select(".domain").remove()); // Remove x-axis line
-
-    svg.append("g")
-        .attr("transform", `translate(${marginLeft},0)`)
-        .call(d3.axisLeft(y).ticks(5, "s").tickSize(0))
-        .call(g => g.selectAll("text")
-            .style("fill", "white")
-            .style("font-family", "Inter")
-            .style("font-size", "14px")
-            .style("font-weight", "400"))
-        .call(g => g.selectAll(".tick line").style("stroke", "white"))
-        .call(g => g.select(".domain").remove())
-        .call(g => g.append("text")
-            .attr("x", -marginLeft)
-            .attr("y", 10)
-            .attr("fill", "white")
-            .attr("text-anchor", "start")
-            .text(""));
-});
+// Initialize the chart when the DOM is loaded
+document.addEventListener("DOMContentLoaded", initializeBarChart);

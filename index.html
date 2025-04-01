@@ -3,6 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' https: data:;">
+		<meta http-equiv="X-Content-Type-Options" content="nosniff">
+		<meta http-equiv="X-Frame-Options" content="DENY">
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block">
 		<title>ShareBnB</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
@@ -143,7 +147,7 @@
 
 									</td>
 									<td>
-										<p style="margin-top: -85px;">In Tokyo, many Airbnb hosts rent out more than one listing, including “superhosts”. The commercialization of the platform 
+										<p style="margin-top: -85px;">In Tokyo, many Airbnb hosts rent out more than one listing, including "superhosts". The commercialization of the platform 
                                             promotes large-scale landlords and displaces the original concept of sharing living space. This contributes to gentrification and 
                                             makes access to affordable housing in the city more difficult.</p>
 										<div id="chart-container" style="display: flex; justify-content: center;"></div>
@@ -194,7 +198,7 @@
 									<td>
 										<p >Paris is a city where elegance and artistry intertwine, with timeless architecture, <br> chic boutiques, and café terraces blending 
 											seamlessly under a golden light that <br>transforms the everyday into something sublime. From the delicate curves of<br>wrought-iron 
-											balconies to the fashion-forward energy of the streets, it’s a place <br>where style feels innate and effortlessly refined.</p> 
+											balconies to the fashion-forward energy of the streets, it's a place <br>where style feels innate and effortlessly refined.</p> 
 									</td>
 								</tr>
 								<tr>
@@ -227,10 +231,9 @@
 								</tr>
 							</table>
 					
-							<script src="https://d3js.org/d3.v6.min.js"></script>
+							<script src="https://d3js.org/d3.v7.min.js"></script>
 							<script src="js/barchart.js"></script>
 							<script type="module" src="js/circle.js"></script>
-							<script src="js/circle.js"></script>
 						</div>
 					</label>
 					
@@ -243,6 +246,5 @@
 		<script type="module" src="js/script4.js"></script>
 		<script src="/data/apartmentPrices.js"></script>
 		<script src="js/newyork.js"></script>
-		<script src="js/circle.js"></script>
 	</body>
 </html>
