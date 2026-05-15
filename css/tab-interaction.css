@@ -2,8 +2,7 @@
 /* Wenn über einen Tab gehovt wird */
 .container label:hover {
 	flex: 25; /* Der Tab, über den gehovt wird, nimmt mehr Platz ein */
-	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1),
-		background 0.8s ease;
+	transition: flex 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
 }
 
 .container label:not(:hover) {
@@ -26,10 +25,13 @@
 	writing-mode: horizontal-tb; /* Text horizontal ausrichten */
 	transform: rotate(0deg); /* Text in normale Richtung drehen */
 	position: absolute;
-	top: 25px;
-	right: 2%;
-	font-size: 4.5rem;
-	font-weight: 1000;
+	top: var(--card-title-top);
+	right: var(--card-title-right);
+	line-height: 0.9;
+	font-size: clamp(2rem, 5.4vw, 4.5rem);
+	font-weight: 900;
+	z-index: 20;
+	white-space: nowrap;
 }
 
 /* Zeige den Tab-Inhalt beim Hover an */

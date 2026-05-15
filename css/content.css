@@ -1,93 +1,197 @@
-/* content.css */
-/* Textinhalt der Tabs */
-.container label #content {
-	text-align: center;
-	opacity: 0.75; /* Standardmäßige geringere Sichtbarkeit */
-	transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
-	writing-mode: vertical-rl; /* Text vertikal ausrichten */
-	transform: rotate(
-		180deg
-	); /* Text umdrehen, damit er von unten nach oben liest */
+:root {
+	--card-title-top: clamp(18px, 3.2vh, 32px);
+	--card-title-right: clamp(16px, 2.5vw, 42px);
+	--card-content-top: clamp(88px, 13vh, 124px);
+	--card-content-x: clamp(16px, 4.5vw, 72px);
+	--panel-gap: clamp(10px, 1.6vw, 22px);
+	--panel-border: rgba(255, 255, 255, 0.18);
+	--panel-text: rgba(255, 255, 255, 0.82);
 }
 
-/* Wenn ein Tab gehovt wird, wird der Inhalt sichtbarer */
+.container label #content {
+	text-align: center;
+	opacity: 0.75;
+	transition: opacity 0.8s cubic-bezier(0.11, 0.65, 0.04, 1);
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+}
+
 .container label:hover #content {
 	opacity: 1;
-	writing-mode: horizontal-tb; /* Text horizontal ausrichten */
-	transform: rotate(0deg); /* Text in normale Richtung drehen */
+	writing-mode: horizontal-tb;
+	transform: rotate(0deg);
 	position: absolute;
-	top: 25px;
-	right: 2%;
-	font-size: 4.5rem;
-	font-weight: 1000;
+	top: var(--card-title-top);
+	right: var(--card-title-right);
+	line-height: 0.9;
+	font-size: clamp(2rem, 5.4vw, 4.5rem);
+	font-weight: 900;
+	z-index: 20;
+	white-space: nowrap;
 }
 
 .tab-content {
-	display: none; /* Inhalt ist nicht sichtbar */
-	color: white; /* Standard-Textfarbe */
-	text-align: left;
-	font-size: 1.5rem;
-	position: absolute; /* Position absolut für die Anzeige */
-	top: 15%; /* Positionieren */
-	align-items: center;
-	transform: translateX(0); /* Zentrieren */
-	line-height: 1.5;
-	font-weight: 400;
-}
-
-.tab-content-frontpage {
 	display: none;
-	color: rgb(255, 0, 0);
-	text-align: left;
-	font-size: 1.5rem;
 	position: absolute;
-	top: 15%;
-	align-items: center;
-	transform: translateX(0);
-	line-height: 1.5;
-}
-
-/* Spezifische Stile für den Inhalt von tab_1 */
-#tab_1-content h3 {
-	color: rgb(0, 0, 0); /* Beispiel: Ändert die Textfarbe zu Blau */
-	font-size: 1.3rem; /* Beispiel: Ändert die Schriftgröße */
-	text-align: left; /* Beispiel: Text linksbündig ausrichten */
-}
-
-#tab_1-content h6 {
-	color: rgb(0, 0, 0); /* Beispiel: Ändert die Textfarbe zu Grün */
-	font-size: 14px; /* Beispiel: Ändert die Schriftgröße */
-	font-style: italic; /* Beispiel: Macht den Text kursiv */
-	text-align: left; /* Beispiel: Text linksbündig ausrichten */
-}
-
-.tab-content h1 {
-	max-width: 1000px;
-	margin-left: auto;
-	text-align: right;
-	font-weight: 600;
-	font-size: 1.75rem;
-}
-
-.tab-content h3 {
-	max-width: 1000px;
-	margin-right: auto;
-	text-align: right;
-	font-weight: 300;
-	font-size: 1.25rem;
-}
-
-.tab-content h6 {
-	max-width: 1000px;
-	text-align: right;
+	inset: var(--card-content-top) var(--card-content-x) clamp(14px, 2.6vh, 26px);
+	height: calc(100dvh - var(--card-content-top) - clamp(14px, 2.6vh, 26px));
+	max-height: calc(100dvh - var(--card-content-top) - clamp(14px, 2.6vh, 26px));
+	color: white;
+	line-height: 1.35;
 	font-weight: 400;
-	position: relative;
-	margin-left: auto;
-	line-height: 1.5;
+	overflow: hidden;
+	z-index: 10;
 }
 
-/* Zeige den Tab-Inhalt beim Hover an */
 .container label:hover .tab-content {
-	display: block; /* Inhalt wird beim Hover angezeigt */
-	z-index: 10;
+	display: block;
+}
+
+.intro-panel {
+	color: #111;
+}
+
+.intro-copy {
+	display: grid;
+	align-content: center;
+	gap: clamp(12px, 2vh, 22px);
+	width: min(78ch, 82%);
+	height: 100%;
+	font-size: clamp(0.92rem, 1.6vw, 1.35rem);
+	line-height: 1.35;
+}
+
+.credits {
+	margin-top: clamp(4px, 1vh, 14px);
+	font-size: clamp(0.76rem, 1vw, 0.95rem);
+	font-style: italic;
+	line-height: 1.35;
+}
+
+.city-panel {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	grid-template-rows: minmax(0, 0.72fr) minmax(0, 1.48fr);
+	gap: var(--panel-gap);
+	width: auto;
+	height: auto;
+	min-width: 0;
+	min-height: 0;
+}
+
+.panel-kpis,
+.panel-copy,
+.viz-slot {
+	min-width: 0;
+	min-height: 0;
+	border: 1px solid var(--panel-border);
+}
+
+.panel-kpis {
+	display: grid;
+	align-content: center;
+	justify-items: end;
+	padding: clamp(14px, 2vw, 28px);
+	text-align: right;
+}
+
+.panel-kpis h1,
+.panel-kpis h3 {
+	margin: 0;
+	max-width: 100%;
+}
+
+.panel-kpis h1 {
+	font-size: clamp(1.15rem, 2.2vw, 2rem);
+	font-weight: 900;
+	line-height: 1.15;
+}
+
+.panel-kpis h3 {
+	font-size: clamp(0.86rem, 1.45vw, 1.35rem);
+	font-weight: 700;
+	line-height: 1.3;
+	color: var(--panel-text);
+}
+
+.panel-copy {
+	display: grid;
+	align-content: center;
+	padding: clamp(14px, 2vw, 28px);
+	overflow: hidden;
+}
+
+.panel-copy p {
+	margin: 0;
+	max-width: 62ch;
+	font-size: clamp(0.78rem, 1.22vw, 1.08rem);
+	line-height: 1.4;
+	color: var(--panel-text);
+}
+
+.viz-slot {
+	display: grid;
+	grid-template-rows: minmax(0, 1fr) minmax(2.8em, auto);
+	gap: clamp(6px, 1.1vh, 12px);
+	padding: clamp(10px, 1.4vw, 18px);
+	overflow: hidden;
+}
+
+.viz-frame {
+	position: relative;
+	display: grid;
+	place-items: center;
+	min-width: 0;
+	min-height: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.viz-frame svg,
+.viz-frame canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.viz-caption {
+	margin: 0;
+	min-height: 2.8em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: clamp(0.7rem, 1vw, 0.98rem);
+	line-height: 1.25;
+	color: var(--panel-text);
+	overflow: hidden;
+}
+
+@media (max-width: 1100px), (max-height: 760px) {
+	:root {
+		--card-content-top: clamp(76px, 11vh, 100px);
+		--card-content-x: clamp(12px, 3vw, 40px);
+		--panel-gap: 8px;
+	}
+
+	.city-panel {
+		grid-template-rows: minmax(0, 0.62fr) minmax(0, 1.38fr);
+	}
+
+	.panel-kpis,
+	.panel-copy,
+	.viz-slot {
+		padding: 10px;
+	}
+
+	.container label:hover #content {
+		font-size: clamp(1.6rem, 5vw, 3.25rem);
+	}
 }

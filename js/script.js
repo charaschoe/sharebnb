@@ -1,6 +1,5 @@
 import { populationData } from "../data/population.js";
 import { apartments } from "../data/apartments.js"; // Import der Apartment-Daten
-import { initializeParisCircles } from "./circle.js"; // Importiere die Funktion aus der circle.js
 import { tokyoData } from "../data/tokyo.js";
 
 // Secure function to count IDs
@@ -126,8 +125,3 @@ const cities = [
 
 // Update all cities
 cities.forEach(updateCityData);
-
-document.addEventListener("DOMContentLoaded", () => {
-	// Beispielaufruf, um die Kreise zu initialisieren
-	initializeParisCircles(yourDataArray);
-});

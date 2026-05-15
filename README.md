@@ -1,126 +1,104 @@
 # ShareBnB Data Visualization
 
-A critical data visualization project examining the impact of Airbnb on housing markets in major cities. This project was developed at HfG Schwäbisch Gmünd IG3 under the guidance of Jonas Wienberg, Marlon Mutlu, and Philipp Maginot.
+ShareBnB is an interactive data visualization about Airbnb pressure in New York,
+Tokyo, and Paris. The interface keeps the original vertical hover-card concept:
+hover a city card to open a responsive 2x2 data stage with key figures, context,
+and two city-specific visualizations.
 
-## Project Overview
+## Current Release State
 
-ShareBnB is an interactive data visualization that explores how short-term rentals are reshaping urban housing markets. By analyzing data from New York, Tokyo, and Paris, the project reveals the complex relationship between Airbnb listings and housing affordability.
+This version repairs the project after the layout and visualization regressions:
 
-### Design Philosophy
+- The hover-card accordion now fills the browser dynamically without black side
+  bands or page scrolling on ordinary desktop/laptop sizes.
+- City titles stay aligned at the same height across ShareBnB, New York, Tokyo,
+  and Paris.
+- Expanded city panels use a shared responsive stage:
+  - KPI block
+  - context text block
+  - primary visualization slot
+  - secondary visualization slot
+- Visualization slots have fixed gutters and contained frames so charts do not
+  overlap titles, text, captions, or each other.
+- New York dot hover no longer changes layout height.
+- New York borough bubbles are larger and clickable.
+- Tokyo pack chart is clickable and can drill into neighborhood distribution.
+- Paris availability canvas renders correctly before the slider is touched.
+- Hovering city cards no longer changes the city background color.
 
-The visualization employs a minimalist, data-driven design approach that emphasizes:
-- Clear hierarchy of information
-- Intuitive navigation between cities
-- Interactive elements that encourage exploration
-- Responsive design that works across devices
-- Accessible color schemes and typography
+## Run Locally
 
-### Technical Features
+Use a local static server from the project root:
 
-- **Modern Web Technologies**:
-  - HTML5, CSS3, and ES6+ JavaScript
-  - D3.js v7 for data visualization
-  - Modular JavaScript architecture
-  - Responsive SVG graphics
-  - CSS Grid and Flexbox layouts
+```bash
+python3 -m http.server 8000
+```
 
-- **Security Features**:
-  - Content Security Policy (CSP)
-  - XSS protection
-  - Input sanitization
-  - Secure DOM manipulation
-  - Error handling
+Then open:
 
-- **Interactive Elements**:
-  - Dynamic data loading
-  - Hover effects and tooltips
-  - Responsive charts and graphs
-  - Tab-based navigation
-  - Real-time data updates
+```text
+http://127.0.0.1:8000/index.html
+```
+
+The app loads local JSON/JS data files, so opening `index.html` directly from the
+filesystem is not recommended.
 
 ## Project Structure
 
+```text
+sharebnb-main/
+├── index.html
+├── css/
+│   ├── layout.css
+│   ├── tabs.css
+│   ├── tab-interaction.css
+│   ├── content.css
+│   └── city/chart-specific styles
+├── js/
+│   ├── script.js
+│   ├── newyork.js
+│   ├── bubbles_newyork.js
+│   ├── script_tokyo.js
+│   ├── script_tokyo2.js
+│   ├── barchart.js
+│   └── circle.js
+├── data/
+│   ├── newyork.json
+│   ├── paris.json
+│   ├── tokyo.js
+│   ├── apartments.js
+│   └── population.js
+└── libraries/
+    └── local visualization dependencies
 ```
-sharebnb/
-├── css/                 # Stylesheets
-│   ├── reset.css       # CSS reset
-│   ├── layout.css      # Main layout styles
-│   ├── tabs.css        # Tab navigation styles
-│   └── [city].css      # City-specific styles
-├── js/                  # JavaScript modules
-│   ├── script.js       # Main application logic
-│   ├── circle.js       # Circle visualization
-│   ├── barchart.js     # Bar chart visualization
-│   └── [city].js       # City-specific scripts
-├── data/               # Data files
-│   ├── population.js   # Population statistics
-│   ├── apartments.js   # Apartment data
-│   └── [city].json     # City-specific data
-└── index.html          # Main HTML file
-```
 
-## Getting Started
+## Interaction Notes
 
-### Prerequisites
+- Hover over a vertical card to open that city.
+- New York:
+  - Hover the dot grid to see the affordability note.
+  - Click borough bubbles to update the caption with listing share.
+- Tokyo:
+  - Click a room type bubble to inspect neighborhood distribution.
+  - Click inside the chart area to reset.
+- Paris:
+  - Hover bars in the minimum-nights chart for details.
+  - Move the slider to update the availability dot canvas.
 
-- Modern web browser (Chrome, Firefox, Safari)
-- Basic understanding of web technologies
-- Local development server (recommended)
+## Verification Checklist
 
-### Installation
+Before publishing changes, check:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/sharebnb.git
-   ```
-
-2. Set up a local server:
-   ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js
-   npx serve
-   ```
-
-3. Open `http://localhost:8000` in your browser
-
-### Development Guidelines
-
-1. **Code Style**:
-   - Use ES6+ features
-   - Follow modular architecture
-   - Implement error handling
-   - Document complex functions
-
-2. **Design Principles**:
-   - Maintain consistent spacing
-   - Use the provided color palette
-   - Follow accessibility guidelines
-   - Test responsive behavior
-
-3. **Performance**:
-   - Optimize data loading
-   - Minimize DOM operations
-   - Use efficient D3.js patterns
-   - Implement lazy loading
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+- `http://127.0.0.1:8000/index.html` opens with no console errors.
+- ShareBnB, New York, Tokyo, and Paris all open on hover.
+- At desktop sizes around `1800x1000`, `1440x900`, `1200x800`, and `1000x700`,
+  no chart or text spills outside its panel.
+- Resizing while a city is open keeps charts centered and contained.
+- Paris canvas is visible before touching the slider.
 
 ## Credits
 
-- **Project Lead**: Dr. Franklin Hernández Castro
-- **Course**: Data Visualization, HfG Schwäbisch Gmünd IG3
-- **Supervisors**: Jonas Wienberg, Marlon Mutlu, Philipp Maginot
-- **Data Sources**: Airbnb, City Statistics
-- **Technologies**: D3.js, HTML5, CSS3, JavaScript
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+- Project lead: Dr. Franklin Hernández Castro
+- Course: Data Visualization, HfG Schwäbisch Gmünd IG3
+- Team: Jonas Wienberg, Marlon Mutlu, Philipp Maginot
+- Technologies: D3.js, HTML, CSS, JavaScript
