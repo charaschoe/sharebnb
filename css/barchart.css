@@ -1,36 +1,37 @@
-/* body {
-  overflow: hidden;
-} */
-#chart {
+#chart-container-paris {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
-	overflow-x: auto;
-	overflow-y: hidden;
+	min-height: 0;
 }
 
-svg {
-	font-family: Arial, sans-serif;
-	overflow-x: scroll;
+.paris-bar-chart {
+	width: 100%;
+	height: 100%;
+	font-family: Inter, sans-serif;
+	overflow: visible;
 }
 
-rect {
-	fill: rgb(255, 255, 255);
-	transition: fill 0.8s ease-in-out;
+.paris-bar-chart rect {
+	fill: rgba(255, 255, 255, 0.72);
+	transition: fill 0.2s ease, opacity 0.2s ease;
 }
 
-rect:hover {
-	fill: #000;
+.paris-bar-chart rect:hover,
+.paris-bar-chart rect.is-active {
+	fill: #ffffff;
 }
 
-.axis text {
-	font-size: 14px; /* Größe der Achsenbeschriftungen */
-	fill: #ffffff; /* Textfarbe */
+.paris-bar-chart .axis path,
+.paris-bar-chart .axis line {
+	stroke: rgba(255, 255, 255, 0.5);
 }
 
-/* Style für die Y-Achsen-Beschriftung */
-.axis text.y-axis-label {
-	font-size: 14px;
-	font-weight: bold;
+.paris-bar-chart .axis text,
+.paris-bar-chart .axis-title {
+	font-size: 12px;
 	fill: #ffffff;
 }
 
@@ -50,9 +51,7 @@ rect:hover {
 	opacity: 1; /* Tooltip sichtbar, wenn aktiv */
 }
 
-/* Drehe die X-Achsenbeschriftungen leicht */
-.axis-x text {
-	transform: rotate(36deg);
-	text-anchor: end;
-	font-size: 12px;
+#hover-info {
+	min-height: 24px;
+	margin-top: 0 !important;
 }

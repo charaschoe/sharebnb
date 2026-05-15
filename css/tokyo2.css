@@ -1,23 +1,24 @@
-body {
-	font-family: "Inter", sans-serif;
-}
-
-#percentage-output {
+#percentage-output-hosts {
 	text-align: center;
 	font-size: 18px;
 	font-weight: bold;
 }
 
-.axis path,
-.axis line {
+#chart-container .axis path,
+#chart-container .axis line {
 	fill: none;
 	stroke: #fff;
 	shape-rendering: crispEdges;
 }
 
-.axis text {
-	font-size: 14px;
+#chart-container .axis text {
+	font-size: clamp(9px, 0.85vw, 13px);
 	font-weight: 400;
+}
+
+#chart-container {
+	width: 100%;
+	height: 100%;
 }
 
 .tooltip {
@@ -25,12 +26,12 @@ body {
 	text-align: left;
 	width: auto;
 	height: auto;
-	font: 20px "Inter", sans-serif;
+	font: clamp(11px, 1vw, 15px) "Inter", sans-serif;
 	font-weight: 400;
 	border: none;
 	pointer-events: none;
 	opacity: 0;
-	color: #000;
-	background-color: none;
+	color: #fff;
+	background-color: transparent;
 	box-shadow: none;
 }

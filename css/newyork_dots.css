@@ -1,9 +1,10 @@
 .dot {
-	width: 20px;
-	height: 20px;
+	width: clamp(8px, 2.8vmin, 20px);
+	height: clamp(8px, 2.8vmin, 20px);
 	border-radius: 50%;
 	display: inline-block;
-	margin: 10px;
+	margin: clamp(3px, 0.9vmin, 9px);
+	transition: opacity 0.16s ease;
 }
 .affordable {
 	background-color: white;
@@ -22,8 +23,12 @@
 	grid-template-columns: repeat(10, auto);
 	grid-template-rows: repeat(5, auto); /* Ensure dots are placed in rows */
 	justify-content: center;
+	align-content: center;
+	place-items: center;
+	width: 100%;
+	height: 100%;
 }
 
 .dot:hover {
-	transition: transform 0.2s ease-in-out;
+	opacity: 0.78;
 }

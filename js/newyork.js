@@ -20,24 +20,30 @@ const affordablePeople = Math.floor(
 
 const dotsContainer = document.getElementById("dots");
 const infoText = document.getElementById("info-text");
+const defaultInfoText =
+	"A 50-person affordability sample based on median income and nightly Airbnb price.";
+const hoverInfoText = `Median monthly income: $${averageSalary.toLocaleString(
+	"en-US",
+	{ maximumFractionDigits: 0 }
+)}. Estimated Airbnb nightly price: $${(averageRent / 30).toFixed(2)}.`;
 
-for (let i = 0; i < numberOfPeople; i++) {
-	const dot = document.createElement("div");
-	dot.className =
-		"dot " + (i < affordablePeople ? "affordable" : "non-affordable");
+if (dotsContainer && infoText) {
+	dotsContainer.replaceChildren();
+	infoText.textContent = defaultInfoText;
 
-	dot.addEventListener("mouseenter", () => {
-		infoText.textContent = `Median income is $${averageSalary.toFixed(
-			2
-		)} per month. Airbnb price per night is $${(averageRent / 30).toFixed(
-			2
-		)}.`;
-	});
+	for (let i = 0; i < numberOfPeople; i++) {
+		const dot = document.createElement("div");
+		dot.className =
+			"dot " + (i < affordablePeople ? "affordable" : "non-affordable");
 
-	dot.addEventListener("mouseleave", () => {
-		infoText.textContent =
-			"Out of 50 people, only a few can afford to live in NYC based on the median income.";
-	});
+		dot.addEventListener("mouseenter", () => {
+			infoText.textContent = hoverInfoText;
+		});
 
-	dotsContainer.appendChild(dot);
+		dot.addEventListener("mouseleave", () => {
+			infoText.textContent = defaultInfoText;
+		});
+
+		dotsContainer.appendChild(dot);
+	}
 }

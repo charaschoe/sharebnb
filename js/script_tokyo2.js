@@ -1,22 +1,11 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 import { tokyoData } from "../data/tokyo.js";
 
-const height = 425;
-const width = (700 / 500) * height;
-const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-
-const svg = d3
-	.select("#chart-container")
-	.append("svg")
-	.attr("width", width)
-	.attr("height", height)
-	.append("g")
-	.attr("transform", `translate(${margin.left},${margin.top})`);
-
-const data = tokyoData;
-
+const container = document.getElementById("chart-container");
+const tooltip = d3.select("#tooltip");
+const domain = ["1", "2", "3", "4", "5-9", "10-19", "20-49", "50+"];
 const hostListingsData = d3.rollup(
-	data,
+	tokyoData,
 	(v) => v.length,
 	(d) => {
 		const count = d.calculated_host_listings_count;
@@ -24,132 +13,96 @@ const hostListingsData = d3.rollup(
 		if (count >= 20) return "20-49";
 		if (count >= 10) return "10-19";
 		if (count >= 5) return "5-9";
-		return count.toString();
+		return String(count);
 	}
 );
-
-const totalEntries = data.length;
-const entireHomeCount = hostListingsData.get("Entire home/apt") || 0;
-const percentageEntireHome = ((entireHomeCount / totalEntries) * 100).toFixed(
-	2
+const totalEntries = tokyoData.length;
+const sortedData = Array.from(hostListingsData).sort(
+	(a, b) => domain.indexOf(a[0]) - domain.indexOf(b[0])
 );
 
-// d3.select("#percentage-output")
-//     .text(`In ${percentageEntireHome}% der Zeit hast du ein Appartment für dich alleine.`);
+function renderHostChart() {
+	if (!container) return;
+	const rect = container.getBoundingClientRect();
+	const width = Math.max(260, rect.width);
+	const height = Math.max(180, rect.height);
+	const margin = {
+		top: Math.max(16, height * 0.08),
+		right: Math.max(16, width * 0.05),
+		bottom: Math.max(34, height * 0.14),
+		left: Math.max(42, width * 0.11),
+	};
+	const innerWidth = width - margin.left - margin.right;
+	const innerHeight = height - margin.top - margin.bottom;
 
-const x = d3
-	.scalePoint()
-	.domain(["1", "2", "3", "4", "5-9", "10-19", "20-49", "50+"])
-	.range([0, width - margin.left - margin.right]);
+	const svg = d3.select(container).selectAll("svg").data([null]).join("svg");
+	svg.selectAll("*").remove();
+	svg
+		.attr("viewBox", [0, 0, width, height])
+		.attr("preserveAspectRatio", "xMidYMid meet")
+		.attr("role", "img")
+		.attr("aria-label", "Tokyo host listing concentration");
 
-const y = d3
-	.scaleLinear()
-	.domain([0, d3.max(Array.from(hostListingsData.values()))])
-	.nice()
-	.range([height - margin.top - margin.bottom, 0]);
+	const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+	const x = d3.scalePoint().domain(domain).range([0, innerWidth]);
+	const y = d3
+		.scaleLinear()
+		.domain([0, d3.max(sortedData, (d) => d[1])])
+		.nice()
+		.range([innerHeight, 0]);
+	const line = d3.line().x((d) => x(d[0])).y((d) => y(d[1]));
 
-const line = d3
-	.line()
-	.x((d) => x(d[0]))
-	.y((d) => y(d[1]));
+	g.append("g")
+		.attr("class", "axis")
+		.attr("transform", `translate(0,${innerHeight})`)
+		.call(d3.axisBottom(x).tickSize(0).tickPadding(8));
 
-// Sortiere die Daten nach der x-Achsen-Domäne
-const sortedData = Array.from(hostListingsData).sort((a, b) => {
-	return x.domain().indexOf(a[0]) - x.domain().indexOf(b[0]);
-});
+	g.append("g")
+		.attr("class", "axis")
+		.call(d3.axisLeft(y).ticks(4).tickSize(0).tickPadding(6).tickFormat(d3.format("~s")));
 
-const xAxis = svg
-	.append("g")
-	.attr("class", "axis")
-	.attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
-	.call(d3.axisBottom(x).tickSize(0).tickPadding(10).tickFormat(""));
+	g.append("path")
+		.datum(sortedData)
+		.attr("fill", "none")
+		.attr("stroke", "white")
+		.attr("stroke-width", 3)
+		.attr("d", line);
 
-const yAxis = svg
-	.append("g")
-	.attr("class", "axis")
-	.call(d3.axisLeft(y).tickSize(0).tickPadding(10).tickFormat(""));
+	g.selectAll(".dot")
+		.data(sortedData)
+		.enter()
+		.append("circle")
+		.attr("class", "dot")
+		.attr("cx", (d) => x(d[0]))
+		.attr("cy", (d) => y(d[1]))
+		.attr("r", Math.max(5, Math.min(width, height) * 0.018))
+		.attr("fill", "transparent")
+		.attr("stroke", "white")
+		.attr("stroke-width", 3)
+		.on("mouseover", function (event, d) {
+			d3.select(this).attr("r", Math.max(7, Math.min(width, height) * 0.026));
+			const listingText = d[0] === "1" ? "listing" : "listings";
+			const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
+			tooltip
+				.style("opacity", 1)
+				.html(`${d[1].toLocaleString("de-DE")} Airbnbs are from hosts with ${d[0]} ${listingText}. ${percentage}% of Tokyo listings.`);
+		})
+		.on("mouseout", function () {
+			d3.select(this).attr("r", Math.max(5, Math.min(width, height) * 0.018));
+			tooltip.style("opacity", 0);
+		});
 
-// Add x-axis label
-xAxis
-	.append("text")
-	.attr("class", "axis-label")
-	.attr("x", (width - margin.left - margin.right) / 2)
-	.attr("y", margin.bottom - 10)
-	.style("fill", "white")
-	.style("text-anchor", "middle")
-	.text("Number of apartments of the host");
+	g.append("text")
+		.attr("x", innerWidth / 2)
+		.attr("y", innerHeight + margin.bottom - 4)
+		.attr("text-anchor", "middle")
+		.attr("fill", "white")
+		.attr("font-size", "12")
+		.text("Listings per host");
+}
 
-// Add y-axis label
-yAxis
-	.append("text")
-	.attr("class", "axis-label")
-	.attr("transform", "rotate(-90)")
-	.attr("x", -(height - margin.top - margin.bottom) / 2)
-	.attr("y", -margin.left + 10)
-	.style("fill", "white")
-	.style("text-anchor", "left")
-	.text("Number of AirBnBs");
-
-// Initiale Animation für die Linie
-const path = svg
-	.append("path")
-	.datum(sortedData)
-	.attr("fill", "none")
-	.attr("stroke", "white") // Farbe der Linie
-	.attr("stroke-width", 3)
-	.attr("d", line);
-
-const totalLength = path.node().getTotalLength();
-
-path.attr("stroke-dasharray", `${totalLength} ${totalLength}`)
-	.attr("stroke-dashoffset", totalLength)
-	.transition()
-	.duration(2000)
-	.ease(d3.easeLinear)
-	.attr("stroke-dashoffset", 0);
-
-const tooltip = d3.select("#tooltip");
-
-// Initiale Animation für die Punkte
-svg.selectAll(".dot")
-	.data(sortedData)
-	.enter()
-	.append("circle")
-	.attr("class", "dot")
-	.attr("cx", (d) => x(d[0]))
-	.attr("cy", (d) => y(d[1]))
-	.attr("r", 0)
-	.attr("fill", "transparent") // Farbe der Punkte
-	.attr("stroke", "white") // Randfarbe der Punkte
-	.attr("stroke-width", 3)
-	.transition()
-	.duration(2000)
-	.attr("r", 10);
-
-svg.selectAll(".dot")
-	.on("mouseover", function (event, d) {
-		d3.select(this).transition().duration(200).attr("r", 13);
-
-		tooltip.transition().duration(200).style("opacity", 1);
-		const listingText = d[0] === "1" ? "listing" : "listings";
-		const percentage = ((d[1] / totalEntries) * 100).toFixed(2);
-		tooltip
-			.html(
-				`<b>${d[1]}</b> AirBnBs are from hosts with <b>${d[0]} </b>${listingText}.<br> That is <b>${percentage}%</b> of all AirBnBs in Tokyo!`
-			)
-			.style("left", `${margin.left + 970}px`)
-			.style("top", `${height - margin.bottom + 290}px`)
-			.style("background-color", "transparent")
-			.style("color", "white")
-			.style("border", "none")
-			.style("font-size", "16px")
-			.style("font-family", "Inter")
-			.style("text-shadow", "none")
-			.style("stroke", "transparent")
-			.style("text-align", "center");
-	})
-	.on("mouseout", function () {
-		d3.select(this).transition().duration(200).attr("r", 10);
-
-		tooltip.transition().duration(200).style("opacity", 0);
-	});
+if (container) {
+	const observer = new ResizeObserver(renderHostChart);
+	observer.observe(container);
+	renderHostChart();
+}
